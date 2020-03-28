@@ -5,7 +5,8 @@ const initialState = {
   response: {},
   Postresponse: {},
   visibility: false,
-  languageValue: { value: "English", label: "English" }
+  languageValue: { value: "English", label: "English" },
+  showDisclaimer: false
 };
 
 export default function(state = initialState, action) {
@@ -18,6 +19,8 @@ export default function(state = initialState, action) {
       return { ...state, Postresponse: action.data };
     case Constants.LANGUAGE_SELECTION:
       return { ...state, languageValue: action.data };
+    case Constants.TOGGLE_SHOW_DISCLAIMER:
+      return { ...state, showDisclaimer: action.data };
     case Constants.SHOW_LOADER:
       return { ...state, visibility: action.visibility };
     case Constants.HIDE_LOADER:

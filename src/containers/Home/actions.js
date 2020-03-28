@@ -19,6 +19,14 @@ export function languageChange(val) {
   };
 }
 
+export function toggleShowDisclaimer(value) {
+  return dispatch => {
+    dispatch({
+      type: Constants.TOGGLE_SHOW_DISCLAIMER,
+      data: value
+    });
+  };
+}
 //get call example
 export function ApiCall() {
   var url1 = `https://api.github.com/users/shivamrr9`;

@@ -8,5 +8,6 @@ export const Constants = keyMirror({
   POST_API_RESPONSE: {},
   SHOW_LOADER: null,
   HIDE_LOADER: null,
-  LANGUAGE_SELECTION: null
+  LANGUAGE_SELECTION: null,
+  TOGGLE_SHOW_DISCLAIMER: null
 });
