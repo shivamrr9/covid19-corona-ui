@@ -125,7 +125,7 @@ class Question1 extends Component {
                 <hr></hr>
                 <div className="age-container">
                   <h6>How Old Are You?</h6>
-                  <p style={{ padding: "5px", fontSize: "30px" }}>
+                  <p style={{ fontSize: "28px", marginBottom: "4px" }}>
                     {this.props.enteredAgeByUser}
                   </p>
                   <InputRange
@@ -138,7 +138,7 @@ class Question1 extends Component {
                     slider="check"
                   />
                 </div>
-                <hr></hr>
+                <hr style={{ marginTop: "30px" }}></hr>
                 <div
                   className="gender-container"
                   align="center"
