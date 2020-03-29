@@ -5,11 +5,15 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { English, Hindi } from "../language";
+import {
+  openQuestionPage,
+  toggleShowDisclaimer
+} from "../containers/Home/actions";
 
 class Disclaimer extends Component {
-  handleLangChange(val) {
-    console.log("value on index: ", val);
-    this.props.languageChange(val);
+  startQuestion(pageNumber) {
+    this.props.openQuestionPage(pageNumber);
+    this.props.toggleShowDisclaimer(false);
   }
   render() {
     console.log("props :", this.props);
@@ -22,7 +26,7 @@ class Disclaimer extends Component {
               <h2 style={{ paddingTop: "25px", paddingLeft: "10px" }}>
                 Disclaimer
               </h2>
-
+              <hr></hr>
               <h5
                 style={{
                   paddingLeft: "10px",
@@ -45,9 +49,17 @@ class Disclaimer extends Component {
                 }}
               >
                 <Button
-                  style={{ backgroundClip: "red", marginBottom: "3px" }}
+                  style={{
+                    backgroundClip: "red",
+                    marginBottom: "3px",
+                    background: "#A4D160",
+                    border: " 1px solid #A4D160"
+                  }}
                   size="lg"
                   block
+                  onClick={() => {
+                    this.startQuestion("1");
+                  }}
                 >
                   Accept and Continue
                 </Button>
@@ -65,4 +77,7 @@ const mapStateToProps = state => ({
   languageValue: state.postReducer.languageValue
 });
 
-export default connect(mapStateToProps, {})(Disclaimer);
+export default connect(mapStateToProps, {
+  openQuestionPage,
+  toggleShowDisclaimer
+})(Disclaimer);

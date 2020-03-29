@@ -6,7 +6,14 @@ const initialState = {
   Postresponse: {},
   visibility: false,
   languageValue: { value: "English", label: "English" },
-  showDisclaimer: false
+  showDisclaimer: false,
+  currentPageNumber: 0,
+  questionProgress: 20,
+  enteredAgeByUser: 20,
+  stateSelectedByUser: "",
+  districtOptions: [],
+  districtSelectedByUser: "",
+  cityOptions: []
 };
 
 export default function(state = initialState, action) {
@@ -21,6 +28,18 @@ export default function(state = initialState, action) {
       return { ...state, languageValue: action.data };
     case Constants.TOGGLE_SHOW_DISCLAIMER:
       return { ...state, showDisclaimer: action.data };
+    case Constants.SET_ACTIVE_PAGE_NUMBER:
+      return { ...state, currentPageNumber: action.data };
+    case Constants.ENTERED_AGE:
+      return { ...state, enteredAgeByUser: action.data };
+    case Constants.SELECTED_STATE:
+      return { ...state, stateSelectedByUser: action.data };
+    case Constants.DISTRICTS_DATA:
+      return { ...state, districtOptions: action.data };
+    case Constants.SELECTED_DISTRICT:
+      return { ...state, districtSelectedByUser: action.data };
+    case Constants.CITIES_DATA:
+      return { ...state, cityOptions: action.data };
     case Constants.SHOW_LOADER:
       return { ...state, visibility: action.visibility };
     case Constants.HIDE_LOADER:

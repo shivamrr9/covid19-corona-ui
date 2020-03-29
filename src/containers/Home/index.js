@@ -10,8 +10,9 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { English, Hindi } from "../../language";
 import Select from "react-select";
 import { languageOptions } from "../../configConstants";
-import { languageChange, toggleShowDisclaimer } from "./actions.js";
+import { languageChange, toggleShowDisclaimer } from "./actions";
 import Disclaimer from "../Disclaimer";
+import Question1 from "../Question1";
 
 class Home extends Component {
   handleLangChange(val) {
@@ -25,9 +26,10 @@ class Home extends Component {
     console.log("props :", this.props);
     return (
       <div>
-        {this.props.showDisclaimer ? (
+        {this.props.showDisclaimer && this.props.currentPageNumber == 0 && (
           <Disclaimer />
-        ) : (
+        )}
+        {!this.props.showDisclaimer && this.props.currentPageNumber == 0 && (
           <Container>
             <Row className="col-center">
               <Col md={3}></Col>
@@ -79,7 +81,6 @@ class Home extends Component {
                 >
                   <Button
                     style={{
-                      backgroundClip: "red",
                       marginBottom: "3px",
                       background: "#A4D160",
                       border: " 1px solid #A4D160"
@@ -102,6 +103,8 @@ class Home extends Component {
           </Container>
         )}
 
+        {this.props.currentPageNumber == 1 && <Question1 />}
+
         {this.props.visibility && (
           <div className="full-loader">
             <div className="relative">
@@ -122,7 +125,8 @@ const mapStateToProps = state => ({
   Postresponse: state.postReducer.Postresponse,
   visibility: state.postReducer.visibility,
   languageValue: state.postReducer.languageValue,
-  showDisclaimer: state.postReducer.showDisclaimer
+  showDisclaimer: state.postReducer.showDisclaimer,
+  currentPageNumber: state.postReducer.currentPageNumber
 });
 
 export default connect(mapStateToProps, {

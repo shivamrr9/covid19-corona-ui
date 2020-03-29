@@ -1,5 +1,6 @@
 import { Constants } from "./constants";
 import { doHttpGet, doHttpPost } from "../../components/utilities.js";
+import { stat } from "fs";
 
 export function Test(flag) {
   return dispatch => {
@@ -27,6 +28,92 @@ export function toggleShowDisclaimer(value) {
     });
   };
 }
+
+export function openQuestionPage(pageNumber) {
+  return dispatch => {
+    dispatch({
+      type: Constants.SET_ACTIVE_PAGE_NUMBER,
+      data: pageNumber
+    });
+  };
+}
+
+export function enteredAge(age) {
+  return dispatch => {
+    dispatch({
+      type: Constants.ENTERED_AGE,
+      data: age
+    });
+  };
+}
+export function stateSelected(state) {
+  console.log("state: ", state);
+  var url1 = `https://api.jsonbin.io/b/5e7f99ff862c46101abfbd6f`;
+  return dispatch => {
+    dispatch({
+      type: Constants.SELECTED_STATE,
+      data: state
+    });
+    var promise = doHttpGet(url1, {});
+    promise.then(
+      response => {
+        let districts = [];
+        if (response && response.status === 200) {
+          response.data.states.map(obj => {
+            if (obj.state === state.value || obj.state.includes(state.value)) {
+              obj.districts.map(obj => {
+                districts.push({ value: obj, label: obj });
+              });
+            }
+          });
+          dispatch({
+            type: Constants.DISTRICTS_DATA,
+            data: districts
+          });
+        }
+      },
+      err => {
+        console.log("error:", err);
+      }
+    );
+  };
+}
+export function districtSelected(district) {
+  var url1 = `https://indian-cities-api-nocbegfhqg.now.sh/cities?District=${district.value}`;
+  return dispatch => {
+    dispatch({
+      type: Constants.SELECTED_DISTRICT,
+      data: district
+    });
+    var promise = doHttpGet(url1, {});
+    promise.then(
+      response => {
+        if (response && response.status === 200) {
+          console.log("cities response", response);
+          let cities = [];
+          if (response.data.length == 0) {
+            cities.push({
+              value: district.value,
+              label: district.value
+            });
+          } else {
+            response.data.map(obj => {
+              cities.push({ value: obj.City, label: obj.City });
+            });
+          }
+          dispatch({
+            type: Constants.CITIES_DATA,
+            data: cities
+          });
+        }
+      },
+      err => {
+        console.log("error:", err);
+      }
+    );
+  };
+}
+
 //get call example
 export function ApiCall() {
   var url1 = `https://api.github.com/users/shivamrr9`;
