@@ -89,7 +89,7 @@ class Question1 extends Component {
               >
                 <div
                   className="citySelection"
-                  style={{ marginBottom: "20px", padding: "5px" }}
+                  style={{ marginBottom: "20px", padding: "10px" }}
                 >
                   <h6>
                     {this.props.languageValue.value === "English"

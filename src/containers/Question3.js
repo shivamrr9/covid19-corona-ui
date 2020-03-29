@@ -7,17 +7,16 @@ import Button from "react-bootstrap/Button";
 import { English, Hindi } from "../language";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import styles from "./Home/styles.scss";
-import InputRange from "react-input-range";
-import { openQuestionPage } from "../containers/Home/actions";
+import { openQuestionPage, travelHistoryAns } from "../containers/Home/actions";
 import "react-input-range/lib/css/index.css";
 import Radio from "@material-ui/core/Radio";
-
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Select from "react-select";
-import { stateOptions } from "../configConstants";
 
 class Question3 extends Component {
+  handleTravelAnsChange(event) {
+    this.props.travelHistoryAns(event.target.value);
+  }
   render() {
     console.log("props :", this.props);
     return (
@@ -25,7 +24,7 @@ class Question3 extends Component {
         <Container>
           <Row className="col-center">
             <Col md={3}></Col>
-            <Col md={6}>
+            <Col md={6} style={{ height: "75vh" }}>
               <div style={{ width: "100%" }}>
                 <img
                   src="https://res.cloudinary.com/arorashivam-com-resume/image/upload/v1585416392/corona_ytm8cs.png"
@@ -65,7 +64,46 @@ class Question3 extends Component {
                   height: "100%"
                 }}
               >
-                i am 3
+                <h6 style={{ padding: "10px" }}>
+                  {this.props.languageValue.value === "English"
+                    ? English.question3Heading
+                    : Hindi.question3Heading}
+                </h6>
+                <div
+                  style={{
+                    marginTop: "30px",
+                    paddingLeft: "9%"
+                  }}
+                  align="left"
+                >
+                  <RadioGroup
+                    aria-label="travelAns"
+                    name="travelAns"
+                    value={this.props.travelAnsSelectedByUser}
+                    onChange={event => {
+                      this.handleTravelAnsChange(event);
+                    }}
+                  >
+                    <FormControlLabel
+                      value="yes"
+                      control={<Radio />}
+                      label={
+                        this.props.languageValue.value === "English"
+                          ? English.yes
+                          : Hindi.yes
+                      }
+                    />
+                    <FormControlLabel
+                      value="no"
+                      control={<Radio />}
+                      label={
+                        this.props.languageValue.value === "English"
+                          ? English.no
+                          : Hindi.no
+                      }
+                    />
+                  </RadioGroup>
+                </div>
               </div>
               <div
                 style={{
@@ -104,7 +142,10 @@ class Question3 extends Component {
 
 const mapStateToProps = state => ({
   languageValue: state.postReducer.languageValue,
-  questionProgress: state.postReducer.questionProgress
+  questionProgress: state.postReducer.questionProgress,
+  travelAnsSelectedByUser: state.postReducer.travelAnsSelectedByUser
 });
 
-export default connect(mapStateToProps, { openQuestionPage })(Question3);
+export default connect(mapStateToProps, { openQuestionPage, travelHistoryAns })(
+  Question3
+);

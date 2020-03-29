@@ -62,7 +62,7 @@ class Question2 extends Component {
                   height: "100%"
                 }}
               >
-                <h6>
+                <h6 style={{ padding: "10px" }}>
                   {this.props.languageValue.value === "English"
                     ? English.question2Heading
                     : Hindi.question2Heading}

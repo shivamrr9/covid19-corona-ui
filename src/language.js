@@ -23,7 +23,10 @@ export const English = {
   kidneyLiver: "Kidney or Liver Disease",
   noneOfTheAbove: "None of the above",
   acceptAndContinue: "Accept and Continue",
-  disclaimerHeading: "Disclaimer"
+  disclaimerHeading: "Disclaimer",
+  question3Heading: "Have you travelled internationally in the last 14 days?",
+  yes: "Yes",
+  no: "No"
 };
 
 export const Hindi = {
@@ -51,5 +54,9 @@ export const Hindi = {
   kidneyLiver: "किडनी या लीवर की बीमारी",
   noneOfTheAbove: "इनमे से कोई भी नहीं",
   acceptAndContinue: "स्वीकार करें और जारी रखें",
-  disclaimerHeading: "अस्वीकरण (Disclaimer)"
+  disclaimerHeading: "अस्वीकरण (Disclaimer)",
+  question3Heading:
+    "क्या आपने पिछले 14 दिनों में अंतरराष्ट्रीय स्तर पर यात्रा की है?",
+  yes: "हाँ",
+  no: "नहीं"
 };

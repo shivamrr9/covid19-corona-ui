@@ -52,6 +52,14 @@ export function setQuestion2Data(val, type) {
     });
   };
 }
+export function travelHistoryAns(travelAns) {
+  return dispatch => {
+    dispatch({
+      type: Constants.TRAVEL_HISTORY_ANS,
+      data: travelAns
+    });
+  };
+}
 
 export function enteredAge(age) {
   return dispatch => {

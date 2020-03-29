@@ -22,7 +22,8 @@ const initialState = {
     highBloodPressure: false,
     kidneyOrLiverDisease: false,
     noneOfTheAbove: false
-  }
+  },
+  travelAnsSelectedByUser: ""
 };
 
 export default function(state = initialState, action) {
@@ -55,6 +56,8 @@ export default function(state = initialState, action) {
       return { ...state, genderSelectedByUser: action.data };
     case Constants.CHANGE_PROGRESS_BAR:
       return { ...state, questionProgress: action.data };
+    case Constants.TRAVEL_HISTORY_ANS:
+      return { ...state, travelAnsSelectedByUser: action.data };
     case Constants.SHOW_LOADER:
       return { ...state, visibility: action.visibility };
     case Constants.HIDE_LOADER:

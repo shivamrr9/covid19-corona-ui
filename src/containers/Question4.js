@@ -25,7 +25,7 @@ class Question4 extends Component {
         <Container>
           <Row className="col-center">
             <Col md={3}></Col>
-            <Col md={6}>
+            <Col md={6} style={{ height: "75vh" }}>
               <div style={{ width: "100%" }}>
                 <img
                   src="https://res.cloudinary.com/arorashivam-com-resume/image/upload/v1585416392/corona_ytm8cs.png"
@@ -65,7 +65,16 @@ class Question4 extends Component {
                   height: "100%"
                 }}
               >
-                i am 4
+                <h6 style={{ padding: "10px" }}>
+                  Are you experiencing any of the symptoms below?
+                </h6>
+                <div
+                  style={{
+                    marginTop: "30px",
+                    paddingLeft: "9%"
+                  }}
+                  align="left"
+                ></div>
               </div>
               <div
                 style={{
