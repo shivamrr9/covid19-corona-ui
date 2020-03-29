@@ -35,6 +35,10 @@ export function openQuestionPage(pageNumber) {
       type: Constants.SET_ACTIVE_PAGE_NUMBER,
       data: pageNumber
     });
+    dispatch({
+      type: Constants.CHANGE_PROGRESS_BAR,
+      data: Number(pageNumber) * 20
+    });
   };
 }
 
@@ -46,6 +50,23 @@ export function enteredAge(age) {
     });
   };
 }
+export function citySelected(selectedCity) {
+  return dispatch => {
+    dispatch({
+      type: Constants.SELECTED_CITY,
+      data: selectedCity
+    });
+  };
+}
+export function genderSelected(gender) {
+  return dispatch => {
+    dispatch({
+      type: Constants.SELECTED_GENDER,
+      data: gender
+    });
+  };
+}
+
 export function stateSelected(state) {
   console.log("state: ", state);
   var url1 = `https://api.jsonbin.io/b/5e7f99ff862c46101abfbd6f`;

@@ -11,7 +11,10 @@ import InputRange from "react-input-range";
 import {
   enteredAge,
   stateSelected,
-  districtSelected
+  districtSelected,
+  citySelected,
+  genderSelected,
+  openQuestionPage
 } from "../containers/Home/actions";
 import "react-input-range/lib/css/index.css";
 import Radio from "@material-ui/core/Radio";
@@ -22,6 +25,9 @@ import Select from "react-select";
 import { stateOptions } from "../configConstants";
 
 class Question1 extends Component {
+  handleCityChange(val) {
+    this.props.citySelected(val);
+  }
   handleDistrictChange(val) {
     this.props.districtSelected(val);
   }
@@ -31,8 +37,8 @@ class Question1 extends Component {
   handleInputAge(age) {
     this.props.enteredAge(age);
   }
-  handleChange(event) {
-    console.log(event.target.value);
+  handleGenderChange(event) {
+    this.props.genderSelected(event.target.value);
   }
   render() {
     console.log("props :", this.props);
@@ -78,16 +84,24 @@ class Question1 extends Component {
                   backgroundImage: `url(https://res.cloudinary.com/arorashivam-com-resume/image/upload/v1585442509/bg_2_dvlffd.png)`,
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "cover",
-                  overflow: "scroll"
+                  height: "100%"
                 }}
               >
                 <div
                   className="citySelection"
                   style={{ marginBottom: "20px", padding: "5px" }}
                 >
-                  <h6>Select State, District, City</h6>
+                  <h6>
+                    {this.props.languageValue.value === "English"
+                      ? English.selectCity
+                      : Hindi.selectCity}
+                  </h6>
                   <Select
-                    placeholder="State"
+                    placeholder={
+                      this.props.languageValue.value === "English"
+                        ? English.state
+                        : Hindi.state
+                    }
                     isSearchable={true}
                     value={this.props.stateSelectedByUser}
                     onChange={val => {
@@ -97,7 +111,11 @@ class Question1 extends Component {
                     style={{ marginBottom: "10px" }}
                   />
                   <Select
-                    placeholder="District"
+                    placeholder={
+                      this.props.languageValue.value === "English"
+                        ? English.district
+                        : Hindi.district
+                    }
                     isDisabled={!this.props.stateSelectedByUser}
                     isSearchable={true}
                     value={this.props.districtSelectedByUser}
@@ -108,15 +126,23 @@ class Question1 extends Component {
                   />
                   {this.props.districtSelectedByUser &&
                   this.props.cityOptions.length == 0 ? (
-                    <span>Loading Cities..</span>
+                    <span>
+                      {this.props.languageValue.value === "English"
+                        ? English.loadingCities
+                        : Hindi.loadingCities}
+                    </span>
                   ) : (
                     <Select
-                      placeholder="City"
+                      placeholder={
+                        this.props.languageValue.value === "English"
+                          ? English.city
+                          : Hindi.city
+                      }
                       isDisabled={!this.props.districtSelectedByUser}
                       isSearchable={true}
-                      // value={this.props.districtSelectedByUser}
+                      value={this.props.citySelectedByUser}
                       onChange={val => {
-                        console.log(val);
+                        this.handleCityChange(val);
                       }}
                       options={this.props.cityOptions}
                     />
@@ -124,7 +150,11 @@ class Question1 extends Component {
                 </div>
                 <hr></hr>
                 <div className="age-container">
-                  <h6>How Old Are You?</h6>
+                  <h6>
+                    {this.props.languageValue.value === "English"
+                      ? English.howOld
+                      : Hindi.howOld}
+                  </h6>
                   <p style={{ fontSize: "28px", marginBottom: "4px" }}>
                     {this.props.enteredAgeByUser}
                   </p>
@@ -144,29 +174,45 @@ class Question1 extends Component {
                   align="center"
                   style={{ marginTop: "8%" }}
                 >
-                  <h6>Select Gender</h6>
+                  <h6>
+                    {this.props.languageValue.value === "English"
+                      ? English.selectGender
+                      : Hindi.selectGender}
+                  </h6>
                   <RadioGroup
                     aria-label="gender"
                     name="gender1"
-                    // value={value}
+                    value={this.props.genderSelectedByUser}
                     onChange={event => {
-                      this.handleChange(event);
+                      this.handleGenderChange(event);
                     }}
                   >
                     <FormControlLabel
                       value="female"
                       control={<Radio />}
-                      label="Female"
+                      label={
+                        this.props.languageValue.value === "English"
+                          ? English.female
+                          : Hindi.female
+                      }
                     />
                     <FormControlLabel
                       value="male"
                       control={<Radio />}
-                      label="Male"
+                      label={
+                        this.props.languageValue.value === "English"
+                          ? English.male
+                          : Hindi.male
+                      }
                     />
                     <FormControlLabel
                       value="other"
                       control={<Radio />}
-                      label="Other"
+                      label={
+                        this.props.languageValue.value === "English"
+                          ? English.other
+                          : Hindi.other
+                      }
                     />
                   </RadioGroup>
                 </div>
@@ -188,9 +234,13 @@ class Question1 extends Component {
                   }}
                   size="lg"
                   block
-                  onClick={() => {}}
+                  onClick={() => {
+                    this.props.openQuestionPage("2");
+                  }}
                 >
-                  Next
+                  {this.props.languageValue.value === "English"
+                    ? English.next
+                    : Hindi.next}
                 </Button>
               </div>
             </Col>
@@ -209,11 +259,16 @@ const mapStateToProps = state => ({
   stateSelectedByUser: state.postReducer.stateSelectedByUser,
   districtOptions: state.postReducer.districtOptions,
   districtSelectedByUser: state.postReducer.districtSelectedByUser,
-  cityOptions: state.postReducer.cityOptions
+  cityOptions: state.postReducer.cityOptions,
+  citySelectedByUser: state.postReducer.citySelectedByUser,
+  genderSelectedByUser: state.postReducer.genderSelectedByUser
 });
 
 export default connect(mapStateToProps, {
   enteredAge,
   stateSelected,
-  districtSelected
+  districtSelected,
+  citySelected,
+  genderSelected,
+  openQuestionPage
 })(Question1);

@@ -13,7 +13,9 @@ const initialState = {
   stateSelectedByUser: "",
   districtOptions: [],
   districtSelectedByUser: "",
-  cityOptions: []
+  citySelectedByUser: "",
+  cityOptions: [],
+  genderSelectedByUser: ""
 };
 
 export default function(state = initialState, action) {
@@ -40,6 +42,12 @@ export default function(state = initialState, action) {
       return { ...state, districtSelectedByUser: action.data };
     case Constants.CITIES_DATA:
       return { ...state, cityOptions: action.data };
+    case Constants.SELECTED_CITY:
+      return { ...state, citySelectedByUser: action.data };
+    case Constants.SELECTED_GENDER:
+      return { ...state, genderSelectedByUser: action.data };
+    case Constants.CHANGE_PROGRESS_BAR:
+      return { ...state, questionProgress: action.data };
     case Constants.SHOW_LOADER:
       return { ...state, visibility: action.visibility };
     case Constants.HIDE_LOADER:

@@ -13,6 +13,10 @@ import { languageOptions } from "../../configConstants";
 import { languageChange, toggleShowDisclaimer } from "./actions";
 import Disclaimer from "../Disclaimer";
 import Question1 from "../Question1";
+import Question2 from "../Question2";
+import Question3 from "../Question3";
+import Question4 from "../Question4";
+import Question5 from "../Question5";
 
 class Home extends Component {
   handleLangChange(val) {
@@ -81,7 +85,7 @@ class Home extends Component {
                 >
                   <Button
                     style={{
-                      marginBottom: "3px",
+                      marginBottom: "1px",
                       background: "#A4D160",
                       border: " 1px solid #A4D160"
                     }}
@@ -104,6 +108,10 @@ class Home extends Component {
         )}
 
         {this.props.currentPageNumber == 1 && <Question1 />}
+        {this.props.currentPageNumber == 2 && <Question2 />}
+        {this.props.currentPageNumber == 3 && <Question3 />}
+        {this.props.currentPageNumber == 4 && <Question4 />}
+        {this.props.currentPageNumber == 5 && <Question5 />}
 
         {this.props.visibility && (
           <div className="full-loader">

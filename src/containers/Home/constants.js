@@ -15,5 +15,8 @@ export const Constants = keyMirror({
   SELECTED_STATE: null,
   DISTRICTS_DATA: null,
   SELECTED_DISTRICT: null,
-  CITIES_DATA: null
+  CITIES_DATA: null,
+  SELECTED_CITY: null,
+  SELECTED_GENDER: null,
+  CHANGE_PROGRESS_BAR: null
 });
