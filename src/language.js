@@ -20,7 +20,7 @@ export const English = {
   diabetes: "Diabetes",
   heartDisease: "Heart Disease",
   bloodPressure: "High Blood Pressure",
-  kidneyLiver: "Kidney or Liver Disease",
+  kidneyLung: "Kidney or Lung Disease",
   noneOfTheAbove: "None of the above",
   acceptAndContinue: "Accept and Continue",
   disclaimerHeading: "Disclaimer",
@@ -37,7 +37,16 @@ export const English = {
   drowsiness: "Drowsiness",
   painInChest: "Persistent Pain in chest",
   severeWeakness: "Severe Weakness",
-  question4Heading: "Are you experiencing any of the symptoms below?"
+  question4Heading: "Are you experiencing any of the symptoms below?",
+  question5Heading:
+    "Let us know your Body Temperature? (Normal Temp : 98.6°F (37°C))",
+  tempOption1: "Normal ( 96-98.6) °F",
+  tempOption2: "Fever ( 98.6-102) °F",
+  tempOption3: "High Fever ( >102) °F",
+  question5Heading2:
+    "Have you come in contact with anyone who has been positively tested for COVID-19 (Corona Virus)?",
+  dontKnow: "Don't Know",
+  resultButton: "TAP TO SEE RESULT"
 };
 
 export const Hindi = {
@@ -62,7 +71,7 @@ export const Hindi = {
   diabetes: "मधुमेह",
   heartDisease: "दिल की बीमारी",
   bloodPressure: "उच्च रक्त चाप",
-  kidneyLiver: "किडनी या लीवर की बीमारी",
+  kidneyLung: "किडनी या फेफड़ों की बीमारी",
   noneOfTheAbove: "इनमे से कोई भी नहीं",
   acceptAndContinue: "स्वीकार करें और जारी रखें",
   disclaimerHeading: "अस्वीकरण (Disclaimer)",
@@ -80,5 +89,14 @@ export const Hindi = {
   drowsiness: "तंद्रा (सुस्ती)",
   painInChest: "सीने में लगातार दर्द",
   severeWeakness: "तीव्र कमजोरी",
-  question4Heading: "क्या आप  निम्नलिखित किसी भी लक्षण को अनुभव कर रहे हैं?"
+  question4Heading: "क्या आप  निम्नलिखित किसी भी लक्षण को अनुभव कर रहे हैं?",
+  question5Heading:
+    "कृपया बताएं कि आपके शरीर का तापमान कितना है (शरीर का सामान्य तापमान 98.6°F (37°C) होता है )",
+  tempOption1: "सामान्य ( 96-98.6) °F",
+  tempOption2: "बुखार ( 98.6-102) °F",
+  tempOption3: "तेज बुखार ( >102) °F",
+  question5Heading2:
+    "क्या आप किसी ऐसे व्यक्ति के संपर्क में आए हैं जिसे COVID-19 (Corona) के लिए सकारात्मक रूप से परीक्षण किया गया है?",
+  dontKnow: "पता नहीं",
+  resultButton: "परिणाम देखें"
 };

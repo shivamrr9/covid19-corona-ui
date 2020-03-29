@@ -36,7 +36,10 @@ const initialState = {
     painInChest: false,
     severeWeakness: false,
     noneOfTheAbove: false
-  }
+  },
+  tempratureSelectedByUser: "0",
+  contactAnsSelectedByUser: "",
+  rawData: []
 };
 
 export default function(state = initialState, action) {
@@ -71,6 +74,10 @@ export default function(state = initialState, action) {
       return { ...state, questionProgress: action.data };
     case Constants.TRAVEL_HISTORY_ANS:
       return { ...state, travelAnsSelectedByUser: action.data };
+    case Constants.TEMPRATURE_SELECTED:
+      return { ...state, tempratureSelectedByUser: action.data };
+    case Constants.SELECTED_CONTACT_ANSWER:
+      return { ...state, contactAnsSelectedByUser: action.data };
     case Constants.SHOW_LOADER:
       return { ...state, visibility: action.visibility };
     case Constants.HIDE_LOADER:
@@ -89,6 +96,8 @@ export default function(state = initialState, action) {
         ...state,
         question4Obj: Object.assign({}, state.question4Obj, q4Obj)
       };
+    case Constants.RAW_DATA:
+      return { ...state, rawData: action.data };
     default:
       return state;
   }

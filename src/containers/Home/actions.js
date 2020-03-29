@@ -62,6 +62,24 @@ export function setQuestion4Data(val, type) {
   };
 }
 
+export function selectedTemprature(temprature) {
+  return dispatch => {
+    dispatch({
+      type: Constants.TEMPRATURE_SELECTED,
+      data: temprature
+    });
+  };
+}
+
+export function selectedContactAns(contactAns) {
+  return dispatch => {
+    dispatch({
+      type: Constants.SELECTED_CONTACT_ANSWER,
+      data: contactAns
+    });
+  };
+}
+
 export function travelHistoryAns(travelAns) {
   return dispatch => {
     dispatch({
@@ -97,7 +115,6 @@ export function genderSelected(gender) {
 }
 
 export function stateSelected(state) {
-  console.log("state: ", state);
   var url1 = `https://api.jsonbin.io/b/5e7f99ff862c46101abfbd6f`;
   return dispatch => {
     dispatch({
@@ -164,11 +181,28 @@ export function districtSelected(district) {
   };
 }
 
+export function fetchRawData() {
+  var url1 = `https://api.covid19india.org/raw_data.json`;
+  return dispatch => {
+    fetch("https://api.covid19india.org/raw_data.json")
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        dispatch({
+          type: Constants.RAW_DATA,
+          data: data.raw_data
+        });
+      });
+  };
+}
+
 //get call example
 export function ApiCall() {
   var url1 = `https://api.github.com/users/shivamrr9`;
   return dispatch => {
-    var promise = doHttpGet(url1, {});
+    let headersObj = { headers: { "Access-Control-Allow-Origin": "*" } };
+    var promise = doHttpGet(url1, headersObj);
     promise.then(
       response => {
         if (response && response.status === 200) {

@@ -121,8 +121,8 @@ class Question2 extends Component {
                     disabled={this.props.question2Obj.noneOfTheAbove}
                   />
                   {this.props.languageValue.value === "English"
-                    ? English.kidneyLiver
-                    : Hindi.kidneyLiver}
+                    ? English.kidneyLung
+                    : Hindi.kidneyLung}
                   <br />
                   <Checkbox
                     checked={this.props.question2Obj.noneOfTheAbove}

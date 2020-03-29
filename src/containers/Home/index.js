@@ -17,6 +17,7 @@ import Question2 from "../Question2";
 import Question3 from "../Question3";
 import Question4 from "../Question4";
 import Question5 from "../Question5";
+import Result from "../Result";
 
 class Home extends Component {
   handleLangChange(val) {
@@ -112,6 +113,7 @@ class Home extends Component {
         {this.props.currentPageNumber == 3 && <Question3 />}
         {this.props.currentPageNumber == 4 && <Question4 />}
         {this.props.currentPageNumber == 5 && <Question5 />}
+        {this.props.currentPageNumber == 6 && <Result />}
 
         {this.props.visibility && (
           <div className="full-loader">
