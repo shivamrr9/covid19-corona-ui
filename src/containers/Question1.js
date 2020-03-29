@@ -47,7 +47,7 @@ class Question1 extends Component {
         <Container>
           <Row className="col-center">
             <Col md={3}></Col>
-            <Col md={6}>
+            <Col md={6} style={{ height: "75vh" }}>
               <div style={{ width: "100%" }}>
                 <img
                   src="https://res.cloudinary.com/arorashivam-com-resume/image/upload/v1585416392/corona_ytm8cs.png"

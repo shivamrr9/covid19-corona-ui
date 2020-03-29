@@ -7,17 +7,14 @@ import Button from "react-bootstrap/Button";
 import { English, Hindi } from "../language";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import styles from "./Home/styles.scss";
-import InputRange from "react-input-range";
-import { openQuestionPage } from "../containers/Home/actions";
+import { openQuestionPage, setQuestion2Data } from "../containers/Home/actions";
 import "react-input-range/lib/css/index.css";
-import Radio from "@material-ui/core/Radio";
-
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Select from "react-select";
-import { stateOptions } from "../configConstants";
+import Checkbox from "@material-ui/core/Checkbox";
 
 class Question2 extends Component {
+  handleQuestion2(val, type) {
+    this.props.setQuestion2Data(val.target.checked, type);
+  }
   render() {
     console.log("props :", this.props);
     return (
@@ -25,7 +22,7 @@ class Question2 extends Component {
         <Container>
           <Row className="col-center">
             <Col md={3}></Col>
-            <Col md={6}>
+            <Col md={6} style={{ height: "75vh" }}>
               <div style={{ width: "100%" }}>
                 <img
                   src="https://res.cloudinary.com/arorashivam-com-resume/image/upload/v1585416392/corona_ytm8cs.png"
@@ -65,7 +62,75 @@ class Question2 extends Component {
                   height: "100%"
                 }}
               >
-                i am 2
+                <h6>
+                  {this.props.languageValue.value === "English"
+                    ? English.question2Heading
+                    : Hindi.question2Heading}
+                </h6>
+
+                <div
+                  className="checkBox-group"
+                  style={{
+                    marginTop: "30px",
+                    paddingLeft: "9%"
+                  }}
+                  align="left"
+                >
+                  <Checkbox
+                    checked={this.props.question2Obj.diabetes}
+                    onChange={val => {
+                      this.handleQuestion2(val, "diabetes");
+                    }}
+                    inputProps={{ "aria-label": "primary checkbox" }}
+                  />
+                  {this.props.languageValue.value === "English"
+                    ? English.diabetes
+                    : Hindi.diabetes}
+                  <br />
+                  <Checkbox
+                    checked={this.props.question2Obj.heartDisease}
+                    onChange={val => {
+                      this.handleQuestion2(val, "heartDisease");
+                    }}
+                    inputProps={{ "aria-label": "primary checkbox" }}
+                  />
+                  {this.props.languageValue.value === "English"
+                    ? English.heartDisease
+                    : Hindi.heartDisease}
+                  <br />
+                  <Checkbox
+                    checked={this.props.question2Obj.highBloodPressure}
+                    onChange={val => {
+                      this.handleQuestion2(val, "highBloodPressure");
+                    }}
+                    inputProps={{ "aria-label": "primary checkbox" }}
+                  />
+                  {this.props.languageValue.value === "English"
+                    ? English.bloodPressure
+                    : Hindi.bloodPressure}
+                  <br />
+                  <Checkbox
+                    checked={this.props.question2Obj.kidneyOrLiverDisease}
+                    onChange={val => {
+                      this.handleQuestion2(val, "kidneyOrLiverDisease");
+                    }}
+                    inputProps={{ "aria-label": "primary checkbox" }}
+                  />
+                  {this.props.languageValue.value === "English"
+                    ? English.kidneyLiver
+                    : Hindi.kidneyLiver}
+                  <br />
+                  <Checkbox
+                    checked={this.props.question2Obj.noneOfTheAbove}
+                    onChange={val => {
+                      this.handleQuestion2(val, "noneOfTheAbove");
+                    }}
+                    inputProps={{ "aria-label": "primary checkbox" }}
+                  />
+                  {this.props.languageValue.value === "English"
+                    ? English.noneOfTheAbove
+                    : Hindi.noneOfTheAbove}
+                </div>
               </div>
               <div
                 style={{
@@ -104,7 +169,10 @@ class Question2 extends Component {
 
 const mapStateToProps = state => ({
   languageValue: state.postReducer.languageValue,
-  questionProgress: state.postReducer.questionProgress
+  questionProgress: state.postReducer.questionProgress,
+  question2Obj: state.postReducer.question2Obj
 });
 
-export default connect(mapStateToProps, { openQuestionPage })(Question2);
+export default connect(mapStateToProps, { openQuestionPage, setQuestion2Data })(
+  Question2
+);

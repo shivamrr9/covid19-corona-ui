@@ -23,16 +23,18 @@ class Disclaimer extends Component {
           <Row className="col-center">
             <Col md={3}></Col>
             <Col md={6} style={{ textAlign: "left" }}>
-              <h2 style={{ paddingTop: "25px", paddingLeft: "10px" }}>
-                Disclaimer
-              </h2>
+              <h3 style={{ paddingTop: "25px", paddingLeft: "10px" }}>
+                {this.props.languageValue.value === "English"
+                  ? English.disclaimerHeading
+                  : Hindi.disclaimerHeading}
+              </h3>
               <hr></hr>
               <h5
                 style={{
                   paddingLeft: "10px",
                   fontFamily: "arial",
                   paddingRight: "10px",
-                  fontSize: "20px",
+                  fontSize: "18px",
                   paddingTop: "15px"
                 }}
               >
@@ -61,7 +63,9 @@ class Disclaimer extends Component {
                     this.startQuestion("1");
                   }}
                 >
-                  Accept and Continue
+                  {this.props.languageValue.value === "English"
+                    ? English.acceptAndContinue
+                    : Hindi.acceptAndContinue}
                 </Button>
               </div>
             </Col>

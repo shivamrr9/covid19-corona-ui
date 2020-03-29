@@ -38,7 +38,7 @@ class Home extends Component {
             <Row className="col-center">
               <Col md={3}></Col>
 
-              <Col md={6} style={{ textAlign: "center" }}>
+              <Col md={6} style={{ textAlign: "center", height: "75vh" }}>
                 <div
                   style={{ width: "100%", marginTop: "10px", padding: "8px" }}
                 >
@@ -72,7 +72,7 @@ class Home extends Component {
                   src="https://res.cloudinary.com/arorashivam-com-resume/image/upload/v1585416760/bg_1_1_dqlu64.png"
                   alt="doctor_patient"
                   width="100%"
-                  style={{ marginTop: "20px" }}
+                  style={{ marginTop: "15px" }}
                 />
 
                 <div

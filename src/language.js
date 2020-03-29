@@ -15,7 +15,15 @@ export const English = {
   city: "City",
   male: "Male",
   female: "Female",
-  other: "Other"
+  other: "Other",
+  question2Heading: "Do you have a history of any of the conditions?",
+  diabetes: "Diabetes",
+  heartDisease: "Heart Disease",
+  bloodPressure: "High Blood Pressure",
+  kidneyLiver: "Kidney or Liver Disease",
+  noneOfTheAbove: "None of the above",
+  acceptAndContinue: "Accept and Continue",
+  disclaimerHeading: "Disclaimer"
 };
 
 export const Hindi = {
@@ -35,5 +43,13 @@ export const Hindi = {
   city: "शहर",
   male: "पुरुष",
   female: "महिला",
-  other: "अन्य"
+  other: "अन्य",
+  question2Heading: "क्या आपको निम्नलिखित रोग में से कोई रोग है?",
+  diabetes: "मधुमेह",
+  heartDisease: "दिल की बीमारी",
+  bloodPressure: "उच्च रक्त चाप",
+  kidneyLiver: "किडनी या लीवर की बीमारी",
+  noneOfTheAbove: "इनमे से कोई भी नहीं",
+  acceptAndContinue: "स्वीकार करें और जारी रखें",
+  disclaimerHeading: "अस्वीकरण (Disclaimer)"
 };

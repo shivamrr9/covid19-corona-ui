@@ -15,7 +15,14 @@ const initialState = {
   districtSelectedByUser: "",
   citySelectedByUser: "",
   cityOptions: [],
-  genderSelectedByUser: ""
+  genderSelectedByUser: "",
+  question2Obj: {
+    diabetes: false,
+    heartDisease: false,
+    highBloodPressure: false,
+    kidneyOrLiverDisease: false,
+    noneOfTheAbove: false
+  }
 };
 
 export default function(state = initialState, action) {
@@ -52,6 +59,13 @@ export default function(state = initialState, action) {
       return { ...state, visibility: action.visibility };
     case Constants.HIDE_LOADER:
       return { ...state, visibility: action.visibility };
+    case Constants.QUESTION2_DATA:
+      let q2Obj = state.question2Obj;
+      q2Obj[action.checkType] = action.data;
+      return {
+        ...state,
+        question2Obj: Object.assign({}, state.question2Obj, q2Obj)
+      };
     default:
       return state;
   }

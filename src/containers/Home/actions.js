@@ -42,6 +42,17 @@ export function openQuestionPage(pageNumber) {
   };
 }
 
+export function setQuestion2Data(val, type) {
+  console.log("data in action: ", val, type);
+  return dispatch => {
+    dispatch({
+      type: Constants.QUESTION2_DATA,
+      data: val,
+      checkType: type
+    });
+  };
+}
+
 export function enteredAge(age) {
   return dispatch => {
     dispatch({
