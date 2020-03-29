@@ -43,7 +43,6 @@ export function openQuestionPage(pageNumber) {
 }
 
 export function setQuestion2Data(val, type) {
-  console.log("data in action: ", val, type);
   return dispatch => {
     dispatch({
       type: Constants.QUESTION2_DATA,
@@ -52,6 +51,17 @@ export function setQuestion2Data(val, type) {
     });
   };
 }
+
+export function setQuestion4Data(val, type) {
+  return dispatch => {
+    dispatch({
+      type: Constants.QUESTION4_DATA,
+      data: val,
+      checkType: type
+    });
+  };
+}
+
 export function travelHistoryAns(travelAns) {
   return dispatch => {
     dispatch({

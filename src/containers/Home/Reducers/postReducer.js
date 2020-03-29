@@ -23,7 +23,20 @@ const initialState = {
     kidneyOrLiverDisease: false,
     noneOfTheAbove: false
   },
-  travelAnsSelectedByUser: ""
+  travelAnsSelectedByUser: "",
+  question4Obj: {
+    dryCough: false,
+    soreThroat: false,
+    lossOfSmell: false,
+    weakness: false,
+    changeAppetite: false,
+    severeCough: false,
+    difficultyInBreathing: false,
+    drowsiness: false,
+    painInChest: false,
+    severeWeakness: false,
+    noneOfTheAbove: false
+  }
 };
 
 export default function(state = initialState, action) {
@@ -68,6 +81,13 @@ export default function(state = initialState, action) {
       return {
         ...state,
         question2Obj: Object.assign({}, state.question2Obj, q2Obj)
+      };
+    case Constants.QUESTION4_DATA:
+      let q4Obj = state.question4Obj;
+      q4Obj[action.checkType] = action.data;
+      return {
+        ...state,
+        question4Obj: Object.assign({}, state.question4Obj, q4Obj)
       };
     default:
       return state;

@@ -20,5 +20,6 @@ export const Constants = keyMirror({
   SELECTED_GENDER: null,
   CHANGE_PROGRESS_BAR: null,
   QUESTION2_DATA: null,
-  TRAVEL_HISTORY_ANS: null
+  TRAVEL_HISTORY_ANS: null,
+  QUESTION4_DATA: null
 });

@@ -8,16 +8,15 @@ import { English, Hindi } from "../language";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import styles from "./Home/styles.scss";
 import InputRange from "react-input-range";
-import { openQuestionPage } from "../containers/Home/actions";
+import { openQuestionPage, setQuestion4Data } from "../containers/Home/actions";
 import "react-input-range/lib/css/index.css";
 import Radio from "@material-ui/core/Radio";
-
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Select from "react-select";
-import { stateOptions } from "../configConstants";
+import Checkbox from "@material-ui/core/Checkbox";
 
 class Question4 extends Component {
+  handleCheckBoxChange(val, type) {
+    this.props.setQuestion4Data(val.target.checked, type);
+  }
   render() {
     console.log("props :", this.props);
     return (
@@ -66,15 +65,141 @@ class Question4 extends Component {
                 }}
               >
                 <h6 style={{ padding: "10px" }}>
-                  Are you experiencing any of the symptoms below?
+                  {this.props.languageValue.value === "English"
+                    ? English.question4Heading
+                    : Hindi.question4Heading}
                 </h6>
                 <div
                   style={{
-                    marginTop: "30px",
-                    paddingLeft: "9%"
+                    marginTop: "10px",
+                    paddingLeft: "9%",
+                    overflow: "scroll",
+                    height: "80%",
+                    paddingBottom: "20px"
                   }}
                   align="left"
-                ></div>
+                >
+                  <Checkbox
+                    checked={this.props.question4Obj.dryCough}
+                    onChange={val => {
+                      this.handleCheckBoxChange(val, "dryCough");
+                    }}
+                    inputProps={{ "aria-label": "primary checkbox" }}
+                  />
+                  {this.props.languageValue.value === "English"
+                    ? English.dryCough
+                    : Hindi.dryCough}
+                  <br />
+                  <Checkbox
+                    checked={this.props.question4Obj.soreThroat}
+                    onChange={val => {
+                      this.handleCheckBoxChange(val, "soreThroat");
+                    }}
+                    inputProps={{ "aria-label": "primary checkbox" }}
+                  />
+                  {this.props.languageValue.value === "English"
+                    ? English.soreThroat
+                    : Hindi.soreThroat}
+                  <br />
+                  <Checkbox
+                    checked={this.props.question4Obj.lossOfSmell}
+                    onChange={val => {
+                      this.handleCheckBoxChange(val, "lossOfSmell");
+                    }}
+                    inputProps={{ "aria-label": "primary checkbox" }}
+                  />
+                  {this.props.languageValue.value === "English"
+                    ? English.lossOfSmell
+                    : Hindi.lossOfSmell}
+                  <br />
+                  <Checkbox
+                    checked={this.props.question4Obj.weakness}
+                    onChange={val => {
+                      this.handleCheckBoxChange(val, "weakness");
+                    }}
+                    inputProps={{ "aria-label": "primary checkbox" }}
+                  />
+                  {this.props.languageValue.value === "English"
+                    ? English.weakness
+                    : Hindi.weakness}
+                  <br />
+                  <Checkbox
+                    checked={this.props.question4Obj.changeAppetite}
+                    onChange={val => {
+                      this.handleCheckBoxChange(val, "changeAppetite");
+                    }}
+                    inputProps={{ "aria-label": "primary checkbox" }}
+                  />
+                  {this.props.languageValue.value === "English"
+                    ? English.changeAppetite
+                    : Hindi.changeAppetite}
+                  <br />
+                  <Checkbox
+                    checked={this.props.question4Obj.severeCough}
+                    onChange={val => {
+                      this.handleCheckBoxChange(val, "severeCough");
+                    }}
+                    inputProps={{ "aria-label": "primary checkbox" }}
+                  />
+                  {this.props.languageValue.value === "English"
+                    ? English.severeCough
+                    : Hindi.severeCough}
+                  <br />
+                  <Checkbox
+                    checked={this.props.question4Obj.difficultyInBreathing}
+                    onChange={val => {
+                      this.handleCheckBoxChange(val, "difficultyInBreathing");
+                    }}
+                    inputProps={{ "aria-label": "primary checkbox" }}
+                  />
+                  {this.props.languageValue.value === "English"
+                    ? English.difficultyInBreathing
+                    : Hindi.difficultyInBreathing}
+                  <br />
+                  <Checkbox
+                    checked={this.props.question4Obj.drowsiness}
+                    onChange={val => {
+                      this.handleCheckBoxChange(val, "drowsiness");
+                    }}
+                    inputProps={{ "aria-label": "primary checkbox" }}
+                  />
+                  {this.props.languageValue.value === "English"
+                    ? English.drowsiness
+                    : Hindi.drowsiness}
+                  <br />
+                  <Checkbox
+                    checked={this.props.question4Obj.painInChest}
+                    onChange={val => {
+                      this.handleCheckBoxChange(val, "painInChest");
+                    }}
+                    inputProps={{ "aria-label": "primary checkbox" }}
+                  />
+                  {this.props.languageValue.value === "English"
+                    ? English.painInChest
+                    : Hindi.painInChest}
+                  <br />
+                  <Checkbox
+                    checked={this.props.question4Obj.severeWeakness}
+                    onChange={val => {
+                      this.handleCheckBoxChange(val, "severeWeakness");
+                    }}
+                    inputProps={{ "aria-label": "primary checkbox" }}
+                  />
+                  {this.props.languageValue.value === "English"
+                    ? English.severeWeakness
+                    : Hindi.severeWeakness}
+                  <br />
+                  <Checkbox
+                    checked={this.props.question4Obj.noneOfTheAbove}
+                    onChange={val => {
+                      this.handleCheckBoxChange(val, "noneOfTheAbove");
+                    }}
+                    inputProps={{ "aria-label": "primary checkbox" }}
+                  />
+                  {this.props.languageValue.value === "English"
+                    ? English.noneOfTheAbove
+                    : Hindi.noneOfTheAbove}
+                </div>
               </div>
               <div
                 style={{
@@ -113,7 +238,10 @@ class Question4 extends Component {
 
 const mapStateToProps = state => ({
   languageValue: state.postReducer.languageValue,
-  questionProgress: state.postReducer.questionProgress
+  questionProgress: state.postReducer.questionProgress,
+  question4Obj: state.postReducer.question4Obj
 });
 
-export default connect(mapStateToProps, { openQuestionPage })(Question4);
+export default connect(mapStateToProps, { openQuestionPage, setQuestion4Data })(
+  Question4
+);

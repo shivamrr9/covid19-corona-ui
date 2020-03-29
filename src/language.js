@@ -26,7 +26,18 @@ export const English = {
   disclaimerHeading: "Disclaimer",
   question3Heading: "Have you travelled internationally in the last 14 days?",
   yes: "Yes",
-  no: "No"
+  no: "No",
+  dryCough: "Dry Cough",
+  soreThroat: "Sore Throat",
+  lossOfSmell: "Loss in Sense of Smell",
+  weakness: "Weakness",
+  changeAppetite: "Change in appetite",
+  severeCough: "Moderate to Severe Cough",
+  difficultyInBreathing: "Difficulty in breathing",
+  drowsiness: "Drowsiness",
+  painInChest: "Persistent Pain in chest",
+  severeWeakness: "Severe Weakness",
+  question4Heading: "Are you experiencing any of the symptoms below?"
 };
 
 export const Hindi = {
@@ -58,5 +69,16 @@ export const Hindi = {
   question3Heading:
     "क्या आपने पिछले 14 दिनों में अंतरराष्ट्रीय स्तर पर यात्रा की है?",
   yes: "हाँ",
-  no: "नहीं"
+  no: "नहीं",
+  dryCough: "सूखी खांसी",
+  soreThroat: "गले में खराश",
+  lossOfSmell: "गंध की कमी",
+  weakness: "कमज़ोरी",
+  changeAppetite: "भूख में बदलाव",
+  severeCough: "मध्यम या तीव्र खांसी",
+  difficultyInBreathing: "सांस लेने में दिक्कत",
+  drowsiness: "तंद्रा (सुस्ती)",
+  painInChest: "सीने में लगातार दर्द",
+  severeWeakness: "तीव्र कमजोरी",
+  question4Heading: "क्या आप  निम्नलिखित किसी भी लक्षण को अनुभव कर रहे हैं?"
 };
