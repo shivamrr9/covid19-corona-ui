@@ -82,6 +82,7 @@ class Question2 extends Component {
                       this.handleQuestion2(val, "diabetes");
                     }}
                     inputProps={{ "aria-label": "primary checkbox" }}
+                    disabled={this.props.question2Obj.noneOfTheAbove}
                   />
                   {this.props.languageValue.value === "English"
                     ? English.diabetes
@@ -93,6 +94,7 @@ class Question2 extends Component {
                       this.handleQuestion2(val, "heartDisease");
                     }}
                     inputProps={{ "aria-label": "primary checkbox" }}
+                    disabled={this.props.question2Obj.noneOfTheAbove}
                   />
                   {this.props.languageValue.value === "English"
                     ? English.heartDisease
@@ -104,6 +106,7 @@ class Question2 extends Component {
                       this.handleQuestion2(val, "highBloodPressure");
                     }}
                     inputProps={{ "aria-label": "primary checkbox" }}
+                    disabled={this.props.question2Obj.noneOfTheAbove}
                   />
                   {this.props.languageValue.value === "English"
                     ? English.bloodPressure
@@ -115,6 +118,7 @@ class Question2 extends Component {
                       this.handleQuestion2(val, "kidneyOrLiverDisease");
                     }}
                     inputProps={{ "aria-label": "primary checkbox" }}
+                    disabled={this.props.question2Obj.noneOfTheAbove}
                   />
                   {this.props.languageValue.value === "English"
                     ? English.kidneyLiver
@@ -126,6 +130,12 @@ class Question2 extends Component {
                       this.handleQuestion2(val, "noneOfTheAbove");
                     }}
                     inputProps={{ "aria-label": "primary checkbox" }}
+                    disabled={
+                      this.props.question2Obj.diabetes ||
+                      this.props.question2Obj.heartDisease ||
+                      this.props.question2Obj.highBloodPressure ||
+                      this.props.question2Obj.kidneyOrLiverDisease
+                    }
                   />
                   {this.props.languageValue.value === "English"
                     ? English.noneOfTheAbove
