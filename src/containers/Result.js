@@ -9,7 +9,6 @@ import styles from "./Home/styles.scss";
 import GaugeChart from "react-gauge-chart";
 import { FacebookShareButton, WhatsappShareButton } from "react-share";
 import { FacebookIcon, WhatsappIcon } from "react-share";
-
 import {
   openQuestionPage,
   travelHistoryAns,
@@ -17,7 +16,15 @@ import {
 } from "../containers/Home/actions";
 import "react-input-range/lib/css/index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRedoAlt, faShareAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faRedoAlt,
+  faShareAlt,
+  faQuestionCircle,
+  faEnvelope,
+  faPhone,
+  faExclamationTriangle,
+  faHeart
+} from "@fortawesome/free-solid-svg-icons";
 
 class Question3 extends Component {
   shareContent() {
@@ -72,7 +79,7 @@ class Question3 extends Component {
         this.props.question4Obj.severeWeakness,
         this.props.contactAnsSelectedByUser
       );
-    }, 150);
+    }, 250);
   }
 
   preConditions(diabetes, blood_pressure, heart_problem, kidney_lung_disease) {
@@ -241,7 +248,7 @@ class Question3 extends Component {
             <Col md={3}></Col>
             <Col
               md={6}
-              style={{ height: "100vh", background: "#A4D160" }}
+              style={{ height: "100%", background: "#A4D160" }}
               className="parent-container"
               align="center"
             >
@@ -260,8 +267,7 @@ class Question3 extends Component {
                 <span
                   style={{
                     color: "white",
-                    position: "fixed",
-                    left: "4%",
+
                     marginTop: "2px"
                   }}
                 >
@@ -289,7 +295,8 @@ class Question3 extends Component {
                   marginTop: "15%",
                   width: "98%",
                   background: "white",
-                  borderRadius: "16px"
+                  borderRadius: "16px",
+                  padding: "5px"
                 }}
               >
                 <div style={{ display: "flex" }}>
@@ -341,14 +348,14 @@ class Question3 extends Component {
                 </div>
                 <p
                   style={{
-                    fontSize: "13px",
+                    fontSize: "12px",
                     padding: "5px",
                     paddingRight: "10px",
                     paddingLeft: "10px",
                     marginBottom: "2px"
                   }}
                 >
-                  Based on the assisment you are at{" "}
+                  Based on the assessment you are at{" "}
                   {this.props.finalResultPercentage > 0 &&
                   this.props.finalResultPercentage < 20
                     ? "Low Risk "
@@ -356,10 +363,10 @@ class Question3 extends Component {
                       this.props.finalResultPercentage < 43
                     ? "Moderate Risk "
                     : "High Risk "}
-                  of COVID-19. <br /> Check after every 24 hrs to check the
+                  of COVID. <br /> Check after every 24 hrs to check the
                   changes.
                 </p>
-                <hr style={{ marginBottom: "0px", marginTop: "0px" }}></hr>
+                <hr style={{ marginBottom: "-6px", marginTop: "0px" }}></hr>
                 <div
                   className="button-container"
                   style={{ display: "flex", justifyContent: "center" }}
@@ -368,10 +375,11 @@ class Question3 extends Component {
                     <FontAwesomeIcon
                       icon={faRedoAlt}
                       color="grey"
-                      style={{ marginRight: "3px" }}
+                      style={{ marginRight: "5px" }}
                     />
-                    Re Assess
+                    <span style={{ fontSize: "14px" }}>Re Assess</span>
                   </Button>
+                  <span style={{ marginTop: "23px", padding: "3px" }}>|</span>
                   {navigator.share ? (
                     <Button
                       variant="outlined"
@@ -382,18 +390,20 @@ class Question3 extends Component {
                       <FontAwesomeIcon
                         icon={faShareAlt}
                         color="grey"
-                        style={{ marginRight: "3px" }}
+                        style={{ marginRight: "5px" }}
                       />
-                      Share Result
+                      <span style={{ fontSize: "14px" }}>Share Result</span>
                     </Button>
                   ) : (
                     <div className="fallback-share" style={{ display: "flex" }}>
                       <FontAwesomeIcon
                         icon={faShareAlt}
                         color="grey"
-                        style={{ marginRight: "3px", marginTop: "30px" }}
+                        style={{ marginRight: "5px", marginTop: "30px" }}
                       />
-                      <span style={{ marginTop: "26px" }}>Share on </span>
+                      <span style={{ marginTop: "28px", fontSize: "14px" }}>
+                        Share on{" "}
+                      </span>
                       <div style={{ marginTop: "23px", paddingLeft: "8px" }}>
                         <FacebookShareButton
                           url={"https://www.coronariskcalculator.in"}
@@ -434,10 +444,258 @@ class Question3 extends Component {
                   )}
                 </div>
               </div>
-              <div className="precautions-container"></div>
-              <div className="alert-container"></div>
-              <div className="help-container"></div>
-              <div className="subscribe-container"></div>
+              <div
+                className="precautions-container"
+                style={{
+                  marginTop: "3%",
+                  width: "98%",
+                  background: "white",
+                  borderRadius: "16px",
+                  padding: "15px"
+                }}
+              >
+                <h6>
+                  <FontAwesomeIcon
+                    icon={faQuestionCircle}
+                    color="#DDB24B"
+                    style={{ marginRight: "3px" }}
+                  />
+                  Precautionary Measure For You
+                </h6>
+                <ul
+                  style={{
+                    textAlign: "left",
+                    padding: "10px",
+                    marginLeft: "10px"
+                  }}
+                >
+                  <li style={{ padding: "3px", fontSize: "12px" }}>
+                    Wash your hands Regularly for 20 seconds with soap and water
+                    or alcohol-based hand rub.
+                  </li>
+                  <li style={{ padding: "3px", fontSize: "12px" }}>
+                    Cover you nose and mouth with a disposable tissue or flexed
+                    elbow when you cough or sneeze.
+                  </li>
+                  <li style={{ padding: "3px", fontSize: "12px" }}>
+                    Avoid close contact (1 meter to 3 feet) with people who are
+                    unwell.
+                  </li>
+                  <li style={{ padding: "3px", fontSize: "12px" }}>
+                    Stay Home and self isolate from others in the household if
+                    you feel unwell
+                  </li>
+                </ul>
+                <div
+                  className="emergency-contacts-container"
+                  style={{ display: "flex", width: "100%" }}
+                  align="left"
+                >
+                  <div
+                    className="emergency-contacts"
+                    style={{
+                      width: "65%",
+                      marginLeft: "10px"
+                    }}
+                  >
+                    <span style={{ fontSize: "12px", fontWeight: "bold" }}>
+                      For Any Emergency
+                    </span>
+                    <br />
+                    <FontAwesomeIcon
+                      icon={faPhone}
+                      color="grey"
+                      style={{ marginRight: "3px", fontSize: "10px" }}
+                    />
+                    <span style={{ padding: "3px", fontSize: "11px" }}>
+                      Helpline :{" "}
+                      <a
+                        style={{ textDecoration: "none" }}
+                        href="tel:011-23978046"
+                      >
+                        011-23978046
+                      </a>
+                    </span>
+                    <br />
+                    <FontAwesomeIcon
+                      icon={faPhone}
+                      color="grey"
+                      style={{ marginRight: "3px", fontSize: "10px" }}
+                    />
+                    <span style={{ padding: "3px", fontSize: "11px" }}>
+                      Toll Free Number :{" "}
+                      <a style={{ textDecoration: "none" }} href="tel:1075">
+                        1075
+                      </a>
+                    </span>
+                    <br />
+                    <FontAwesomeIcon
+                      icon={faEnvelope}
+                      color="grey"
+                      style={{ marginRight: "3px", fontSize: "10px" }}
+                    />
+                    <span style={{ padding: "3px", fontSize: "11px" }}>
+                      Email :{" "}
+                      <a
+                        style={{ textDecoration: "none" }}
+                        href="mailto:ncov2019@gov.in?Subject=Covid 19 Help!!"
+                        target="_top"
+                      >
+                        ncov2019@gov.in
+                      </a>
+                    </span>
+                  </div>
+                  <div
+                    className="mask-image-container"
+                    style={{
+                      backgroundImage: `url(https://res.cloudinary.com/arorashivam-com-resume/image/upload/v1585586438/Mask_Group_1_iphccs.png)`,
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: "cover",
+                      backgroundSize: "100px 100px",
+                      width: "35%"
+                    }}
+                  ></div>
+                </div>
+              </div>
+              <div
+                className="alert-container"
+                style={{
+                  marginTop: "3%",
+                  width: "98%",
+                  background: "white",
+                  borderRadius: "16px",
+                  padding: "5px"
+                }}
+              >
+                <h6 style={{ padding: "10px", marginBottom: "0px" }}>
+                  <FontAwesomeIcon
+                    icon={faExclamationTriangle}
+                    color="#DDB24B"
+                    style={{ marginRight: "3px" }}
+                  />
+                  ALERTS
+                </h6>
+                <div
+                  className="alert-content"
+                  style={{
+                    textAlign: "left",
+                    marginLeft: "10px",
+                    padding: "8px"
+                  }}
+                >
+                  <span style={{ fontSize: "12px" }}>
+                    In case your symptoms change, please contact any healthcare
+                    facilitynear you or{" "}
+                    <b>
+                      call{" "}
+                      <a style={{ textDecoration: "none" }} href="tel:1075">
+                        108{" "}
+                      </a>
+                    </b>
+                    , In case you suspect a postive case, please{" "}
+                    <b>
+                      call{" "}
+                      <a style={{ textDecoration: "none" }} href="tel:1075">
+                        104{" "}
+                      </a>
+                    </b>
+                    or report nearby health care facility. Find all help line
+                    numbers here :{" "}
+                    <a
+                      style={{ textDecoration: "none" }}
+                      href="https://www.mohfw.gov.in/coronvavirushelplinenumber.pdf"
+                      target="_blank"
+                    >
+                      all helpline numbers
+                    </a>
+                  </span>
+                </div>
+              </div>
+              <div
+                className="help-container"
+                style={{
+                  marginTop: "3%",
+                  width: "98%",
+                  background: "white",
+                  borderRadius: "16px",
+                  padding: "5px",
+                  backgroundImage: `url(https://res.cloudinary.com/arorashivam-com-resume/image/upload/v1585593262/Mask_Group_2_1_vxrgdv.png)`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "cover",
+                  backgroundSize: "100% 120px",
+                  backgroundPosition: "center"
+                }}
+              >
+                <h6 style={{ paddingTop: "10px" }}>
+                  <FontAwesomeIcon
+                    icon={faHeart}
+                    color="#D42F51"
+                    style={{ marginRight: "3px" }}
+                  />
+                  HELP AND SUPPORT
+                </h6>
+                <div
+                  style={{
+                    textAlign: "left",
+                    marginLeft: "10px",
+                    padding: "8px"
+                  }}
+                >
+                  <p>Government is welcoming donations to help this cause.</p>
+                  <br />
+                  <a
+                    style={{ textDecoration: "none" }}
+                    href="https://www.narendramodi.in/appeal-to-generously-donate-to-prime-ministers-citizen-assistance-and-relief-in-emergency-situations-fund-pm-cares-fund-549013"
+                    target="_blank"
+                  >
+                    <Button
+                      style={{
+                        background: "#A4D160",
+                        border: " 1px solid #A4D160"
+                      }}
+                    >
+                      Learn More
+                    </Button>
+                  </a>
+                </div>
+              </div>
+              <div
+                className="subscribe-container"
+                style={{
+                  marginTop: "3%",
+                  width: "98%",
+                  background: "white",
+                  borderRadius: "16px",
+                  padding: "5px",
+                  backgroundImage: `url(https://res.cloudinary.com/arorashivam-com-resume/image/upload/v1585594410/Mask_Group_3_ynvjbo.png)`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "cover",
+                  backgroundSize: "100% 120px",
+                  backgroundPosition: "bottom"
+                }}
+              >
+                <h6 style={{ paddingTop: "10px" }}>
+                  <FontAwesomeIcon
+                    icon={faHeart}
+                    color="#D42F51"
+                    style={{ marginRight: "3px" }}
+                  />
+                  SUBSCRIBE NEWSLETTER
+                </h6>
+                <div
+                  style={{
+                    textAlign: "left",
+                    marginLeft: "10px",
+                    padding: "8px"
+                  }}
+                >
+                  <p>
+                    Be the first to know, discover the story . Sign up to our
+                    newsletter
+                  </p>
+                  <br />
+                </div>
+              </div>
             </Col>
             <Col md={3}></Col>
           </Row>
