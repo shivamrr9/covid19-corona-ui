@@ -18,6 +18,9 @@ import Question3 from "../Question3";
 import Question4 from "../Question4";
 import Question5 from "../Question5";
 import Result from "../Result";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDotCircle } from "@fortawesome/free-solid-svg-icons";
+
 class Home extends Component {
   handleLangChange(val) {
     this.props.languageChange(val);
@@ -40,7 +43,12 @@ class Home extends Component {
 
               <Col md={6} style={{ textAlign: "center", height: "75vh" }}>
                 <div
-                  style={{ width: "100%", marginTop: "10px", padding: "8px" }}
+                  style={{
+                    width: "100%",
+                    marginTop: "10px",
+                    padding: "8px",
+                    display: "flex"
+                  }}
                 >
                   <div style={{ width: "110px" }}>
                     <Select
@@ -51,6 +59,36 @@ class Home extends Component {
                       }}
                       options={languageOptions}
                     />
+                  </div>
+                  <div
+                    style={{
+                      background: "#E04F51",
+                      border: "1px solid #E04F51",
+                      paddingLeft: "8px",
+                      paddingRight: "8px",
+                      borderRadius: "20px",
+                      position: "fixed",
+                      right: "4%"
+                    }}
+                  >
+                    <a
+                      href="https://coronariskcalculator.in/news"
+                      target="_blank"
+                      style={{ textDecoration: "none" }}
+                    >
+                      <span style={{ color: "white", fontSize: "15px" }}>
+                        <FontAwesomeIcon
+                          icon={faDotCircle}
+                          color="white"
+                          style={{
+                            marginRight: "3px",
+                            fontSize: "8px",
+                            marginBottom: "3px"
+                          }}
+                        />{" "}
+                        Live Updates
+                      </span>
+                    </a>
                   </div>
                 </div>
                 <h4 style={{ marginTop: "10%" }}>

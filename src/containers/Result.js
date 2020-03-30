@@ -23,7 +23,9 @@ import {
   faEnvelope,
   faPhone,
   faExclamationTriangle,
-  faHeart
+  faHeart,
+  faHandPointer,
+  faDotCircle
 } from "@fortawesome/free-solid-svg-icons";
 
 class Question3 extends Component {
@@ -258,17 +260,14 @@ class Question3 extends Component {
                   display: "flex",
                   padding: "7px",
                   justifyContent: "left",
-                  position: "fixed",
-                  top: "0",
-                  width: "100%",
-                  right: "0"
+                  width: "100%"
                 }}
               >
                 <span
                   style={{
                     color: "white",
-
-                    marginTop: "2px"
+                    marginTop: "2px",
+                    fontSize: "15px"
                   }}
                 >
                   Corona Risk Calculator
@@ -284,15 +283,30 @@ class Question3 extends Component {
                     right: "4%"
                   }}
                 >
-                  <span style={{ color: "white", fontSize: "15px" }}>
-                    Live Updates
-                  </span>
+                  <a
+                    href="https://coronariskcalculator.in/news"
+                    target="_blank"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <span style={{ color: "white", fontSize: "15px" }}>
+                      <FontAwesomeIcon
+                        icon={faDotCircle}
+                        color="white"
+                        style={{
+                          marginRight: "3px",
+                          fontSize: "8px",
+                          marginBottom: "3px"
+                        }}
+                      />{" "}
+                      Live Updates
+                    </span>
+                  </a>
                 </div>
               </div>
               <div
                 className="risk-display-container"
                 style={{
-                  marginTop: "15%",
+                  marginTop: "5%",
                   width: "98%",
                   background: "white",
                   borderRadius: "16px",
@@ -676,8 +690,8 @@ class Question3 extends Component {
               >
                 <h6 style={{ paddingTop: "10px" }}>
                   <FontAwesomeIcon
-                    icon={faHeart}
-                    color="#D42F51"
+                    icon={faHandPointer}
+                    color="#DDB24B"
                     style={{ marginRight: "3px" }}
                   />
                   SUBSCRIBE NEWSLETTER
@@ -686,7 +700,8 @@ class Question3 extends Component {
                   style={{
                     textAlign: "left",
                     marginLeft: "10px",
-                    padding: "8px"
+                    padding: "8px",
+                    marginBottom: "10px"
                   }}
                 >
                   <p>
@@ -694,8 +709,27 @@ class Question3 extends Component {
                     newsletter
                   </p>
                   <br />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter Email Id"
+                    onChange={val => {
+                      console.log(val.target.value);
+                    }}
+                  />
+                  <br />
+                  <Button
+                    style={{
+                      background: "#A4D160",
+                      border: " 1px solid #A4D160",
+                      marginTop: "6px"
+                    }}
+                  >
+                    Subscribe
+                  </Button>
                 </div>
               </div>
+              <div style={{ height: "30px" }}></div>
             </Col>
             <Col md={3}></Col>
           </Row>
