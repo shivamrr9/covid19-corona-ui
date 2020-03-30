@@ -18,7 +18,6 @@ import Question3 from "../Question3";
 import Question4 from "../Question4";
 import Question5 from "../Question5";
 import Result from "../Result";
-
 class Home extends Component {
   handleLangChange(val) {
     this.props.languageChange(val);
@@ -69,6 +68,7 @@ class Home extends Component {
                   alt="corona_virum_image"
                   style={{ marginTop: "15px" }}
                 />
+
                 <img
                   src="https://res.cloudinary.com/arorashivam-com-resume/image/upload/v1585416760/bg_1_1_dqlu64.png"
                   alt="doctor_patient"

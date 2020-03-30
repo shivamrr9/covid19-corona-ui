@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { English, Hindi } from "../language";
 import styles from "./Home/styles.scss";
+
 import {
   openQuestionPage,
   travelHistoryAns,
@@ -14,6 +15,21 @@ import {
 import "react-input-range/lib/css/index.css";
 
 class Question3 extends Component {
+  shareContent() {
+    var sharePromise = window.navigator.share({
+      title: "Bits and pieces: Web Share API article",
+      text: "Web Share API feature is awesome. You must check it",
+      url: window.location.href
+    });
+
+    sharePromise
+      .then(function() {
+        console.log("Shareing successfull");
+      })
+      .catch(function() {
+        console.log("Sharing failed");
+      });
+  }
   componentDidMount() {
     this.props.fetchRawData();
     window.setTimeout(() => {
@@ -189,7 +205,7 @@ class Question3 extends Component {
     total_percentage += (district_count / total_data) * 6;
     total_percentage += (state_count / total_data) * 4;
 
-    total_percentage /= 1.7;
+    total_percentage /= 1.4;
     {
       isNaN(total_percentage)
         ? (total_percentage = 0)
@@ -206,7 +222,24 @@ class Question3 extends Component {
         <Container>
           <Row className="col-center">
             <Col md={3}></Col>
-            <Col md={6}>Result it is</Col>
+            <Col md={6}>
+              Result it is
+              <br />
+              <Button
+                style={{
+                  marginBottom: "3px",
+                  background: "#A4D160",
+                  border: " 1px solid #A4D160"
+                }}
+                size="lg"
+                block
+                onClick={() => {
+                  this.shareContent();
+                }}
+              >
+                Share
+              </Button>
+            </Col>
             <Col md={3}></Col>
           </Row>
         </Container>
