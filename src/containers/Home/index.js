@@ -86,7 +86,6 @@ class Home extends Component {
                 >
                   <Button
                     style={{
-                      marginBottom: "1px",
                       background: "#A4D160",
                       border: " 1px solid #A4D160"
                     }}

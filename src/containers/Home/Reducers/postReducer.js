@@ -39,7 +39,8 @@ const initialState = {
   },
   tempratureSelectedByUser: "0",
   contactAnsSelectedByUser: "",
-  rawData: []
+  rawData: [],
+  finalResultPercentage: 0
 };
 
 export default function(state = initialState, action) {
@@ -98,6 +99,8 @@ export default function(state = initialState, action) {
       };
     case Constants.RAW_DATA:
       return { ...state, rawData: action.data };
+    case Constants.RESULT_PERCENTAGE:
+      return { ...state, finalResultPercentage: action.data };
     default:
       return state;
   }

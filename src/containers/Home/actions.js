@@ -114,6 +114,15 @@ export function genderSelected(gender) {
   };
 }
 
+export function setResultPrecentage(resultPrecentage) {
+  return dispatch => {
+    dispatch({
+      type: Constants.RESULT_PERCENTAGE,
+      data: resultPrecentage
+    });
+  };
+}
+
 export function stateSelected(state) {
   var url1 = `https://api.jsonbin.io/b/5e7f99ff862c46101abfbd6f`;
   return dispatch => {

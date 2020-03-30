@@ -115,8 +115,6 @@ class Question3 extends Component {
               >
                 <Button
                   style={{
-                    backgroundClip: "red",
-                    marginBottom: "3px",
                     background: "#A4D160",
                     border: " 1px solid #A4D160"
                   }}

@@ -24,5 +24,6 @@ export const Constants = keyMirror({
   QUESTION4_DATA: null,
   TEMPRATURE_SELECTED: null,
   SELECTED_CONTACT_ANSWER: null,
-  RAW_DATA: null
+  RAW_DATA: null,
+  RESULT_PERCENTAGE: null
 });

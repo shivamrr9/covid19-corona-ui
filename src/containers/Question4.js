@@ -8,7 +8,11 @@ import { English, Hindi } from "../language";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import styles from "./Home/styles.scss";
 import InputRange from "react-input-range";
-import { openQuestionPage, setQuestion4Data } from "../containers/Home/actions";
+import {
+  openQuestionPage,
+  setQuestion4Data,
+  fetchRawData
+} from "../containers/Home/actions";
 import "react-input-range/lib/css/index.css";
 import Radio from "@material-ui/core/Radio";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -211,8 +215,6 @@ class Question4 extends Component {
               >
                 <Button
                   style={{
-                    backgroundClip: "red",
-                    marginBottom: "3px",
                     background: "#A4D160",
                     border: " 1px solid #A4D160"
                   }}
@@ -220,6 +222,7 @@ class Question4 extends Component {
                   block
                   onClick={() => {
                     this.props.openQuestionPage("5");
+                    this.props.fetchRawData();
                   }}
                 >
                   {this.props.languageValue.value === "English"
@@ -242,6 +245,8 @@ const mapStateToProps = state => ({
   question4Obj: state.postReducer.question4Obj
 });
 
-export default connect(mapStateToProps, { openQuestionPage, setQuestion4Data })(
-  Question4
-);
+export default connect(mapStateToProps, {
+  openQuestionPage,
+  setQuestion4Data,
+  fetchRawData
+})(Question4);

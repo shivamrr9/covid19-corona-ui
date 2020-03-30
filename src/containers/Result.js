@@ -6,32 +6,48 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { English, Hindi } from "../language";
 import styles from "./Home/styles.scss";
+import GaugeChart from "react-gauge-chart";
+import { FacebookShareButton, WhatsappShareButton } from "react-share";
+import { FacebookIcon, WhatsappIcon } from "react-share";
 
 import {
   openQuestionPage,
   travelHistoryAns,
-  fetchRawData
+  setResultPrecentage
 } from "../containers/Home/actions";
 import "react-input-range/lib/css/index.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRedoAlt, faShareAlt } from "@fortawesome/free-solid-svg-icons";
 
 class Question3 extends Component {
   shareContent() {
-    var sharePromise = window.navigator.share({
-      title: "Bits and pieces: Web Share API article",
-      text: "Web Share API feature is awesome. You must check it",
-      url: window.location.href
-    });
-
-    sharePromise
-      .then(function() {
-        console.log("Shareing successfull");
-      })
-      .catch(function() {
-        console.log("Sharing failed");
+    if (navigator.share) {
+      var sharePromise = window.navigator.share({
+        title: "Corona Risk Calculator",
+        text: `Are you at Risk? Know if you're safe from Corona or not. I am at : ${
+          this.props.finalResultPercentage > 0 &&
+          this.props.finalResultPercentage < 20
+            ? "Low Risk"
+            : this.props.finalResultPercentage > 20 &&
+              this.props.finalResultPercentage < 43
+            ? "Moderate Risk"
+            : "High Risk"
+        } | Corona Risk Calculator | `,
+        url: "https://coronariskcalculator.in"
       });
+
+      sharePromise
+        .then(function() {
+          console.log("Shareing successfull");
+        })
+        .catch(function() {
+          console.log("Sharing failed");
+        });
+    } else {
+      alert("Sharing Not Supported on this device");
+    }
   }
   componentDidMount() {
-    this.props.fetchRawData();
     window.setTimeout(() => {
       this.riskCalculator(
         this.props.enteredAgeByUser,
@@ -56,7 +72,7 @@ class Question3 extends Component {
         this.props.question4Obj.severeWeakness,
         this.props.contactAnsSelectedByUser
       );
-    }, 250);
+    }, 150);
   }
 
   preConditions(diabetes, blood_pressure, heart_problem, kidney_lung_disease) {
@@ -205,14 +221,15 @@ class Question3 extends Component {
     total_percentage += (district_count / total_data) * 6;
     total_percentage += (state_count / total_data) * 4;
 
-    total_percentage /= 1.4;
+    total_percentage /= 1;
     {
       isNaN(total_percentage)
         ? (total_percentage = 0)
         : (total_percentage = total_percentage);
     }
-    console.log(total_percentage);
+
     console.log("round of number", Math.round(total_percentage));
+    this.props.setResultPrecentage(Math.round(total_percentage));
   }
 
   render() {
@@ -222,23 +239,205 @@ class Question3 extends Component {
         <Container>
           <Row className="col-center">
             <Col md={3}></Col>
-            <Col md={6}>
-              Result it is
-              <br />
-              <Button
+            <Col
+              md={6}
+              style={{ height: "100vh", background: "#A4D160" }}
+              className="parent-container"
+              align="center"
+            >
+              <div
+                className="heading-container"
                 style={{
-                  marginBottom: "3px",
-                  background: "#A4D160",
-                  border: " 1px solid #A4D160"
-                }}
-                size="lg"
-                block
-                onClick={() => {
-                  this.shareContent();
+                  display: "flex",
+                  padding: "7px",
+                  justifyContent: "left",
+                  position: "fixed",
+                  top: "0",
+                  width: "100%",
+                  right: "0"
                 }}
               >
-                Share
-              </Button>
+                <span
+                  style={{
+                    color: "white",
+                    position: "fixed",
+                    left: "4%",
+                    marginTop: "2px"
+                  }}
+                >
+                  Corona Risk Calculator
+                </span>
+                <div
+                  style={{
+                    background: "#E04F51",
+                    border: "1px solid #E04F51",
+                    paddingLeft: "8px",
+                    paddingRight: "8px",
+                    borderRadius: "20px",
+                    position: "fixed",
+                    right: "4%"
+                  }}
+                >
+                  <span style={{ color: "white", fontSize: "15px" }}>
+                    Live Updates
+                  </span>
+                </div>
+              </div>
+              <div
+                className="risk-display-container"
+                style={{
+                  marginTop: "15%",
+                  width: "98%",
+                  background: "white",
+                  borderRadius: "16px"
+                }}
+              >
+                <div style={{ display: "flex" }}>
+                  <div
+                    className="percentage-meter"
+                    style={{ width: "50%", padding: "2px", flexGrow: "5" }}
+                  >
+                    <GaugeChart
+                      id="gauge-chart4"
+                      nrOfLevels={3}
+                      arcPadding={0}
+                      cornerRadius={1}
+                      percent={this.props.finalResultPercentage / 100}
+                      animate={true}
+                      hideText={true}
+                    />
+                  </div>
+                  <div
+                    className="kind-of-risk"
+                    style={{
+                      padding: "10px",
+                      flexGrow: "5",
+                      marginRight: "20px",
+                      marginTop: "3px"
+                    }}
+                  >
+                    {this.props.finalResultPercentage > 0 &&
+                      this.props.finalResultPercentage < 20 && (
+                        <span style={{ fontSize: "25px", color: "#A4D160" }}>
+                          LOW RISK
+                        </span>
+                      )}
+                    {this.props.finalResultPercentage > 20 &&
+                      this.props.finalResultPercentage < 43 && (
+                        <span style={{ fontSize: "25px", color: "#ffc400" }}>
+                          MODERATE
+                        </span>
+                      )}
+                    {this.props.finalResultPercentage > 43 && (
+                      <span style={{ fontSize: "25px", color: "#FF0100" }}>
+                        HIGH RISK
+                      </span>
+                    )}
+                    <br />
+                    <p style={{ fontSize: "10px" }}>
+                      This is not a medical advice
+                    </p>
+                  </div>
+                </div>
+                <p
+                  style={{
+                    fontSize: "13px",
+                    padding: "5px",
+                    paddingRight: "10px",
+                    paddingLeft: "10px",
+                    marginBottom: "2px"
+                  }}
+                >
+                  Based on the assisment you are at{" "}
+                  {this.props.finalResultPercentage > 0 &&
+                  this.props.finalResultPercentage < 20
+                    ? "Low Risk "
+                    : this.props.finalResultPercentage > 20 &&
+                      this.props.finalResultPercentage < 43
+                    ? "Moderate Risk "
+                    : "High Risk "}
+                  of COVID-19. <br /> Check after every 24 hrs to check the
+                  changes.
+                </p>
+                <hr style={{ marginBottom: "0px", marginTop: "0px" }}></hr>
+                <div
+                  className="button-container"
+                  style={{ display: "flex", justifyContent: "center" }}
+                >
+                  <Button variant="outlined">
+                    <FontAwesomeIcon
+                      icon={faRedoAlt}
+                      color="grey"
+                      style={{ marginRight: "3px" }}
+                    />
+                    Re Assess
+                  </Button>
+                  {navigator.share ? (
+                    <Button
+                      variant="outlined"
+                      onClick={() => {
+                        this.shareContent();
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        icon={faShareAlt}
+                        color="grey"
+                        style={{ marginRight: "3px" }}
+                      />
+                      Share Result
+                    </Button>
+                  ) : (
+                    <div className="fallback-share" style={{ display: "flex" }}>
+                      <FontAwesomeIcon
+                        icon={faShareAlt}
+                        color="grey"
+                        style={{ marginRight: "3px", marginTop: "30px" }}
+                      />
+                      <span style={{ marginTop: "26px" }}>Share on </span>
+                      <div style={{ marginTop: "23px", paddingLeft: "8px" }}>
+                        <FacebookShareButton
+                          url={"https://www.coronariskcalculator.in"}
+                          quote={`Are you at Risk? Know if you're safe from Corona or not. I am at ${
+                            this.props.finalResultPercentage > 0 &&
+                            this.props.finalResultPercentage < 20
+                              ? "Low Risk"
+                              : this.props.finalResultPercentage > 20 &&
+                                this.props.finalResultPercentage < 43
+                              ? "Moderate Risk"
+                              : "High Risk"
+                          } | Corona Risk Calculator | Check yours at : `}
+                        >
+                          <FacebookIcon size={32} round />
+                        </FacebookShareButton>
+                      </div>
+                      <div style={{ marginTop: "23px", paddingLeft: "8px" }}>
+                        <WhatsappShareButton
+                          url={"https://www.coronariskcalculator.com"}
+                          title={`Are you at Risk? Know if you're safe from Corona or not. I am at ${
+                            this.props.finalResultPercentage > 0 &&
+                            this.props.finalResultPercentage < 20
+                              ? "Low Risk"
+                              : this.props.finalResultPercentage > 20 &&
+                                this.props.finalResultPercentage < 43
+                              ? "Moderate Risk"
+                              : "High Risk"
+                          } | Corona Risk Calculator | Check yours at : `}
+                        >
+                          <WhatsappIcon size={32} round />
+                        </WhatsappShareButton>
+
+                        <div className="Demo__some-network__share-count">
+                          &nbsp;
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div className="precautions-container"></div>
+              <div className="alert-container"></div>
+              <div className="help-container"></div>
+              <div className="subscribe-container"></div>
             </Col>
             <Col md={3}></Col>
           </Row>
@@ -260,11 +459,12 @@ const mapStateToProps = state => ({
   question4Obj: state.postReducer.question4Obj,
   tempratureSelectedByUser: state.postReducer.tempratureSelectedByUser,
   contactAnsSelectedByUser: state.postReducer.contactAnsSelectedByUser,
-  rawData: state.postReducer.rawData
+  rawData: state.postReducer.rawData,
+  finalResultPercentage: state.postReducer.finalResultPercentage
 });
 
 export default connect(mapStateToProps, {
   openQuestionPage,
   travelHistoryAns,
-  fetchRawData
+  setResultPrecentage
 })(Question3);
