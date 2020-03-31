@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 import styles from "./styles.scss";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { English, Hindi } from "../../language";
@@ -23,7 +24,8 @@ import { faDotCircle } from "@fortawesome/free-solid-svg-icons";
 
 class Home extends Component {
   handleLangChange(val) {
-    this.props.languageChange(val);
+    let langObj = { value: val, label: val };
+    this.props.languageChange(langObj);
   }
 
   handleShowDisclaimer() {
@@ -51,21 +53,47 @@ class Home extends Component {
                   }}
                 >
                   <div style={{ width: "110px" }}>
-                    <Select
-                      isSearchable={false}
-                      value={this.props.languageValue}
-                      onChange={val => {
-                        this.handleLangChange(val);
-                      }}
-                      options={languageOptions}
-                    />
+                    <ButtonGroup
+                      size="sm"
+                      bsPrefix="abc"
+                      style={{ display: "flex" }}
+                    >
+                      <Button
+                        className={
+                          this.props.languageValue.value === "English"
+                            ? "active-language"
+                            : ""
+                        }
+                        variant="light"
+                        onClick={() => {
+                          this.handleLangChange("English");
+                        }}
+                        style={{ backgroundColor: "#bdbdbd" }}
+                      >
+                        <span style={{ color: "white" }}>English</span>
+                      </Button>
+                      <Button
+                        variant="light"
+                        className={
+                          this.props.languageValue.value !== "English"
+                            ? "active-language"
+                            : ""
+                        }
+                        style={{ backgroundColor: "#bdbdbd" }}
+                        onClick={() => {
+                          this.handleLangChange("Hindi");
+                        }}
+                      >
+                        <span style={{ color: "white" }}>हिन्दी</span>
+                      </Button>
+                    </ButtonGroup>
                   </div>
                   <div
                     style={{
                       background: "#E04F51",
                       border: "1px solid #E04F51",
-                      paddingLeft: "6px",
-                      paddingRight: "6px",
+                      paddingLeft: "7px",
+                      paddingRight: "7px",
                       borderRadius: "18px",
                       position: "fixed",
                       right: "4%"
@@ -81,9 +109,9 @@ class Home extends Component {
                           icon={faDotCircle}
                           color="white"
                           style={{
-                            marginRight: "3px",
+                            marginRight: "2px",
                             fontSize: "7px",
-                            marginBottom: "3px"
+                            marginBottom: "2px"
                           }}
                         />{" "}
                         {this.props.languageValue.value === "English"

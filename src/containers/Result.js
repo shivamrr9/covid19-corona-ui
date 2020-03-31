@@ -335,7 +335,7 @@ class Question3 extends Component {
                 <span
                   style={{
                     color: "white",
-                    marginTop: "2px",
+                    marginTop: "3px",
                     fontSize: "13px"
                   }}
                 >
@@ -364,9 +364,9 @@ class Question3 extends Component {
                         icon={faDotCircle}
                         color="white"
                         style={{
-                          marginRight: "3px",
+                          marginRight: "2px",
                           fontSize: "7px",
-                          marginBottom: "3px"
+                          marginBottom: "2px"
                         }}
                       />{" "}
                       {this.props.languageValue.value === "English"
