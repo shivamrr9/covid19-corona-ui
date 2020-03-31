@@ -278,7 +278,7 @@ export function sendEmail(email) {
     let objToSend = {
       to: email,
       from: "info@coronariskcalculator.in",
-      subject: "Welcome!! To Corona Risk Calculator Update!!",
+      subject: "Welcome!! To Corona Risk Calculator!!",
       description:
         "Hi There, <br/><br/> Thank you for subscribing with us.<br/> By signing up to our newsletter, you’ll be the first to know about the new, statistics, Spread and new government regulations related to Coronavirus/COVID-19  <br/><br/> ARE YOU AT RISK!!!<br/> Check now: https://www.coronariskcalculator.in <br/><br/> Stay Updated: https://www.coronariskcalculator.in/news <br/><br/> Spread the word! <br/></br> Keep your family and yourself safe. Stay at home!"
     };

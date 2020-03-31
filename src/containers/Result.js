@@ -9,6 +9,8 @@ import styles from "./Home/styles.scss";
 import GaugeChart from "react-gauge-chart";
 import { FacebookShareButton, WhatsappShareButton } from "react-share";
 import { FacebookIcon, WhatsappIcon } from "react-share";
+import Rating from "react-rating";
+
 import {
   openQuestionPage,
   travelHistoryAns,
@@ -27,17 +29,40 @@ import {
   faExclamationTriangle,
   faHeart,
   faHandPointer,
-  faDotCircle
+  faDotCircle,
+  faSmile
 } from "@fortawesome/free-solid-svg-icons";
 import firebase from "../firebase";
 
 class Question3 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showRatingContainer: true
+    };
+  }
+  showRatingBox(showRating) {
+    this.setState({
+      showRatingContainer: true
+    });
+  }
   handleInputChange(inputEmail) {
     this.props.inputEmailByUser(inputEmail);
   }
   handleSubscribe(email) {
     this.props.sendEmail(email);
     this.saveDataToFireBase(email);
+  }
+  handleRating(rating) {
+    firebase
+      .database()
+      .ref(Math.ceil(Math.random() * 1000000))
+      .set({
+        rating: rating
+      });
+    this.setState({
+      showRatingContainer: false
+    });
   }
   saveDataToFireBase(email) {
     firebase
@@ -658,7 +683,7 @@ class Question3 extends Component {
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "cover",
                   backgroundSize: "100% 120px",
-                  backgroundPosition: "center"
+                  backgroundPosition: "bottom"
                 }}
               >
                 <h6 style={{ paddingTop: "10px" }}>
@@ -732,6 +757,7 @@ class Question3 extends Component {
                   {!this.props.isMailSent && <br />}
                   {!this.props.isMailSent && (
                     <input
+                      style={{ width: "72%" }}
                       type="email"
                       name="email"
                       placeholder="Enter Email Id"
@@ -762,6 +788,85 @@ class Question3 extends Component {
                     </p>
                   )}
                 </div>
+              </div>
+              <div
+                className="rating-container"
+                style={{
+                  marginTop: "3%",
+                  width: "98%",
+                  background: "white",
+                  borderRadius: "16px",
+                  padding: "5px"
+                }}
+              >
+                <h6 style={{ paddingTop: "10px" }}>
+                  <FontAwesomeIcon
+                    icon={faSmile}
+                    color="#f06292"
+                    style={{ marginRight: "3px" }}
+                  />
+                  RATE US
+                </h6>
+                {this.state.showRatingContainer ? (
+                  <Rating
+                    style={{ marginBottom: "10px", padding: "5px" }}
+                    onChange={val => {
+                      setTimeout(() => {
+                        this.handleRating(val);
+                      }, 450);
+                    }}
+                    placeholderRating={0}
+                    emptySymbol={
+                      <img
+                        src="https://res.cloudinary.com/arorashivam-com-resume/image/upload/v1585668786/star-grey_iw3dqf.png"
+                        className="icon"
+                        height="28"
+                        width="28"
+                        style={{ padding: "3px" }}
+                      />
+                    }
+                    placeholderSymbol={
+                      <img
+                        src="https://res.cloudinary.com/arorashivam-com-resume/image/upload/v1585669292/star_bqd991.png"
+                        className="icon"
+                        height="28"
+                        width="28"
+                        style={{ padding: "3px" }}
+                      />
+                    }
+                    fullSymbol={
+                      <img
+                        src="https://res.cloudinary.com/arorashivam-com-resume/image/upload/v1585669292/star_bqd991.png"
+                        className="icon"
+                        height="28"
+                        width="28"
+                        style={{ padding: "3px" }}
+                      />
+                    }
+                  />
+                ) : (
+                  <div style={{ marginBottom: "10px", padding: "5px" }}>
+                    Thanks For Rating Us
+                    <br />
+                    <Button
+                      style={{
+                        background: "#A4D160",
+                        border: " 1px solid #A4D160",
+                        marginTop: "10px"
+                      }}
+                      onClick={() => {
+                        this.showRatingBox(true);
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        icon={faRedoAlt}
+                        color="white"
+                        style={{ marginRight: "5px" }}
+                      />
+                      ReRate ?
+                    </Button>
+                  </div>
+                )}
               </div>
               <div style={{ height: "30px" }}></div>
             </Col>
