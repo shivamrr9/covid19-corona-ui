@@ -1,7 +1,7 @@
 import * as firebase from "firebase";
 
 var firebaseConfig = {
-  apiKey: "AIzaSyCA3cSZU-aCeWXLOuQ3A6x2ZSSBzW0zN5g",
+  apiKey: "",
   authDomain: "coronariskcalculator.firebaseapp.com",
   databaseURL: "https://coronariskcalculator.firebaseio.com",
   projectId: "coronariskcalculator",
