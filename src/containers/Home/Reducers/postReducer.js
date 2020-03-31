@@ -40,7 +40,9 @@ const initialState = {
   tempratureSelectedByUser: "0",
   contactAnsSelectedByUser: "",
   rawData: [],
-  finalResultPercentage: 0
+  finalResultPercentage: 0,
+  enteredEmailByUser: "",
+  isMailSent: false
 };
 
 export default function(state = initialState, action) {
@@ -101,6 +103,10 @@ export default function(state = initialState, action) {
       return { ...state, rawData: action.data };
     case Constants.RESULT_PERCENTAGE:
       return { ...state, finalResultPercentage: action.data };
+    case Constants.ENTERED_EMAIL:
+      return { ...state, enteredEmailByUser: action.data };
+    case Constants.MAIL_SENT:
+      return { ...state, isMailSent: action.data };
     default:
       return state;
   }

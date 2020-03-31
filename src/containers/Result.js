@@ -12,7 +12,9 @@ import { FacebookIcon, WhatsappIcon } from "react-share";
 import {
   openQuestionPage,
   travelHistoryAns,
-  setResultPrecentage
+  setResultPrecentage,
+  sendEmail,
+  inputEmailByUser
 } from "../containers/Home/actions";
 import "react-input-range/lib/css/index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -27,8 +29,24 @@ import {
   faHandPointer,
   faDotCircle
 } from "@fortawesome/free-solid-svg-icons";
+import firebase from "../firebase";
 
 class Question3 extends Component {
+  handleInputChange(inputEmail) {
+    this.props.inputEmailByUser(inputEmail);
+  }
+  handleSubscribe(email) {
+    this.props.sendEmail(email);
+    this.saveDataToFireBase(email);
+  }
+  saveDataToFireBase(email) {
+    firebase
+      .database()
+      .ref(Math.ceil(Math.random() * 1000000))
+      .set({
+        email: email
+      });
+  }
   shareContent() {
     if (navigator.share) {
       var sharePromise = window.navigator.share({
@@ -711,25 +729,38 @@ class Question3 extends Component {
                     Be the first to know, discover the story . Sign up to our
                     newsletter
                   </p>
-                  <br />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Enter Email Id"
-                    onChange={val => {
-                      console.log(val.target.value);
-                    }}
-                  />
-                  <br />
-                  <Button
-                    style={{
-                      background: "#A4D160",
-                      border: " 1px solid #A4D160",
-                      marginTop: "6px"
-                    }}
-                  >
-                    Subscribe
-                  </Button>
+                  {!this.props.isMailSent && <br />}
+                  {!this.props.isMailSent && (
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Enter Email Id"
+                      onChange={val => {
+                        this.handleInputChange(val.target.value);
+                      }}
+                    />
+                  )}
+                  {!this.props.isMailSent && <br />}
+                  {!this.props.isMailSent && (
+                    <Button
+                      style={{
+                        background: "#A4D160",
+                        border: " 1px solid #A4D160",
+                        marginTop: "10px"
+                      }}
+                      onClick={() => {
+                        this.handleSubscribe(this.props.enteredEmailByUser);
+                      }}
+                    >
+                      Subscribe
+                    </Button>
+                  )}
+                  {this.props.isMailSent && (
+                    <p>
+                      "Yayy!! <br /> You have been subscribed.
+                      <br /> Check your mail box."
+                    </p>
+                  )}
                 </div>
               </div>
               <div style={{ height: "30px" }}></div>
@@ -755,11 +786,15 @@ const mapStateToProps = state => ({
   tempratureSelectedByUser: state.postReducer.tempratureSelectedByUser,
   contactAnsSelectedByUser: state.postReducer.contactAnsSelectedByUser,
   rawData: state.postReducer.rawData,
-  finalResultPercentage: state.postReducer.finalResultPercentage
+  finalResultPercentage: state.postReducer.finalResultPercentage,
+  enteredEmailByUser: state.postReducer.enteredEmailByUser,
+  isMailSent: state.postReducer.isMailSent
 });
 
 export default connect(mapStateToProps, {
   openQuestionPage,
   travelHistoryAns,
-  setResultPrecentage
+  setResultPrecentage,
+  sendEmail,
+  inputEmailByUser
 })(Question3);

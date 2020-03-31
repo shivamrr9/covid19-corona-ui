@@ -25,5 +25,7 @@ export const Constants = keyMirror({
   TEMPRATURE_SELECTED: null,
   SELECTED_CONTACT_ANSWER: null,
   RAW_DATA: null,
-  RESULT_PERCENTAGE: null
+  RESULT_PERCENTAGE: null,
+  ENTERED_EMAIL: null,
+  MAIL_SENT: null
 });
