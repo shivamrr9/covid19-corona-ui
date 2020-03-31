@@ -324,7 +324,6 @@ class Question3 extends Component {
                       arcPadding={0}
                       cornerRadius={1}
                       percent={this.props.finalResultPercentage / 100}
-                      animate={true}
                       hideText={true}
                     />
                   </div>
@@ -338,18 +337,18 @@ class Question3 extends Component {
                     }}
                   >
                     {this.props.finalResultPercentage > 0 &&
-                      this.props.finalResultPercentage < 20 && (
+                      this.props.finalResultPercentage < 25 && (
                         <span style={{ fontSize: "25px", color: "#A4D160" }}>
                           LOW RISK
                         </span>
                       )}
-                    {this.props.finalResultPercentage > 20 &&
-                      this.props.finalResultPercentage < 43 && (
+                    {this.props.finalResultPercentage > 25 &&
+                      this.props.finalResultPercentage < 55 && (
                         <span style={{ fontSize: "25px", color: "#ffc400" }}>
                           MODERATE
                         </span>
                       )}
-                    {this.props.finalResultPercentage > 43 && (
+                    {this.props.finalResultPercentage > 50 && (
                       <span style={{ fontSize: "25px", color: "#FF0100" }}>
                         HIGH RISK
                       </span>
@@ -380,12 +379,18 @@ class Question3 extends Component {
                   of COVID. <br /> Check after every 24 hrs to check the
                   changes.
                 </p>
-                <hr style={{ marginBottom: "-6px", marginTop: "0px" }}></hr>
+                <hr style={{ marginTop: "0px", marginBottom: "-5px" }}></hr>
                 <div
                   className="button-container"
                   style={{ display: "flex", justifyContent: "center" }}
                 >
-                  <Button variant="outlined">
+                  <Button
+                    variant="outlined"
+                    style={{ marginRight: "10px" }}
+                    onClick={() => {
+                      window.location.href = "https://coronariskcalculator.in";
+                    }}
+                  >
                     <FontAwesomeIcon
                       icon={faRedoAlt}
                       color="grey"
@@ -393,7 +398,6 @@ class Question3 extends Component {
                     />
                     <span style={{ fontSize: "14px" }}>Re Assess</span>
                   </Button>
-                  <span style={{ marginTop: "23px", padding: "3px" }}>|</span>
                   {navigator.share ? (
                     <Button
                       variant="outlined"
@@ -616,7 +620,6 @@ class Question3 extends Component {
                     or report nearby health care facility. Find all help line
                     numbers here :{" "}
                     <a
-                      style={{ textDecoration: "none" }}
                       href="https://www.mohfw.gov.in/coronvavirushelplinenumber.pdf"
                       target="_blank"
                     >
