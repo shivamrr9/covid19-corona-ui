@@ -46,7 +46,55 @@ export const English = {
   question5Heading2:
     "Have you come in contact with anyone who has been positively tested for COVID-19 (Corona Virus)?",
   dontKnow: "Don't Know",
-  resultButton: "TAP TO SEE RESULT"
+  resultButton: "TAP TO SEE RESULT",
+  lowRisk: "LOW RISK",
+  moderate: "MODERATE",
+  highRisk: "HIGH RISK",
+  smallDisclamier: "This is not a medical advice",
+  basedOnAssessment1: "Based on Assessment you are at ",
+  ofCovid: "of COVID.",
+  basedOnAssessment2: "Check after every 24 hrs to check the changes",
+  reAssess: "Re Assess",
+  shareResult: "Share Result",
+  shareOn: "Share On",
+  block2Heading: "Precautionary Measure For You",
+  block2Point1:
+    " Wash your hands Regularly for 20 seconds with soap and water or alcohol-based hand rub.",
+  block2Point2:
+    "Cover you nose and mouth with a disposable tissue or flexed elbow when you cough or sneeze.",
+  block2Point3:
+    "Avoid close contact (1 meter to 3 feet) with people who are unwell.",
+  block2Point4:
+    "Stay Home and self isolate from others in the household if you feel unwell",
+  forAnyEmergency: "For Any Emergency",
+  helpline: "Helpline",
+  tollFreeNumber: "Toll Free Number",
+  helpLineEmail: "Email",
+  iAmAt: "I am at ",
+  shareString:
+    ". Are you at Risk? Know if you're safe from Corona or not? | Corona Risk Calculator | Check yours at : ",
+  par: "",
+  alerts: "ALERTS",
+  block3Point1:
+    "In case your symptoms change, please contact any healthcare facility near you or",
+  call: "call",
+  inCaseYouSuspect: "In case you suspect a postive case, please",
+  findAllHelpline:
+    "or report nearby health care facility. Find all help line numbers here :",
+  allHelplineLink: "all helpline numbers",
+  block4Heading: "HELP AND SUPPORT",
+  block4SubHeading: "Government is welcoming donations to help this cause.",
+  learnMore: "Learn More",
+  block5Heading: "SUBSCRIBE NEWSLETTER",
+  block5SubHeading:
+    "Be the first to know, discover the story. Sign up to our newsletter",
+  subscribe: "Subscribe",
+  yaySubscribed: "Yayy!! You have been subscribed.",
+  checkMailBox: "Check your mail box.",
+  rateUs: "RATE US",
+  thankYou: "Thanks For Rating Us",
+  reRate: "Rerate",
+  checkLiveUpdates: "Check Live Updates"
 };
 
 export const Hindi = {
@@ -98,5 +146,51 @@ export const Hindi = {
   question5Heading2:
     "क्या आप किसी ऐसे व्यक्ति के संपर्क में आए हैं जिसे COVID-19 (Corona) के लिए सकारात्मक रूप से परीक्षण किया गया है?",
   dontKnow: "पता नहीं",
-  resultButton: "परिणाम देखें"
+  resultButton: "परिणाम देखें",
+  lowRisk: "कम आशंका",
+  moderate: "मध्यम",
+  highRisk: "उच्च आशंका",
+  smallDisclamier: "यह एक चिकित्सा सलाह नहीं है",
+  basedOnAssessment1: "मूल्यांकन के आधार पर आप कोविद -19 के ",
+  ofCovid: " जोखिम में हैं",
+  basedOnAssessment2:
+    "परिवर्तनों को ट्रैक करने के लिए हर 24 घंटे के बाद जांच करें",
+  reAssess: "फिर से करें",
+  shareResult: "परिणाम शेयर करें",
+  shareOn: "शेयर",
+  block2Heading: "सावधानी बरतने के उपाय",
+  block2Point1: "साबुन और पानी या एल्कोहल आधारित सेनेटिसर द्वारा हाथ धोना.",
+  block2Point2: "रूमाल या  कोहनी से खांसने अथवा छींकने पर नाक और मुंह ढकें.",
+  block2Point3: "निकट संपर्क से बचें और सबके साथ 1 मीटर की दूरी बनाए रखें",
+  block2Point4:
+    "कम से कम 14 दिनों के लिए प्रभावित देशों या स्थानों  का यात्रा करने वाले व्यक्तियों से दूरी बनाए रखें",
+  forAnyEmergency: "आपातकालीन परिस्थिति में",
+  helpline: "हेल्पलाइन",
+  tollFreeNumber: "टोल फ्री नंबर",
+  helpLineEmail: "ईमेल",
+  iAmAt: "मैं हूं",
+  shareString:
+    "क्या आप जोखिम में हैं? जानिए कि आप कोरोना से सुरक्षित हैं या नहीं। अपनी जाँच करें :",
+  par: "पर. ",
+  alerts: "चेतावनी",
+  block3Point1:
+    "यदि आपके लक्षण बदल जाते हैं, तो कृपया अपने आस-पास की किसी भी स्वास्थ्य सुविधा से संपर्क करें",
+  call: "कॉल करें :",
+  inCaseYouSuspect: " यदि आपको परिणाम पॉजिटिव लगता  है, तो कृपया",
+  findAllHelpline:
+    "या स्वास्थ्य सुविधा को रिपोर्ट करें. पूर्ण भारत के हेल्पलाइन मोबाइल नंबर :",
+  allHelplineLink: "हेल्पलाइन मोबाइल नंबर",
+  block4Heading: "सहायता और समर्थन",
+  block4SubHeading: "इस कार्य में सरकार की सहायता हेतु दान करे।",
+  learnMore: "अधिक जानें",
+  block5Heading: "न्यूज़लेटर प्राप्त करें",
+  block5SubHeading:
+    "कहानी जानने वाले पहले व्यक्ति बनें। हमारे न्यूज़लेटर के लिए साइनअप करें",
+  subscribe: "सदस्यता लें",
+  yaySubscribed: "Yayy !! आप सदस्यता ले चुके हैं।",
+  checkMailBox: "अपना मेलबॉक्स जांचें।",
+  rateUs: "हमें रेटिंग दें",
+  thankYou: "रेटिंग के लिए धन्यवाद",
+  reRate: "रेटिंग बदलें",
+  checkLiveUpdates: "देखिये लाइव अपडेट"
 };

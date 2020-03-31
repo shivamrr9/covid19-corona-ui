@@ -64,9 +64,9 @@ class Home extends Component {
                     style={{
                       background: "#E04F51",
                       border: "1px solid #E04F51",
-                      paddingLeft: "8px",
-                      paddingRight: "8px",
-                      borderRadius: "20px",
+                      paddingLeft: "6px",
+                      paddingRight: "6px",
+                      borderRadius: "18px",
                       position: "fixed",
                       right: "4%"
                     }}
@@ -76,17 +76,19 @@ class Home extends Component {
                       target="_blank"
                       style={{ textDecoration: "none" }}
                     >
-                      <span style={{ color: "white", fontSize: "15px" }}>
+                      <span style={{ color: "white", fontSize: "12px" }}>
                         <FontAwesomeIcon
                           icon={faDotCircle}
                           color="white"
                           style={{
                             marginRight: "3px",
-                            fontSize: "8px",
+                            fontSize: "7px",
                             marginBottom: "3px"
                           }}
                         />{" "}
-                        Live Updates
+                        {this.props.languageValue.value === "English"
+                          ? English.checkLiveUpdates
+                          : Hindi.checkLiveUpdates}
                       </span>
                     </a>
                   </div>

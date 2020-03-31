@@ -75,16 +75,42 @@ class Question3 extends Component {
   shareContent() {
     if (navigator.share) {
       var sharePromise = window.navigator.share({
-        title: "Corona Risk Calculator",
-        text: `Are you at Risk? Know if you're safe from Corona or not. I am at : ${
+        title: `${
+          this.props.languageValue.value === "English"
+            ? English.heading1
+            : Hindi.heading1
+        }`,
+        text: `${
+          this.props.languageValue.value === "English"
+            ? English.iAmAt
+            : Hindi.iAmAt
+        } ${
           this.props.finalResultPercentage > 0 &&
-          this.props.finalResultPercentage < 20
-            ? "Low Risk"
-            : this.props.finalResultPercentage > 20 &&
-              this.props.finalResultPercentage < 43
-            ? "Moderate Risk"
-            : "High Risk"
-        } | Corona Risk Calculator | `,
+          this.props.finalResultPercentage < 30
+            ? `${
+                this.props.languageValue.value === "English"
+                  ? English.lowRisk
+                  : Hindi.lowRisk
+              }`
+            : this.props.finalResultPercentage > 30 &&
+              this.props.finalResultPercentage < 60
+            ? `${
+                this.props.languageValue.value === "English"
+                  ? English.moderate
+                  : Hindi.moderate
+              }`
+            : `${
+                this.props.languageValue.value === "English"
+                  ? English.highRisk
+                  : Hindi.highRisk
+              }`
+        } ${
+          this.props.languageValue.value === "English" ? English.par : Hindi.par
+        } ${
+          this.props.languageValue.value === "English"
+            ? English.shareString
+            : Hindi.shareString
+        }`,
         url: "https://coronariskcalculator.in"
       });
 
@@ -136,10 +162,10 @@ class Question3 extends Component {
       percentage += 2;
     }
     if (heart_problem) {
-      percentage += 2;
+      percentage += 3;
     }
     if (kidney_lung_disease) {
-      percentage += 2;
+      percentage += 5;
     }
     return percentage > 10 ? 10 : percentage;
   }
@@ -172,22 +198,22 @@ class Question3 extends Component {
       percentage += 2;
     }
     if (severe_cough) {
-      percentage += 2;
+      percentage += 3;
     }
     if (breathing_problem) {
-      percentage += 2;
+      percentage += 4;
     }
     if (drowsiness) {
       percentage += 2;
     }
     if (chest_pain) {
-      percentage += 2;
+      percentage += 3;
     }
     if (severe_weakness) {
       percentage += 2;
     }
 
-    return percentage > 20 ? 20 : percentage;
+    return percentage;
   }
   riskCalculator(
     age,
@@ -214,7 +240,7 @@ class Question3 extends Component {
   ) {
     let total_percentage = 0;
     if (travel_history === "yes") {
-      total_percentage += 10;
+      total_percentage += 12;
     }
     total_percentage += this.preConditions(
       diabetes,
@@ -242,7 +268,7 @@ class Question3 extends Component {
     );
 
     if (contact_with_covid_paitent === "yes") {
-      total_percentage += 20;
+      total_percentage += 23;
     }
     let age_0_20 = 0,
       age_20_40 = 0,
@@ -310,18 +336,20 @@ class Question3 extends Component {
                   style={{
                     color: "white",
                     marginTop: "2px",
-                    fontSize: "15px"
+                    fontSize: "13px"
                   }}
                 >
-                  Corona Risk Calculator
+                  {this.props.languageValue.value === "English"
+                    ? English.heading1
+                    : Hindi.heading1}
                 </span>
                 <div
                   style={{
                     background: "#E04F51",
                     border: "1px solid #E04F51",
-                    paddingLeft: "8px",
-                    paddingRight: "8px",
-                    borderRadius: "20px",
+                    paddingLeft: "6px",
+                    paddingRight: "6px",
+                    borderRadius: "18px",
                     position: "fixed",
                     right: "4%"
                   }}
@@ -331,17 +359,19 @@ class Question3 extends Component {
                     target="_blank"
                     style={{ textDecoration: "none" }}
                   >
-                    <span style={{ color: "white", fontSize: "15px" }}>
+                    <span style={{ color: "white", fontSize: "12px" }}>
                       <FontAwesomeIcon
                         icon={faDotCircle}
                         color="white"
                         style={{
                           marginRight: "3px",
-                          fontSize: "8px",
+                          fontSize: "7px",
                           marginBottom: "3px"
                         }}
                       />{" "}
-                      Live Updates
+                      {this.props.languageValue.value === "English"
+                        ? English.checkLiveUpdates
+                        : Hindi.checkLiveUpdates}
                     </span>
                   </a>
                 </div>
@@ -380,25 +410,33 @@ class Question3 extends Component {
                     }}
                   >
                     {this.props.finalResultPercentage > 0 &&
-                      this.props.finalResultPercentage < 25 && (
-                        <span style={{ fontSize: "25px", color: "#A4D160" }}>
-                          LOW RISK
+                      this.props.finalResultPercentage < 30 && (
+                        <span style={{ fontSize: "24px", color: "#A4D160" }}>
+                          {this.props.languageValue.value === "English"
+                            ? English.lowRisk
+                            : Hindi.lowRisk}
                         </span>
                       )}
-                    {this.props.finalResultPercentage > 25 &&
-                      this.props.finalResultPercentage < 55 && (
-                        <span style={{ fontSize: "25px", color: "#ffc400" }}>
-                          MODERATE
+                    {this.props.finalResultPercentage > 30 &&
+                      this.props.finalResultPercentage < 60 && (
+                        <span style={{ fontSize: "24px", color: "#ffc400" }}>
+                          {this.props.languageValue.value === "English"
+                            ? English.moderate
+                            : Hindi.moderate}
                         </span>
                       )}
-                    {this.props.finalResultPercentage > 50 && (
-                      <span style={{ fontSize: "25px", color: "#FF0100" }}>
-                        HIGH RISK
+                    {this.props.finalResultPercentage > 60 && (
+                      <span style={{ fontSize: "24px", color: "#FF0100" }}>
+                        {this.props.languageValue.value === "English"
+                          ? English.highRisk
+                          : Hindi.highRisk}
                       </span>
                     )}
                     <br />
                     <p style={{ fontSize: "10px" }}>
-                      This is not a medical advice
+                      {this.props.languageValue.value === "English"
+                        ? English.smallDisclamier
+                        : Hindi.smallDisclamier}
                     </p>
                   </div>
                 </div>
@@ -411,16 +449,23 @@ class Question3 extends Component {
                     marginBottom: "2px"
                   }}
                 >
-                  Based on the assessment you are at{" "}
+                  {this.props.languageValue.value === "English"
+                    ? English.basedOnAssessment1
+                    : Hindi.basedOnAssessment1}{" "}
                   {this.props.finalResultPercentage > 0 &&
-                  this.props.finalResultPercentage < 20
+                  this.props.finalResultPercentage < 30
                     ? "Low Risk "
-                    : this.props.finalResultPercentage > 20 &&
-                      this.props.finalResultPercentage < 43
+                    : this.props.finalResultPercentage > 30 &&
+                      this.props.finalResultPercentage < 60
                     ? "Moderate Risk "
                     : "High Risk "}
-                  of COVID. <br /> Check after every 24 hrs to check the
-                  changes.
+                  {this.props.languageValue.value === "English"
+                    ? English.ofCovid
+                    : Hindi.ofCovid}
+                  <br />{" "}
+                  {this.props.languageValue.value === "English"
+                    ? English.basedOnAssessment2
+                    : Hindi.basedOnAssessment2}
                 </p>
                 <hr style={{ marginTop: "0px", marginBottom: "-5px" }}></hr>
                 <div
@@ -439,7 +484,11 @@ class Question3 extends Component {
                       color="grey"
                       style={{ marginRight: "5px" }}
                     />
-                    <span style={{ fontSize: "14px" }}>Re Assess</span>
+                    <span style={{ fontSize: "14px" }}>
+                      {this.props.languageValue.value === "English"
+                        ? English.reAssess
+                        : Hindi.reAssess}
+                    </span>
                   </Button>
                   {navigator.share ? (
                     <Button
@@ -453,7 +502,11 @@ class Question3 extends Component {
                         color="grey"
                         style={{ marginRight: "5px" }}
                       />
-                      <span style={{ fontSize: "14px" }}>Share Result</span>
+                      <span style={{ fontSize: "14px" }}>
+                        {this.props.languageValue.value === "English"
+                          ? English.shareResult
+                          : Hindi.shareResult}
+                      </span>
                     </Button>
                   ) : (
                     <div className="fallback-share" style={{ display: "flex" }}>
@@ -463,20 +516,46 @@ class Question3 extends Component {
                         style={{ marginRight: "5px", marginTop: "30px" }}
                       />
                       <span style={{ marginTop: "28px", fontSize: "14px" }}>
-                        Share on{" "}
+                        {this.props.languageValue.value === "English"
+                          ? English.shareOn
+                          : Hindi.shareOn}{" "}
                       </span>
                       <div style={{ marginTop: "23px", paddingLeft: "8px" }}>
                         <FacebookShareButton
                           url={"https://www.coronariskcalculator.in"}
-                          quote={`Are you at Risk? Know if you're safe from Corona or not. I am at ${
+                          quote={`${
+                            this.props.languageValue.value === "English"
+                              ? English.iAmAt
+                              : Hindi.iAmAt
+                          } ${
                             this.props.finalResultPercentage > 0 &&
-                            this.props.finalResultPercentage < 20
-                              ? "Low Risk"
-                              : this.props.finalResultPercentage > 20 &&
-                                this.props.finalResultPercentage < 43
-                              ? "Moderate Risk"
-                              : "High Risk"
-                          } | Corona Risk Calculator | Check yours at : `}
+                            this.props.finalResultPercentage < 30
+                              ? `${
+                                  this.props.languageValue.value === "English"
+                                    ? English.lowRisk
+                                    : Hindi.lowRisk
+                                }`
+                              : this.props.finalResultPercentage > 30 &&
+                                this.props.finalResultPercentage < 60
+                              ? `${
+                                  this.props.languageValue.value === "English"
+                                    ? English.moderate
+                                    : Hindi.moderate
+                                }`
+                              : `${
+                                  this.props.languageValue.value === "English"
+                                    ? English.highRisk
+                                    : Hindi.highRisk
+                                }`
+                          } ${
+                            this.props.languageValue.value === "English"
+                              ? English.par
+                              : Hindi.par
+                          }${
+                            this.props.languageValue.value === "English"
+                              ? English.shareString
+                              : Hindi.shareString
+                          }`}
                         >
                           <FacebookIcon size={32} round />
                         </FacebookShareButton>
@@ -484,15 +563,39 @@ class Question3 extends Component {
                       <div style={{ marginTop: "23px", paddingLeft: "8px" }}>
                         <WhatsappShareButton
                           url={"https://www.coronariskcalculator.com"}
-                          title={`Are you at Risk? Know if you're safe from Corona or not. I am at ${
+                          title={`${
+                            this.props.languageValue.value === "English"
+                              ? English.iAmAt
+                              : Hindi.iAmAt
+                          } ${
                             this.props.finalResultPercentage > 0 &&
-                            this.props.finalResultPercentage < 20
-                              ? "Low Risk"
-                              : this.props.finalResultPercentage > 20 &&
-                                this.props.finalResultPercentage < 43
-                              ? "Moderate Risk"
-                              : "High Risk"
-                          } | Corona Risk Calculator | Check yours at : `}
+                            this.props.finalResultPercentage < 30
+                              ? `${
+                                  this.props.languageValue.value === "English"
+                                    ? English.lowRisk
+                                    : Hindi.lowRisk
+                                }`
+                              : this.props.finalResultPercentage > 30 &&
+                                this.props.finalResultPercentage < 60
+                              ? `${
+                                  this.props.languageValue.value === "English"
+                                    ? English.moderate
+                                    : Hindi.moderate
+                                }`
+                              : `${
+                                  this.props.languageValue.value === "English"
+                                    ? English.highRisk
+                                    : Hindi.highRisk
+                                }`
+                          } ${
+                            this.props.languageValue.value === "English"
+                              ? English.par
+                              : Hindi.par
+                          }${
+                            this.props.languageValue.value === "English"
+                              ? English.shareString
+                              : Hindi.shareString
+                          }`}
                         >
                           <WhatsappIcon size={32} round />
                         </WhatsappShareButton>
@@ -521,7 +624,9 @@ class Question3 extends Component {
                     color="#DDB24B"
                     style={{ marginRight: "3px" }}
                   />
-                  Precautionary Measure For You
+                  {this.props.languageValue.value === "English"
+                    ? English.block2Heading
+                    : Hindi.block2Heading}
                 </h6>
                 <ul
                   style={{
@@ -531,20 +636,24 @@ class Question3 extends Component {
                   }}
                 >
                   <li style={{ padding: "3px", fontSize: "12px" }}>
-                    Wash your hands Regularly for 20 seconds with soap and water
-                    or alcohol-based hand rub.
+                    {this.props.languageValue.value === "English"
+                      ? English.block2Point1
+                      : Hindi.block2Point1}
                   </li>
                   <li style={{ padding: "3px", fontSize: "12px" }}>
-                    Cover you nose and mouth with a disposable tissue or flexed
-                    elbow when you cough or sneeze.
+                    {this.props.languageValue.value === "English"
+                      ? English.block2Point2
+                      : Hindi.block2Point2}
                   </li>
                   <li style={{ padding: "3px", fontSize: "12px" }}>
-                    Avoid close contact (1 meter to 3 feet) with people who are
-                    unwell.
+                    {this.props.languageValue.value === "English"
+                      ? English.block2Point3
+                      : Hindi.block2Point3}
                   </li>
                   <li style={{ padding: "3px", fontSize: "12px" }}>
-                    Stay Home and self isolate from others in the household if
-                    you feel unwell
+                    {this.props.languageValue.value === "English"
+                      ? English.block2Point4
+                      : Hindi.block2Point4}
                   </li>
                 </ul>
                 <div
@@ -560,7 +669,9 @@ class Question3 extends Component {
                     }}
                   >
                     <span style={{ fontSize: "12px", fontWeight: "bold" }}>
-                      For Any Emergency
+                      {this.props.languageValue.value === "English"
+                        ? English.forAnyEmergency
+                        : Hindi.forAnyEmergency}
                     </span>
                     <br />
                     <FontAwesomeIcon
@@ -569,7 +680,10 @@ class Question3 extends Component {
                       style={{ marginRight: "3px", fontSize: "10px" }}
                     />
                     <span style={{ padding: "3px", fontSize: "11px" }}>
-                      Helpline :{" "}
+                      {this.props.languageValue.value === "English"
+                        ? English.helpline
+                        : Hindi.helpline}{" "}
+                      :{" "}
                       <a
                         style={{ textDecoration: "none" }}
                         href="tel:011-23978046"
@@ -584,7 +698,10 @@ class Question3 extends Component {
                       style={{ marginRight: "3px", fontSize: "10px" }}
                     />
                     <span style={{ padding: "3px", fontSize: "11px" }}>
-                      Toll Free Number :{" "}
+                      {this.props.languageValue.value === "English"
+                        ? English.tollFreeNumber
+                        : Hindi.tollFreeNumber}{" "}
+                      :{" "}
                       <a style={{ textDecoration: "none" }} href="tel:1075">
                         1075
                       </a>
@@ -596,7 +713,10 @@ class Question3 extends Component {
                       style={{ marginRight: "3px", fontSize: "10px" }}
                     />
                     <span style={{ padding: "3px", fontSize: "11px" }}>
-                      Email :{" "}
+                      {this.props.languageValue.value === "English"
+                        ? English.helpLineEmail
+                        : Hindi.helpLineEmail}{" "}
+                      :{" "}
                       <a
                         style={{ textDecoration: "none" }}
                         href="mailto:ncov2019@gov.in?Subject=Covid 19 Help!!"
@@ -634,7 +754,9 @@ class Question3 extends Component {
                     color="#DDB24B"
                     style={{ marginRight: "3px" }}
                   />
-                  ALERTS
+                  {this.props.languageValue.value === "English"
+                    ? English.alerts
+                    : Hindi.alerts}
                 </h6>
                 <div
                   className="alert-content"
@@ -645,28 +767,38 @@ class Question3 extends Component {
                   }}
                 >
                   <span style={{ fontSize: "12px" }}>
-                    In case your symptoms change, please contact any healthcare
-                    facilitynear you or{" "}
+                    {this.props.languageValue.value === "English"
+                      ? English.block3Point1
+                      : Hindi.block3Point1}{" "}
                     <b>
-                      call{" "}
-                      <a style={{ textDecoration: "none" }} href="tel:1075">
-                        108{" "}
-                      </a>
+                      {this.props.languageValue.value === "English"
+                        ? English.call
+                        : Hindi.call}{" "}
+                      <a href="tel:1075">108 </a>
                     </b>
-                    , In case you suspect a postive case, please{" "}
+                    ,{" "}
+                    {this.props.languageValue.value === "English"
+                      ? English.inCaseYouSuspect
+                      : Hindi.inCaseYouSuspect}{" "}
                     <b>
-                      call{" "}
-                      <a style={{ textDecoration: "none" }} href="tel:1075">
-                        104{" "}
-                      </a>
+                      {this.props.languageValue.value === "English"
+                        ? English.call
+                        : Hindi.call}{" "}
+                      <a href="tel:1075">104 </a>
                     </b>
-                    or report nearby health care facility. Find all help line
-                    numbers here :{" "}
+                    {this.props.languageValue.value === "English"
+                      ? English.findAllHelpline
+                      : Hindi.findAllHelpline}{" "}
                     <a
                       href="https://www.mohfw.gov.in/coronvavirushelplinenumber.pdf"
                       target="_blank"
+                      style={{ color: "blue" }}
                     >
-                      all helpline numbers
+                      <b>
+                        {this.props.languageValue.value === "English"
+                          ? English.allHelplineLink
+                          : Hindi.allHelplineLink}
+                      </b>
                     </a>
                   </span>
                 </div>
@@ -692,7 +824,9 @@ class Question3 extends Component {
                     color="#D42F51"
                     style={{ marginRight: "3px" }}
                   />
-                  HELP AND SUPPORT
+                  {this.props.languageValue.value === "English"
+                    ? English.block4Heading
+                    : Hindi.block4Heading}
                 </h6>
                 <div
                   style={{
@@ -701,7 +835,11 @@ class Question3 extends Component {
                     padding: "8px"
                   }}
                 >
-                  <p>Government is welcoming donations to help this cause.</p>
+                  <p>
+                    {this.props.languageValue.value === "English"
+                      ? English.block4SubHeading
+                      : Hindi.block4SubHeading}
+                  </p>
                   <br />
                   <a
                     style={{ textDecoration: "none" }}
@@ -714,7 +852,9 @@ class Question3 extends Component {
                         border: " 1px solid #A4D160"
                       }}
                     >
-                      Learn More
+                      {this.props.languageValue.value === "English"
+                        ? English.learnMore
+                        : Hindi.learnMore}
                     </Button>
                   </a>
                 </div>
@@ -740,7 +880,9 @@ class Question3 extends Component {
                     color="#DDB24B"
                     style={{ marginRight: "3px" }}
                   />
-                  SUBSCRIBE NEWSLETTER
+                  {this.props.languageValue.value === "English"
+                    ? English.block5Heading
+                    : Hindi.block5Heading}
                 </h6>
                 <div
                   style={{
@@ -751,8 +893,9 @@ class Question3 extends Component {
                   }}
                 >
                   <p>
-                    Be the first to know, discover the story . Sign up to our
-                    newsletter
+                    {this.props.languageValue.value === "English"
+                      ? English.block5SubHeading
+                      : Hindi.block5SubHeading}
                   </p>
                   {!this.props.isMailSent && <br />}
                   {!this.props.isMailSent && (
@@ -778,13 +921,20 @@ class Question3 extends Component {
                         this.handleSubscribe(this.props.enteredEmailByUser);
                       }}
                     >
-                      Subscribe
+                      {this.props.languageValue.value === "English"
+                        ? English.subscribe
+                        : Hindi.subscribe}
                     </Button>
                   )}
                   {this.props.isMailSent && (
                     <p>
-                      "Yayy!! <br /> You have been subscribed.
-                      <br /> Check your mail box."
+                      {this.props.languageValue.value === "English"
+                        ? English.yaySubscribed
+                        : Hindi.yaySubscribed}
+                      <br />{" "}
+                      {this.props.languageValue.value === "English"
+                        ? English.checkMailBox
+                        : Hindi.checkMailBox}
                     </p>
                   )}
                 </div>
@@ -805,7 +955,9 @@ class Question3 extends Component {
                     color="#f06292"
                     style={{ marginRight: "3px" }}
                   />
-                  RATE US
+                  {this.props.languageValue.value === "English"
+                    ? English.rateUs
+                    : Hindi.rateUs}
                 </h6>
                 {this.state.showRatingContainer ? (
                   <Rating
@@ -846,7 +998,9 @@ class Question3 extends Component {
                   />
                 ) : (
                   <div style={{ marginBottom: "10px", padding: "5px" }}>
-                    Thanks For Rating Us
+                    {this.props.languageValue.value === "English"
+                      ? English.thankYou
+                      : Hindi.thankYou}
                     <br />
                     <Button
                       style={{
@@ -863,7 +1017,9 @@ class Question3 extends Component {
                         color="white"
                         style={{ marginRight: "5px" }}
                       />
-                      ReRate ?
+                      {this.props.languageValue.value === "English"
+                        ? English.reRate
+                        : Hindi.reRate}
                     </Button>
                   </div>
                 )}

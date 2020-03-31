@@ -71,7 +71,8 @@ class Question5 extends Component {
                   backgroundSize: "cover",
                   height: "100%",
                   paddingBottom: "20px",
-                  overflow: "scroll"
+                  overflow: "scroll",
+                  width: "100%"
                 }}
               >
                 <h6 style={{ padding: "6px" }}>
