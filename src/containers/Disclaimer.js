@@ -35,7 +35,8 @@ class Disclaimer extends Component {
                   fontFamily: "arial",
                   paddingRight: "10px",
                   fontSize: "18px",
-                  paddingTop: "15px"
+                  paddingTop: "15px",
+                  paddingBottom: "25px"
                 }}
               >
                 {this.props.languageValue.value === "English"

@@ -96,8 +96,8 @@ class Question3 extends Component {
               this.state.finalResultPercentage < 60
             ? `${
                 this.props.languageValue.value === "English"
-                  ? English.moderate
-                  : Hindi.moderate
+                  ? English.moderateRisk
+                  : Hindi.moderateRisk
               }`
             : `${
                 this.props.languageValue.value === "English"
@@ -187,7 +187,7 @@ class Question3 extends Component {
       percentage += 2;
     }
     if (sore_throat) {
-      percentage += 2;
+      percentage += 3;
     }
     if (smell) {
       percentage += 2;
@@ -208,10 +208,10 @@ class Question3 extends Component {
       percentage += 2;
     }
     if (chest_pain) {
-      percentage += 3;
+      percentage += 4;
     }
     if (severe_weakness) {
-      percentage += 2;
+      percentage += 3;
     }
 
     return percentage;
@@ -241,7 +241,7 @@ class Question3 extends Component {
   ) {
     let total_percentage = 0;
     if (travel_history === "yes") {
-      total_percentage += 12;
+      total_percentage += 15;
     }
     total_percentage += this.preConditions(
       diabetes,
@@ -251,7 +251,7 @@ class Question3 extends Component {
     );
 
     if (temprature >= 98.7 && temprature <= 102) {
-      total_percentage += 5;
+      total_percentage += 6;
     } else if (temprature > 102) {
       total_percentage += 10;
     }
@@ -269,7 +269,7 @@ class Question3 extends Component {
     );
 
     if (contact_with_covid_paitent === "yes") {
-      total_percentage += 24;
+      total_percentage += 25;
     }
     let age_0_20 = 0,
       age_20_40 = 0,
@@ -340,7 +340,8 @@ class Question3 extends Component {
                   style={{
                     color: "white",
                     marginTop: "3px",
-                    fontSize: "13px"
+                    fontSize: "13px",
+                    fontWeight: "bold"
                   }}
                 >
                   {this.props.languageValue.value === "English"
@@ -471,8 +472,8 @@ class Question3 extends Component {
                       this.state.finalResultPercentage < 60
                     ? `${
                         this.props.languageValue.value === "English"
-                          ? English.moderate
-                          : Hindi.moderate
+                          ? English.moderateRisk
+                          : Hindi.moderateRisk
                       }`
                     : `${
                         this.props.languageValue.value === "English"
@@ -559,8 +560,8 @@ class Question3 extends Component {
                                 this.state.finalResultPercentage < 60
                               ? `${
                                   this.props.languageValue.value === "English"
-                                    ? English.moderate
-                                    : Hindi.moderate
+                                    ? English.moderateRisk
+                                    : Hindi.moderateRisk
                                 }`
                               : `${
                                   this.props.languageValue.value === "English"
@@ -599,8 +600,8 @@ class Question3 extends Component {
                                 this.state.finalResultPercentage < 60
                               ? `${
                                   this.props.languageValue.value === "English"
-                                    ? English.moderate
-                                    : Hindi.moderate
+                                    ? English.moderateRisk
+                                    : Hindi.moderateRisk
                                 }`
                               : `${
                                   this.props.languageValue.value === "English"
@@ -912,7 +913,7 @@ class Question3 extends Component {
                     marginBottom: "10px"
                   }}
                 >
-                  <p>
+                  <p style={{ marginBottom: "0px" }}>
                     {this.props.languageValue.value === "English"
                       ? English.block5SubHeading
                       : Hindi.block5SubHeading}
@@ -920,10 +921,10 @@ class Question3 extends Component {
                   {!this.props.isMailSent && <br />}
                   {!this.props.isMailSent && (
                     <input
-                      style={{ width: "72%" }}
+                      style={{ width: "72%", borderRadius: "7px" }}
                       type="email"
                       name="email"
-                      placeholder="Enter Email Id"
+                      placeholder="Email"
                       onChange={val => {
                         this.handleInputChange(val.target.value);
                       }}
