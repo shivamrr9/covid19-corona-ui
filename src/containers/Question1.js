@@ -18,6 +18,8 @@ import {
 } from "../containers/Home/actions";
 import "react-input-range/lib/css/index.css";
 import Radio from "@material-ui/core/Radio";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -40,6 +42,12 @@ class Question1 extends Component {
     this.props.stateSelected(val);
   }
   handleInputAge(age) {
+    if (age < 0) {
+      age = 0;
+    }
+    if (age > 90) {
+      age = 90;
+    }
     this.props.enteredAge(age);
   }
   handleGenderChange(event) {
@@ -248,19 +256,64 @@ class Question1 extends Component {
               >
                 <Button
                   style={{
-                    backgroundClip: "red",
                     background: "#A4D160",
-                    border: " 1px solid #A4D160"
+                    border: " 1px solid #A4D160",
+                    width: "50%",
+                    right: "50%",
+                    position: "absolute",
+                    marginTop: "8px",
+                    marginRight: "1x"
+                  }}
+                  size="lg"
+                  block
+                  onClick={() => {
+                    this.props.openQuestionPage("0");
+                  }}
+                >
+                  <FontAwesomeIcon
+                    icon={faArrowLeft}
+                    color="white"
+                    style={{
+                      marginRight: "3px",
+                      fontSize: "13px",
+                      marginBottom: "3px"
+                    }}
+                  />
+                  Back
+                </Button>
+                <Button
+                  style={{
+                    background: "#A4D160",
+                    border: " 1px solid #A4D160",
+                    width: "50%",
+                    position: "relative",
+                    left: "50%",
+                    marginLeft: "1px"
                   }}
                   size="lg"
                   block
                   onClick={() => {
                     this.props.openQuestionPage("2");
                   }}
+                  disabled={
+                    this.props.stateSelectedByUser.length == 0 ||
+                    this.props.districtSelectedByUser.length == 0 ||
+                    this.props.enteredAgeByUser == 0 ||
+                    this.props.genderSelectedByUser.length == 0
+                  }
                 >
                   {this.props.languageValue.value === "English"
                     ? English.next
                     : Hindi.next}
+                  <FontAwesomeIcon
+                    icon={faArrowRight}
+                    color="white"
+                    style={{
+                      marginLeft: "3px",
+                      fontSize: "13px",
+                      marginBottom: "3px"
+                    }}
+                  />
                 </Button>
               </div>
             </Col>

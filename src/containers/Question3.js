@@ -12,6 +12,8 @@ import "react-input-range/lib/css/index.css";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 class Question3 extends Component {
   handleTravelAnsChange(event) {
@@ -57,7 +59,7 @@ class Question3 extends Component {
                 className="main-body"
                 style={{
                   textAlign: "center",
-                  marginTop: "35%",
+                  marginTop: "32%",
                   backgroundImage: `url(https://res.cloudinary.com/arorashivam-com-resume/image/upload/v1585442509/bg_2_dvlffd.png)`,
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "cover",
@@ -116,17 +118,58 @@ class Question3 extends Component {
                 <Button
                   style={{
                     background: "#A4D160",
-                    border: " 1px solid #A4D160"
+                    border: " 1px solid #A4D160",
+                    width: "50%",
+                    right: "50%",
+                    position: "absolute",
+                    marginTop: "8px",
+                    marginRight: "1x"
+                  }}
+                  onClick={() => {
+                    this.props.openQuestionPage("2");
+                  }}
+                  size="lg"
+                  block
+                >
+                  <FontAwesomeIcon
+                    icon={faArrowLeft}
+                    color="white"
+                    style={{
+                      marginRight: "3px",
+                      fontSize: "13px",
+                      marginBottom: "3px"
+                    }}
+                  />
+                  Prev
+                </Button>
+                <Button
+                  style={{
+                    background: "#A4D160",
+                    border: " 1px solid #A4D160",
+                    width: "50%",
+                    position: "relative",
+                    left: "50%",
+                    marginLeft: "1px"
                   }}
                   size="lg"
                   block
                   onClick={() => {
                     this.props.openQuestionPage("4");
                   }}
+                  disabled={this.props.travelAnsSelectedByUser.length == 0}
                 >
                   {this.props.languageValue.value === "English"
                     ? English.next
                     : Hindi.next}
+                  <FontAwesomeIcon
+                    icon={faArrowRight}
+                    color="white"
+                    style={{
+                      marginLeft: "3px",
+                      fontSize: "13px",
+                      marginBottom: "3px"
+                    }}
+                  />
                 </Button>
               </div>
             </Col>

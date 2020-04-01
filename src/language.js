@@ -4,7 +4,7 @@ export const English = {
   heading3: "This application does not provide any medical advice",
   proceedButton: "CLICK HERE TO PROCEED",
   disclaimer:
-    "Any content accessed through this website is for informaitional purpose only and is not intended to constitute professional medical advice, diagnosis or treatment. We are no way responsible for your use of this website, or for any information you receive from this website. You acknowledge that when using this website you do so at your own choice and in agreement of this disclaimer. Seek immediate medical assistance or call your doctor for all medical emergencies.",
+    "Any content accessed through this website is for informational purpose only and is not intended to constitute professional medical advice, diagnosis or treatment. We are no way responsible for your use of this website, or for any information you receive from this website. You acknowledge that when using this website you do so at your own choice and in the agreement of this disclaimer. Seek immediate medical assistance or call your doctor for all medical emergencies.",
   selectCity: "Select State, District, City",
   loadingCities: "Loading Cities..",
   howOld: "How Old Are You?",
@@ -16,7 +16,8 @@ export const English = {
   male: "Male",
   female: "Female",
   other: "Other",
-  question2Heading: "Do you have a history of any of the conditions?",
+  question2Heading:
+    " Do you have a history of any of the conditions mentioned below?",
   diabetes: "Diabetes",
   heartDisease: "Heart Disease",
   bloodPressure: "High Blood Pressure",
@@ -39,7 +40,7 @@ export const English = {
   severeWeakness: "Severe Weakness",
   question4Heading: "Are you experiencing any of the symptoms below?",
   question5Heading:
-    "Let us know your Body Temperature? (Normal Temp : 98.6°F (37°C))",
+    "Let us know your body temperature? (Normal Temp: 98.6°F (37°C))",
   tempOption1: "Normal ( 96-98.6) °F",
   tempOption2: "Fever ( 98.6-102) °F",
   tempOption3: "High Fever ( >102) °F",
@@ -94,7 +95,8 @@ export const English = {
   rateUs: "RATE US",
   thankYou: "Thanks For Rating Us",
   reRate: "Rerate",
-  checkLiveUpdates: "Check Live Updates"
+  checkLiveUpdates: "Check Live Updates",
+  submit: "SUBMIT"
 };
 
 export const Hindi = {
@@ -152,7 +154,7 @@ export const Hindi = {
   highRisk: "उच्च आशंका",
   smallDisclamier: "यह एक चिकित्सा सलाह नहीं है",
   basedOnAssessment1: "मूल्यांकन के आधार पर आप कोविद -19 के ",
-  ofCovid: " जोखिम में हैं",
+  ofCovid: " में हैं",
   basedOnAssessment2:
     "परिवर्तनों को ट्रैक करने के लिए हर 24 घंटे के बाद जांच करें",
   reAssess: "फिर से करें",
@@ -192,5 +194,6 @@ export const Hindi = {
   rateUs: "हमें रेटिंग दें",
   thankYou: "रेटिंग के लिए धन्यवाद",
   reRate: "रेटिंग बदलें",
-  checkLiveUpdates: "देखिये लाइव अपडेट"
+  checkLiveUpdates: "देखिये लाइव अपडेट",
+  submit: "सब्मिट"
 };

@@ -16,6 +16,9 @@ import {
 import "react-input-range/lib/css/index.css";
 import Radio from "@material-ui/core/Radio";
 import Checkbox from "@material-ui/core/Checkbox";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 class Question4 extends Component {
   handleCheckBoxChange(val, type) {
@@ -61,14 +64,14 @@ class Question4 extends Component {
                 className="main-body"
                 style={{
                   textAlign: "center",
-                  marginTop: "35%",
+                  marginTop: "32%",
                   backgroundImage: `url(https://res.cloudinary.com/arorashivam-com-resume/image/upload/v1585442509/bg_2_dvlffd.png)`,
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "cover",
                   height: "100%"
                 }}
               >
-                <h6 style={{ padding: "10px" }}>
+                <h6 style={{ padding: "8px" }}>
                   {this.props.languageValue.value === "English"
                     ? English.question4Heading
                     : Hindi.question4Heading}
@@ -76,133 +79,224 @@ class Question4 extends Component {
                 <div
                   style={{
                     marginTop: "10px",
-                    paddingLeft: "9%",
+                    paddingLeft: "10%",
                     overflow: "scroll",
                     height: "80%",
-                    paddingBottom: "20px"
+                    paddingBottom: "25px"
                   }}
                   align="left"
                 >
-                  <Checkbox
-                    checked={this.props.question4Obj.dryCough}
-                    onChange={val => {
-                      this.handleCheckBoxChange(val, "dryCough");
-                    }}
-                    inputProps={{ "aria-label": "primary checkbox" }}
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={this.props.question4Obj.dryCough}
+                        onChange={val => {
+                          this.handleCheckBoxChange(val, "dryCough");
+                        }}
+                        inputProps={{ "aria-label": "primary checkbox" }}
+                        disabled={this.props.question4Obj.noneOfTheAbove}
+                      />
+                    }
+                    label={`${
+                      this.props.languageValue.value === "English"
+                        ? English.dryCough
+                        : Hindi.dryCough
+                    }`}
                   />
-                  {this.props.languageValue.value === "English"
-                    ? English.dryCough
-                    : Hindi.dryCough}
                   <br />
-                  <Checkbox
-                    checked={this.props.question4Obj.soreThroat}
-                    onChange={val => {
-                      this.handleCheckBoxChange(val, "soreThroat");
-                    }}
-                    inputProps={{ "aria-label": "primary checkbox" }}
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={this.props.question4Obj.soreThroat}
+                        onChange={val => {
+                          this.handleCheckBoxChange(val, "soreThroat");
+                        }}
+                        inputProps={{ "aria-label": "primary checkbox" }}
+                        disabled={this.props.question4Obj.noneOfTheAbove}
+                      />
+                    }
+                    label={`${
+                      this.props.languageValue.value === "English"
+                        ? English.soreThroat
+                        : Hindi.soreThroat
+                    }`}
                   />
-                  {this.props.languageValue.value === "English"
-                    ? English.soreThroat
-                    : Hindi.soreThroat}
                   <br />
-                  <Checkbox
-                    checked={this.props.question4Obj.lossOfSmell}
-                    onChange={val => {
-                      this.handleCheckBoxChange(val, "lossOfSmell");
-                    }}
-                    inputProps={{ "aria-label": "primary checkbox" }}
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={this.props.question4Obj.lossOfSmell}
+                        onChange={val => {
+                          this.handleCheckBoxChange(val, "lossOfSmell");
+                        }}
+                        inputProps={{ "aria-label": "primary checkbox" }}
+                        disabled={this.props.question4Obj.noneOfTheAbove}
+                      />
+                    }
+                    label={`${
+                      this.props.languageValue.value === "English"
+                        ? English.lossOfSmell
+                        : Hindi.lossOfSmell
+                    }`}
                   />
-                  {this.props.languageValue.value === "English"
-                    ? English.lossOfSmell
-                    : Hindi.lossOfSmell}
                   <br />
-                  <Checkbox
-                    checked={this.props.question4Obj.weakness}
-                    onChange={val => {
-                      this.handleCheckBoxChange(val, "weakness");
-                    }}
-                    inputProps={{ "aria-label": "primary checkbox" }}
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={this.props.question4Obj.weakness}
+                        onChange={val => {
+                          this.handleCheckBoxChange(val, "weakness");
+                        }}
+                        inputProps={{ "aria-label": "primary checkbox" }}
+                        disabled={this.props.question4Obj.noneOfTheAbove}
+                      />
+                    }
+                    label={`${
+                      this.props.languageValue.value === "English"
+                        ? English.weakness
+                        : Hindi.weakness
+                    }`}
                   />
-                  {this.props.languageValue.value === "English"
-                    ? English.weakness
-                    : Hindi.weakness}
                   <br />
-                  <Checkbox
-                    checked={this.props.question4Obj.changeAppetite}
-                    onChange={val => {
-                      this.handleCheckBoxChange(val, "changeAppetite");
-                    }}
-                    inputProps={{ "aria-label": "primary checkbox" }}
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={this.props.question4Obj.changeAppetite}
+                        onChange={val => {
+                          this.handleCheckBoxChange(val, "changeAppetite");
+                        }}
+                        inputProps={{ "aria-label": "primary checkbox" }}
+                        disabled={this.props.question4Obj.noneOfTheAbove}
+                      />
+                    }
+                    label={`${
+                      this.props.languageValue.value === "English"
+                        ? English.changeAppetite
+                        : Hindi.changeAppetite
+                    }`}
                   />
-                  {this.props.languageValue.value === "English"
-                    ? English.changeAppetite
-                    : Hindi.changeAppetite}
                   <br />
-                  <Checkbox
-                    checked={this.props.question4Obj.severeCough}
-                    onChange={val => {
-                      this.handleCheckBoxChange(val, "severeCough");
-                    }}
-                    inputProps={{ "aria-label": "primary checkbox" }}
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={this.props.question4Obj.severeCough}
+                        onChange={val => {
+                          this.handleCheckBoxChange(val, "severeCough");
+                        }}
+                        inputProps={{ "aria-label": "primary checkbox" }}
+                        disabled={this.props.question4Obj.noneOfTheAbove}
+                      />
+                    }
+                    label={`${
+                      this.props.languageValue.value === "English"
+                        ? English.severeCough
+                        : Hindi.severeCough
+                    }`}
                   />
-                  {this.props.languageValue.value === "English"
-                    ? English.severeCough
-                    : Hindi.severeCough}
                   <br />
-                  <Checkbox
-                    checked={this.props.question4Obj.difficultyInBreathing}
-                    onChange={val => {
-                      this.handleCheckBoxChange(val, "difficultyInBreathing");
-                    }}
-                    inputProps={{ "aria-label": "primary checkbox" }}
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={this.props.question4Obj.difficultyInBreathing}
+                        onChange={val => {
+                          this.handleCheckBoxChange(
+                            val,
+                            "difficultyInBreathing"
+                          );
+                        }}
+                        inputProps={{ "aria-label": "primary checkbox" }}
+                        disabled={this.props.question4Obj.noneOfTheAbove}
+                      />
+                    }
+                    label={`${
+                      this.props.languageValue.value === "English"
+                        ? English.difficultyInBreathing
+                        : Hindi.difficultyInBreathing
+                    }`}
                   />
-                  {this.props.languageValue.value === "English"
-                    ? English.difficultyInBreathing
-                    : Hindi.difficultyInBreathing}
                   <br />
-                  <Checkbox
-                    checked={this.props.question4Obj.drowsiness}
-                    onChange={val => {
-                      this.handleCheckBoxChange(val, "drowsiness");
-                    }}
-                    inputProps={{ "aria-label": "primary checkbox" }}
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={this.props.question4Obj.drowsiness}
+                        onChange={val => {
+                          this.handleCheckBoxChange(val, "drowsiness");
+                        }}
+                        inputProps={{ "aria-label": "primary checkbox" }}
+                        disabled={this.props.question4Obj.noneOfTheAbove}
+                      />
+                    }
+                    label={`${
+                      this.props.languageValue.value === "English"
+                        ? English.drowsiness
+                        : Hindi.drowsiness
+                    }`}
                   />
-                  {this.props.languageValue.value === "English"
-                    ? English.drowsiness
-                    : Hindi.drowsiness}
                   <br />
-                  <Checkbox
-                    checked={this.props.question4Obj.painInChest}
-                    onChange={val => {
-                      this.handleCheckBoxChange(val, "painInChest");
-                    }}
-                    inputProps={{ "aria-label": "primary checkbox" }}
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={this.props.question4Obj.painInChest}
+                        onChange={val => {
+                          this.handleCheckBoxChange(val, "painInChest");
+                        }}
+                        inputProps={{ "aria-label": "primary checkbox" }}
+                        disabled={this.props.question4Obj.noneOfTheAbove}
+                      />
+                    }
+                    label={`${
+                      this.props.languageValue.value === "English"
+                        ? English.painInChest
+                        : Hindi.painInChest
+                    }`}
                   />
-                  {this.props.languageValue.value === "English"
-                    ? English.painInChest
-                    : Hindi.painInChest}
                   <br />
-                  <Checkbox
-                    checked={this.props.question4Obj.severeWeakness}
-                    onChange={val => {
-                      this.handleCheckBoxChange(val, "severeWeakness");
-                    }}
-                    inputProps={{ "aria-label": "primary checkbox" }}
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={this.props.question4Obj.severeWeakness}
+                        onChange={val => {
+                          this.handleCheckBoxChange(val, "severeWeakness");
+                        }}
+                        inputProps={{ "aria-label": "primary checkbox" }}
+                        disabled={this.props.question4Obj.noneOfTheAbove}
+                      />
+                    }
+                    label={`${
+                      this.props.languageValue.value === "English"
+                        ? English.severeWeakness
+                        : Hindi.severeWeakness
+                    }`}
                   />
-                  {this.props.languageValue.value === "English"
-                    ? English.severeWeakness
-                    : Hindi.severeWeakness}
                   <br />
-                  <Checkbox
-                    checked={this.props.question4Obj.noneOfTheAbove}
-                    onChange={val => {
-                      this.handleCheckBoxChange(val, "noneOfTheAbove");
-                    }}
-                    inputProps={{ "aria-label": "primary checkbox" }}
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={this.props.question4Obj.noneOfTheAbove}
+                        onChange={val => {
+                          this.handleCheckBoxChange(val, "noneOfTheAbove");
+                        }}
+                        inputProps={{ "aria-label": "primary checkbox" }}
+                        disabled={
+                          this.props.question4Obj.dryCough ||
+                          this.props.question4Obj.soreThroat ||
+                          this.props.question4Obj.lossOfSmell ||
+                          this.props.question4Obj.weakness ||
+                          this.props.question4Obj.changeAppetite ||
+                          this.props.question4Obj.severeCough ||
+                          this.props.question4Obj.difficultyInBreathing ||
+                          this.props.question4Obj.drowsiness ||
+                          this.props.question4Obj.painInChest ||
+                          this.props.question4Obj.severeWeakness
+                        }
+                      />
+                    }
+                    label={`${
+                      this.props.languageValue.value === "English"
+                        ? English.noneOfTheAbove
+                        : Hindi.noneOfTheAbove
+                    }`}
                   />
-                  {this.props.languageValue.value === "English"
-                    ? English.noneOfTheAbove
-                    : Hindi.noneOfTheAbove}
                 </div>
               </div>
               <div
@@ -216,18 +310,71 @@ class Question4 extends Component {
                 <Button
                   style={{
                     background: "#A4D160",
-                    border: " 1px solid #A4D160"
+                    border: " 1px solid #A4D160",
+                    width: "50%",
+                    right: "50%",
+                    position: "absolute",
+                    marginTop: "8px",
+                    marginRight: "1x"
+                  }}
+                  onClick={() => {
+                    this.props.openQuestionPage("3");
+                  }}
+                  size="lg"
+                  block
+                >
+                  <FontAwesomeIcon
+                    icon={faArrowLeft}
+                    color="white"
+                    style={{
+                      marginRight: "3px",
+                      fontSize: "13px",
+                      marginBottom: "3px"
+                    }}
+                  />
+                  Prev
+                </Button>
+                <Button
+                  style={{
+                    background: "#A4D160",
+                    border: " 1px solid #A4D160",
+                    width: "50%",
+                    position: "relative",
+                    left: "50%",
+                    marginLeft: "1px"
                   }}
                   size="lg"
                   block
                   onClick={() => {
-                    this.props.openQuestionPage("5");
                     this.props.fetchRawData();
+                    this.props.openQuestionPage("5");
                   }}
+                  disabled={
+                    !this.props.question4Obj.dryCough &&
+                    !this.props.question4Obj.soreThroat &&
+                    !this.props.question4Obj.lossOfSmell &&
+                    !this.props.question4Obj.weakness &&
+                    !this.props.question4Obj.changeAppetite &&
+                    !this.props.question4Obj.severeCough &&
+                    !this.props.question4Obj.difficultyInBreathing &&
+                    !this.props.question4Obj.drowsiness &&
+                    !this.props.question4Obj.painInChest &&
+                    !this.props.question4Obj.severeWeakness &&
+                    !this.props.question4Obj.noneOfTheAbove
+                  }
                 >
                   {this.props.languageValue.value === "English"
                     ? English.next
                     : Hindi.next}
+                  <FontAwesomeIcon
+                    icon={faArrowRight}
+                    color="white"
+                    style={{
+                      marginLeft: "3px",
+                      fontSize: "13px",
+                      marginBottom: "3px"
+                    }}
+                  />
                 </Button>
               </div>
             </Col>

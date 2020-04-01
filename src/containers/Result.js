@@ -126,6 +126,7 @@ class Question3 extends Component {
     }
   }
   componentDidMount() {
+    console.log("jgv:");
     window.setTimeout(() => {
       this.riskCalculator(
         this.props.enteredAgeByUser,
@@ -268,7 +269,7 @@ class Question3 extends Component {
     );
 
     if (contact_with_covid_paitent === "yes") {
-      total_percentage += 23;
+      total_percentage += 24;
     }
     let age_0_20 = 0,
       age_20_40 = 0,
@@ -307,7 +308,9 @@ class Question3 extends Component {
     }
 
     console.log("round of number", Math.round(total_percentage));
-    this.setState({ finalResultPercentage: Math.round(total_percentage) });
+    this.setState({
+      finalResultPercentage: Math.round(total_percentage)
+    });
   }
 
   render() {
@@ -394,12 +397,15 @@ class Question3 extends Component {
                     style={{ width: "50%", padding: "2px", flexGrow: "5" }}
                   >
                     <GaugeChart
-                      id="gauge-chart4"
-                      nrOfLevels={3}
+                      id="gauge-chart5"
+                      nrOfLevels={420}
                       arcPadding={0}
                       cornerRadius={1}
                       percent={this.state.finalResultPercentage / 100}
+                      arcsLength={[0.3, 0.3, 0.4]}
                       hideText={true}
+                      animate={true}
+                      animDelay={500}
                     />
                   </div>
                   <div
@@ -412,7 +418,7 @@ class Question3 extends Component {
                     }}
                   >
                     {this.state.finalResultPercentage > 0 &&
-                      this.state.finalResultPercentage < 30 && (
+                      this.state.finalResultPercentage <= 30 && (
                         <span style={{ fontSize: "24px", color: "#A4D160" }}>
                           {this.props.languageValue.value === "English"
                             ? English.lowRisk
@@ -420,7 +426,7 @@ class Question3 extends Component {
                         </span>
                       )}
                     {this.state.finalResultPercentage > 30 &&
-                      this.state.finalResultPercentage < 60 && (
+                      this.state.finalResultPercentage <= 60 && (
                         <span style={{ fontSize: "24px", color: "#ffc400" }}>
                           {this.props.languageValue.value === "English"
                             ? English.moderate
@@ -456,11 +462,23 @@ class Question3 extends Component {
                     : Hindi.basedOnAssessment1}{" "}
                   {this.state.finalResultPercentage > 0 &&
                   this.state.finalResultPercentage < 30
-                    ? "Low Risk "
+                    ? `${
+                        this.props.languageValue.value === "English"
+                          ? English.lowRisk
+                          : Hindi.lowRisk
+                      }`
                     : this.state.finalResultPercentage > 30 &&
                       this.state.finalResultPercentage < 60
-                    ? "Moderate Risk "
-                    : "High Risk "}
+                    ? `${
+                        this.props.languageValue.value === "English"
+                          ? English.moderate
+                          : Hindi.moderate
+                      }`
+                    : `${
+                        this.props.languageValue.value === "English"
+                          ? English.highRisk
+                          : Hindi.highRisk
+                      }`}
                   {this.props.languageValue.value === "English"
                     ? English.ofCovid
                     : Hindi.ofCovid}
@@ -792,7 +810,7 @@ class Question3 extends Component {
                       ? English.findAllHelpline
                       : Hindi.findAllHelpline}{" "}
                     <a
-                      href="https://www.mohfw.gov.in/coronvavirushelplinenumber.pdf"
+                      href="https://www.mohfw.gov.in/pdf/coronvavirushelplinenumber.pdf"
                       target="_blank"
                       style={{ color: "blue" }}
                     >

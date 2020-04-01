@@ -131,11 +131,11 @@ class Home extends Component {
                     </a>
                   </div>
                 </div>
-                <h4 style={{ marginTop: "10%" }}>
+                <h5 style={{ marginTop: "10%" }}>
                   {this.props.languageValue.value === "English"
                     ? English.heading1
                     : Hindi.heading1}
-                </h4>
+                </h5>
                 <p style={{ fontSize: "15px" }}>
                   {this.props.languageValue.value === "English"
                     ? English.heading2

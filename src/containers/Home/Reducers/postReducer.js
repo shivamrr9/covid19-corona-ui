@@ -9,7 +9,7 @@ const initialState = {
   showDisclaimer: false,
   currentPageNumber: 0,
   questionProgress: 20,
-  enteredAgeByUser: 20,
+  enteredAgeByUser: 10,
   stateSelectedByUser: "",
   districtOptions: [],
   districtSelectedByUser: "",

@@ -10,6 +10,9 @@ import styles from "./Home/styles.scss";
 import { openQuestionPage, setQuestion2Data } from "../containers/Home/actions";
 import "react-input-range/lib/css/index.css";
 import Checkbox from "@material-ui/core/Checkbox";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 class Question2 extends Component {
   handleQuestion2(val, type) {
@@ -55,7 +58,7 @@ class Question2 extends Component {
                 className="main-body"
                 style={{
                   textAlign: "center",
-                  marginTop: "35%",
+                  marginTop: "32%",
                   backgroundImage: `url(https://res.cloudinary.com/arorashivam-com-resume/image/upload/v1585442509/bg_2_dvlffd.png)`,
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "cover",
@@ -72,74 +75,107 @@ class Question2 extends Component {
                   className="checkBox-group"
                   style={{
                     marginTop: "30px",
-                    paddingLeft: "9%"
+                    paddingLeft: "10%"
                   }}
                   align="left"
                 >
-                  <Checkbox
-                    checked={this.props.question2Obj.diabetes}
-                    onChange={val => {
-                      this.handleQuestion2(val, "diabetes");
-                    }}
-                    inputProps={{ "aria-label": "primary checkbox" }}
-                    disabled={this.props.question2Obj.noneOfTheAbove}
-                  />
-                  {this.props.languageValue.value === "English"
-                    ? English.diabetes
-                    : Hindi.diabetes}
-                  <br />
-                  <Checkbox
-                    checked={this.props.question2Obj.heartDisease}
-                    onChange={val => {
-                      this.handleQuestion2(val, "heartDisease");
-                    }}
-                    inputProps={{ "aria-label": "primary checkbox" }}
-                    disabled={this.props.question2Obj.noneOfTheAbove}
-                  />
-                  {this.props.languageValue.value === "English"
-                    ? English.heartDisease
-                    : Hindi.heartDisease}
-                  <br />
-                  <Checkbox
-                    checked={this.props.question2Obj.highBloodPressure}
-                    onChange={val => {
-                      this.handleQuestion2(val, "highBloodPressure");
-                    }}
-                    inputProps={{ "aria-label": "primary checkbox" }}
-                    disabled={this.props.question2Obj.noneOfTheAbove}
-                  />
-                  {this.props.languageValue.value === "English"
-                    ? English.bloodPressure
-                    : Hindi.bloodPressure}
-                  <br />
-                  <Checkbox
-                    checked={this.props.question2Obj.kidneyOrLiverDisease}
-                    onChange={val => {
-                      this.handleQuestion2(val, "kidneyOrLiverDisease");
-                    }}
-                    inputProps={{ "aria-label": "primary checkbox" }}
-                    disabled={this.props.question2Obj.noneOfTheAbove}
-                  />
-                  {this.props.languageValue.value === "English"
-                    ? English.kidneyLung
-                    : Hindi.kidneyLung}
-                  <br />
-                  <Checkbox
-                    checked={this.props.question2Obj.noneOfTheAbove}
-                    onChange={val => {
-                      this.handleQuestion2(val, "noneOfTheAbove");
-                    }}
-                    inputProps={{ "aria-label": "primary checkbox" }}
-                    disabled={
-                      this.props.question2Obj.diabetes ||
-                      this.props.question2Obj.heartDisease ||
-                      this.props.question2Obj.highBloodPressure ||
-                      this.props.question2Obj.kidneyOrLiverDisease
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={this.props.question2Obj.diabetes}
+                        onChange={val => {
+                          this.handleQuestion2(val, "diabetes");
+                        }}
+                        inputProps={{ "aria-label": "primary checkbox" }}
+                        disabled={this.props.question2Obj.noneOfTheAbove}
+                      />
                     }
+                    label={`${
+                      this.props.languageValue.value === "English"
+                        ? English.diabetes
+                        : Hindi.diabetes
+                    }`}
                   />
-                  {this.props.languageValue.value === "English"
-                    ? English.noneOfTheAbove
-                    : Hindi.noneOfTheAbove}
+
+                  <br />
+
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={this.props.question2Obj.heartDisease}
+                        onChange={val => {
+                          this.handleQuestion2(val, "heartDisease");
+                        }}
+                        inputProps={{ "aria-label": "primary checkbox" }}
+                        disabled={this.props.question2Obj.noneOfTheAbove}
+                      />
+                    }
+                    label={`${
+                      this.props.languageValue.value === "English"
+                        ? English.heartDisease
+                        : Hindi.heartDisease
+                    }`}
+                  />
+
+                  <br />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={this.props.question2Obj.highBloodPressure}
+                        onChange={val => {
+                          this.handleQuestion2(val, "highBloodPressure");
+                        }}
+                        inputProps={{ "aria-label": "primary checkbox" }}
+                        disabled={this.props.question2Obj.noneOfTheAbove}
+                      />
+                    }
+                    label={`${
+                      this.props.languageValue.value === "English"
+                        ? English.bloodPressure
+                        : Hindi.bloodPressure
+                    }`}
+                  />
+                  <br />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={this.props.question2Obj.kidneyOrLiverDisease}
+                        onChange={val => {
+                          this.handleQuestion2(val, "kidneyOrLiverDisease");
+                        }}
+                        inputProps={{ "aria-label": "primary checkbox" }}
+                        disabled={this.props.question2Obj.noneOfTheAbove}
+                      />
+                    }
+                    label={`${
+                      this.props.languageValue.value === "English"
+                        ? English.kidneyLung
+                        : Hindi.kidneyLung
+                    }`}
+                  />
+                  <br />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={this.props.question2Obj.noneOfTheAbove}
+                        onChange={val => {
+                          this.handleQuestion2(val, "noneOfTheAbove");
+                        }}
+                        inputProps={{ "aria-label": "primary checkbox" }}
+                        disabled={
+                          this.props.question2Obj.diabetes ||
+                          this.props.question2Obj.heartDisease ||
+                          this.props.question2Obj.highBloodPressure ||
+                          this.props.question2Obj.kidneyOrLiverDisease
+                        }
+                      />
+                    }
+                    label={`${
+                      this.props.languageValue.value === "English"
+                        ? English.noneOfTheAbove
+                        : Hindi.noneOfTheAbove
+                    }`}
+                  />
                 </div>
               </div>
               <div
@@ -153,17 +189,64 @@ class Question2 extends Component {
                 <Button
                   style={{
                     background: "#A4D160",
-                    border: " 1px solid #A4D160"
+                    border: " 1px solid #A4D160",
+                    width: "50%",
+                    right: "50%",
+                    position: "absolute",
+                    marginTop: "8px",
+                    marginRight: "1x"
+                  }}
+                  onClick={() => {
+                    this.props.openQuestionPage("1");
+                  }}
+                  size="lg"
+                  block
+                >
+                  <FontAwesomeIcon
+                    icon={faArrowLeft}
+                    color="white"
+                    style={{
+                      marginRight: "3px",
+                      fontSize: "13px",
+                      marginBottom: "3px"
+                    }}
+                  />
+                  Prev
+                </Button>
+                <Button
+                  style={{
+                    background: "#A4D160",
+                    border: " 1px solid #A4D160",
+                    width: "50%",
+                    position: "relative",
+                    left: "50%",
+                    marginLeft: "1px"
                   }}
                   size="lg"
                   block
                   onClick={() => {
                     this.props.openQuestionPage("3");
                   }}
+                  disabled={
+                    !this.props.question2Obj.diabetes &&
+                    !this.props.question2Obj.heartDisease &&
+                    !this.props.question2Obj.highBloodPressure &&
+                    !this.props.question2Obj.kidneyOrLiverDisease &&
+                    !this.props.question2Obj.noneOfTheAbove
+                  }
                 >
                   {this.props.languageValue.value === "English"
                     ? English.next
                     : Hindi.next}
+                  <FontAwesomeIcon
+                    icon={faArrowRight}
+                    color="white"
+                    style={{
+                      marginLeft: "3px",
+                      fontSize: "13px",
+                      marginBottom: "3px"
+                    }}
+                  />
                 </Button>
               </div>
             </Col>
