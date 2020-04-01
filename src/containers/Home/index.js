@@ -68,7 +68,7 @@ class Home extends Component {
                         onClick={() => {
                           this.handleLangChange("English");
                         }}
-                        style={{ backgroundColor: "#bdbdbd" }}
+                        style={{ backgroundColor: "#bdbdbd", width: "400px" }}
                       >
                         <span style={{ color: "white" }}>English</span>
                       </Button>
@@ -84,7 +84,15 @@ class Home extends Component {
                           this.handleLangChange("Hindi");
                         }}
                       >
-                        <span style={{ color: "white" }}>हिन्दी</span>
+                        <span
+                          style={{
+                            color: "white",
+                            paddingLeft: "7px",
+                            paddingRight: "7px"
+                          }}
+                        >
+                          हिन्दी
+                        </span>
                       </Button>
                     </ButtonGroup>
                   </div>
@@ -96,8 +104,10 @@ class Home extends Component {
                       paddingRight: "7px",
                       borderRadius: "18px",
                       position: "fixed",
-                      right: "4%"
+                      right: "4%",
+                      marginTop: "3px"
                     }}
+                    className="blink_me"
                   >
                     <a
                       href="https://coronariskcalculator.in/news"
@@ -134,7 +144,8 @@ class Home extends Component {
                 <img
                   src="https://res.cloudinary.com/arorashivam-com-resume/image/upload/v1585416392/corona_ytm8cs.png"
                   alt="corona_virum_image"
-                  style={{ marginTop: "15px" }}
+                  style={{ marginTop: "13px" }}
+                  height="110px"
                 />
 
                 <img

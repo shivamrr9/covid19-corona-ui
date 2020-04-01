@@ -24,11 +24,16 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Select from "react-select";
 import { stateOptions } from "../configConstants";
 
+const colorStyles = {
+  control: styles => ({ ...styles, marginBottom: "5px" })
+};
+
 class Question1 extends Component {
   handleCityChange(val) {
     this.props.citySelected(val);
   }
   handleDistrictChange(val) {
+    console.log("value", val);
     this.props.districtSelected(val);
   }
   handleStateChange(val) {
@@ -47,7 +52,7 @@ class Question1 extends Component {
         <Container>
           <Row className="col-center">
             <Col md={3}></Col>
-            <Col md={6} style={{ height: "75vh" }}>
+            <Col md={6} style={{ height: "80vh" }}>
               <div style={{ width: "100%" }}>
                 <img
                   src="https://res.cloudinary.com/arorashivam-com-resume/image/upload/v1585416392/corona_ytm8cs.png"
@@ -80,7 +85,7 @@ class Question1 extends Component {
                 className="main-body"
                 style={{
                   textAlign: "center",
-                  marginTop: "35%",
+                  marginTop: "27%",
                   backgroundImage: `url(https://res.cloudinary.com/arorashivam-com-resume/image/upload/v1585442509/bg_2_dvlffd.png)`,
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "cover",
@@ -89,7 +94,7 @@ class Question1 extends Component {
               >
                 <div
                   className="citySelection"
-                  style={{ marginBottom: "20px", padding: "10px" }}
+                  style={{ marginBottom: "15px", padding: "15px" }}
                 >
                   <h6>
                     {this.props.languageValue.value === "English"
@@ -97,6 +102,7 @@ class Question1 extends Component {
                       : Hindi.selectCity}
                   </h6>
                   <Select
+                    styles={colorStyles}
                     placeholder={
                       this.props.languageValue.value === "English"
                         ? English.state
@@ -111,6 +117,7 @@ class Question1 extends Component {
                     style={{ marginBottom: "10px" }}
                   />
                   <Select
+                    styles={colorStyles}
                     placeholder={
                       this.props.languageValue.value === "English"
                         ? English.district
@@ -133,6 +140,7 @@ class Question1 extends Component {
                     </span>
                   ) : (
                     <Select
+                      styles={colorStyles}
                       placeholder={
                         this.props.languageValue.value === "English"
                           ? English.city
@@ -155,13 +163,26 @@ class Question1 extends Component {
                       ? English.howOld
                       : Hindi.howOld}
                   </h6>
-                  <p style={{ fontSize: "28px", marginBottom: "4px" }}>
-                    {this.props.enteredAgeByUser}
-                  </p>
+                  <input
+                    type="number"
+                    min="5"
+                    max="90"
+                    style={{
+                      width: "40px",
+                      border: "1px solid grey",
+                      height: "40px",
+                      textAlign: "center",
+                      marginBottom: "5px"
+                    }}
+                    value={this.props.enteredAgeByUser}
+                    onChange={val => {
+                      this.handleInputAge(val.target.value);
+                    }}
+                  />
                   <InputRange
                     maxValue={90}
-                    minValue={10}
-                    value={this.props.enteredAgeByUser}
+                    minValue={0}
+                    value={Number(this.props.enteredAgeByUser)}
                     onChange={value => {
                       this.handleInputAge(value);
                     }}
@@ -172,9 +193,9 @@ class Question1 extends Component {
                 <div
                   className="gender-container"
                   align="center"
-                  style={{ marginTop: "8%" }}
+                  style={{ marginTop: "6%", marginBottom: "25%" }}
                 >
-                  <h6>
+                  <h6 style={{ marginBottom: "0px", padding: "3px" }}>
                     {this.props.languageValue.value === "English"
                       ? English.selectGender
                       : Hindi.selectGender}

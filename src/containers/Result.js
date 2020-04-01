@@ -14,7 +14,6 @@ import Rating from "react-rating";
 import {
   openQuestionPage,
   travelHistoryAns,
-  setResultPrecentage,
   sendEmail,
   inputEmailByUser
 } from "../containers/Home/actions";
@@ -38,7 +37,8 @@ class Question3 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showRatingContainer: true
+      showRatingContainer: true,
+      finalResultPercentage: 0
     };
   }
   showRatingBox(showRating) {
@@ -85,15 +85,15 @@ class Question3 extends Component {
             ? English.iAmAt
             : Hindi.iAmAt
         } ${
-          this.props.finalResultPercentage > 0 &&
-          this.props.finalResultPercentage < 30
+          this.state.finalResultPercentage > 0 &&
+          this.state.finalResultPercentage < 30
             ? `${
                 this.props.languageValue.value === "English"
                   ? English.lowRisk
                   : Hindi.lowRisk
               }`
-            : this.props.finalResultPercentage > 30 &&
-              this.props.finalResultPercentage < 60
+            : this.state.finalResultPercentage > 30 &&
+              this.state.finalResultPercentage < 60
             ? `${
                 this.props.languageValue.value === "English"
                   ? English.moderate
@@ -150,7 +150,7 @@ class Question3 extends Component {
         this.props.question4Obj.severeWeakness,
         this.props.contactAnsSelectedByUser
       );
-    }, 250);
+    }, 300);
   }
 
   preConditions(diabetes, blood_pressure, heart_problem, kidney_lung_disease) {
@@ -307,11 +307,12 @@ class Question3 extends Component {
     }
 
     console.log("round of number", Math.round(total_percentage));
-    this.props.setResultPrecentage(Math.round(total_percentage));
+    this.setState({ finalResultPercentage: Math.round(total_percentage) });
   }
 
   render() {
     console.log("props :", this.props);
+    console.log("states: ", this.state);
     return (
       <div>
         <Container>
@@ -353,6 +354,7 @@ class Question3 extends Component {
                     position: "fixed",
                     right: "4%"
                   }}
+                  className="blink_me_result"
                 >
                   <a
                     href="https://coronariskcalculator.in/news"
@@ -396,7 +398,7 @@ class Question3 extends Component {
                       nrOfLevels={3}
                       arcPadding={0}
                       cornerRadius={1}
-                      percent={this.props.finalResultPercentage / 100}
+                      percent={this.state.finalResultPercentage / 100}
                       hideText={true}
                     />
                   </div>
@@ -409,23 +411,23 @@ class Question3 extends Component {
                       marginTop: "3px"
                     }}
                   >
-                    {this.props.finalResultPercentage > 0 &&
-                      this.props.finalResultPercentage < 30 && (
+                    {this.state.finalResultPercentage > 0 &&
+                      this.state.finalResultPercentage < 30 && (
                         <span style={{ fontSize: "24px", color: "#A4D160" }}>
                           {this.props.languageValue.value === "English"
                             ? English.lowRisk
                             : Hindi.lowRisk}
                         </span>
                       )}
-                    {this.props.finalResultPercentage > 30 &&
-                      this.props.finalResultPercentage < 60 && (
+                    {this.state.finalResultPercentage > 30 &&
+                      this.state.finalResultPercentage < 60 && (
                         <span style={{ fontSize: "24px", color: "#ffc400" }}>
                           {this.props.languageValue.value === "English"
                             ? English.moderate
                             : Hindi.moderate}
                         </span>
                       )}
-                    {this.props.finalResultPercentage > 60 && (
+                    {this.state.finalResultPercentage > 60 && (
                       <span style={{ fontSize: "24px", color: "#FF0100" }}>
                         {this.props.languageValue.value === "English"
                           ? English.highRisk
@@ -452,11 +454,11 @@ class Question3 extends Component {
                   {this.props.languageValue.value === "English"
                     ? English.basedOnAssessment1
                     : Hindi.basedOnAssessment1}{" "}
-                  {this.props.finalResultPercentage > 0 &&
-                  this.props.finalResultPercentage < 30
+                  {this.state.finalResultPercentage > 0 &&
+                  this.state.finalResultPercentage < 30
                     ? "Low Risk "
-                    : this.props.finalResultPercentage > 30 &&
-                      this.props.finalResultPercentage < 60
+                    : this.state.finalResultPercentage > 30 &&
+                      this.state.finalResultPercentage < 60
                     ? "Moderate Risk "
                     : "High Risk "}
                   {this.props.languageValue.value === "English"
@@ -528,15 +530,15 @@ class Question3 extends Component {
                               ? English.iAmAt
                               : Hindi.iAmAt
                           } ${
-                            this.props.finalResultPercentage > 0 &&
-                            this.props.finalResultPercentage < 30
+                            this.state.finalResultPercentage > 0 &&
+                            this.state.finalResultPercentage < 30
                               ? `${
                                   this.props.languageValue.value === "English"
                                     ? English.lowRisk
                                     : Hindi.lowRisk
                                 }`
-                              : this.props.finalResultPercentage > 30 &&
-                                this.props.finalResultPercentage < 60
+                              : this.state.finalResultPercentage > 30 &&
+                                this.state.finalResultPercentage < 60
                               ? `${
                                   this.props.languageValue.value === "English"
                                     ? English.moderate
@@ -568,15 +570,15 @@ class Question3 extends Component {
                               ? English.iAmAt
                               : Hindi.iAmAt
                           } ${
-                            this.props.finalResultPercentage > 0 &&
-                            this.props.finalResultPercentage < 30
+                            this.state.finalResultPercentage > 0 &&
+                            this.state.finalResultPercentage < 30
                               ? `${
                                   this.props.languageValue.value === "English"
                                     ? English.lowRisk
                                     : Hindi.lowRisk
                                 }`
-                              : this.props.finalResultPercentage > 30 &&
-                                this.props.finalResultPercentage < 60
+                              : this.state.finalResultPercentage > 30 &&
+                                this.state.finalResultPercentage < 60
                               ? `${
                                   this.props.languageValue.value === "English"
                                     ? English.moderate
@@ -1047,7 +1049,6 @@ const mapStateToProps = state => ({
   tempratureSelectedByUser: state.postReducer.tempratureSelectedByUser,
   contactAnsSelectedByUser: state.postReducer.contactAnsSelectedByUser,
   rawData: state.postReducer.rawData,
-  finalResultPercentage: state.postReducer.finalResultPercentage,
   enteredEmailByUser: state.postReducer.enteredEmailByUser,
   isMailSent: state.postReducer.isMailSent
 });
@@ -1055,7 +1056,6 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
   openQuestionPage,
   travelHistoryAns,
-  setResultPrecentage,
   sendEmail,
   inputEmailByUser
 })(Question3);

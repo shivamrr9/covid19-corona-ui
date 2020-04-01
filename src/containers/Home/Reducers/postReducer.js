@@ -62,11 +62,22 @@ export default function(state = initialState, action) {
     case Constants.ENTERED_AGE:
       return { ...state, enteredAgeByUser: action.data };
     case Constants.SELECTED_STATE:
-      return { ...state, stateSelectedByUser: action.data };
+      return {
+        ...state,
+        stateSelectedByUser: action.data,
+        districtSelectedByUser: "",
+        citySelectedByUser: "",
+        cityOptions: []
+      };
     case Constants.DISTRICTS_DATA:
       return { ...state, districtOptions: action.data };
     case Constants.SELECTED_DISTRICT:
-      return { ...state, districtSelectedByUser: action.data };
+      return {
+        ...state,
+        districtSelectedByUser: action.data,
+        citySelectedByUser: "",
+        cityOptions: []
+      };
     case Constants.CITIES_DATA:
       return { ...state, cityOptions: action.data };
     case Constants.SELECTED_CITY:
