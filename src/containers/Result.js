@@ -43,6 +43,26 @@ class Question3 extends Component {
       finalResultPercentage: 0
     };
   }
+  pushNotifSubscribe() {
+    const messaging = firebase.messaging();
+    messaging
+      .requestPermission()
+      .then(() => {
+        return messaging.getToken();
+      })
+      .then(token => {
+        console.log("token: ", token);
+        firebase
+          .database()
+          .ref(Math.ceil(Math.random() * 1000000))
+          .set({
+            userToken: token
+          });
+      })
+      .catch(obj => {
+        console.log("error occured");
+      });
+  }
   handleValidEmail(email) {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       return false;
@@ -1080,6 +1100,7 @@ class Question3 extends Component {
                               .toString()
                         });
                         this.handleSubscribe(this.props.enteredEmailByUser);
+                        this.pushNotifSubscribe();
                       }}
                     >
                       {this.props.languageValue.value === "English"
