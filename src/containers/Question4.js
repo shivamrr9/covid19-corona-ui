@@ -26,7 +26,6 @@ class Question4 extends Component {
     this.props.setQuestion4Data(val.target.checked, type);
   }
   render() {
-    console.log("props :", this.props);
     return (
       <div>
         <Container>
@@ -83,7 +82,7 @@ class Question4 extends Component {
                     paddingLeft: "10%",
                     overflow: "scroll",
                     height: "80%",
-                    paddingBottom: "25px"
+                    paddingBottom: "30px"
                   }}
                   align="left"
                 >
@@ -333,7 +332,9 @@ class Question4 extends Component {
                       marginBottom: "3px"
                     }}
                   />
-                  Prev
+                  {this.props.languageValue.value === "English"
+                    ? English.prev
+                    : Hindi.prev}
                 </Button>
                 <Button
                   style={{

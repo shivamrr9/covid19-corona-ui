@@ -326,7 +326,7 @@ class Question3 extends Component {
 
   render() {
     console.log("props :", this.props);
-    console.log("states: ", this.state);
+
     return (
       <div>
         <Container>

@@ -7,7 +7,6 @@ import Button from "react-bootstrap/Button";
 import { English, Hindi } from "../language";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import styles from "./Home/styles.scss";
-import InputRange from "react-input-range";
 import {
   selectedTemprature,
   selectedContactAns,
@@ -29,7 +28,6 @@ class Question5 extends Component {
     this.props.selectedTemprature(event.target.value);
   }
   render() {
-    console.log("props :", this.props);
     return (
       <div>
         <Container>
@@ -220,7 +218,9 @@ class Question5 extends Component {
                       marginBottom: "3px"
                     }}
                   />
-                  Prev
+                  {this.props.languageValue.value === "English"
+                    ? English.prev
+                    : Hindi.prev}
                 </Button>
                 <Button
                   style={{

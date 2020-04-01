@@ -20,7 +20,6 @@ class Question2 extends Component {
     this.props.setQuestion2Data(val.target.checked, type);
   }
   render() {
-    console.log("props :", this.props);
     return (
       <div>
         <Container>
@@ -212,7 +211,9 @@ class Question2 extends Component {
                       marginBottom: "3px"
                     }}
                   />
-                  Prev
+                  {this.props.languageValue.value === "English"
+                    ? English.prev
+                    : Hindi.prev}
                 </Button>
                 <Button
                   style={{

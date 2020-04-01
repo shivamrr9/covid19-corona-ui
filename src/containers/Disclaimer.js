@@ -21,7 +21,6 @@ class Disclaimer extends Component {
     this.props.toggleShowDisclaimer(false);
   }
   render() {
-    console.log("props :", this.props);
     return (
       <div>
         <Container>

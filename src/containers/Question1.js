@@ -40,7 +40,6 @@ class Question1 extends Component {
     this.props.citySelected(val);
   }
   handleDistrictChange(val) {
-    console.log("value", val);
     this.props.districtSelected(val);
   }
   handleStateChange(val) {
@@ -59,7 +58,6 @@ class Question1 extends Component {
     this.props.genderSelected(event.target.value);
   }
   render() {
-    console.log("props :", this.props);
     return (
       <div>
         <Container>
@@ -291,7 +289,9 @@ class Question1 extends Component {
                       marginBottom: "3px"
                     }}
                   />
-                  Back
+                  {this.props.languageValue.value === "English"
+                    ? English.back
+                    : Hindi.back}
                 </Button>
                 <Button
                   style={{

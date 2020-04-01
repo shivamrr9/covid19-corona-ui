@@ -103,7 +103,9 @@ export const English = {
   consultPhysician:
     " ! Consult a Physician and find your nearest testing facility here : ",
   clickHere: "Click Here",
-  precautionaryMeasuresVideo: "Precaution Measures Video"
+  precautionaryMeasuresVideo: "Precaution Measures Video",
+  back: "Back",
+  prev: "Prev"
 };
 
 export const Hindi = {
@@ -209,5 +211,7 @@ export const Hindi = {
   consultPhysician:
     "| एक चिकित्सक से परामर्श करें और अपनी निकटतम परीक्षण सुविधा यहां पाएं: ",
   clickHere: "यहाँ क्लिक करें",
-  precautionaryMeasuresVideo: "वीडियो के माध्यम से सावधानियां"
+  precautionaryMeasuresVideo: "वीडियो के माध्यम से सावधानियां",
+  back: "पीछे",
+  prev: "पीछे"
 };

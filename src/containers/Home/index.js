@@ -9,8 +9,6 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import styles from "./styles.scss";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { English, Hindi } from "../../language";
-import Select from "react-select";
-import { languageOptions } from "../../configConstants";
 import { languageChange, toggleShowDisclaimer } from "./actions";
 import Disclaimer from "../Disclaimer";
 import Question1 from "../Question1";
@@ -41,7 +39,6 @@ class Home extends Component {
     this.props.toggleShowDisclaimer(true);
   }
   render() {
-    console.log("props :", this.props);
     return (
       <div>
         {this.props.showDisclaimer && this.props.currentPageNumber == 0 && (

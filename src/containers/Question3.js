@@ -21,7 +21,6 @@ class Question3 extends Component {
     this.props.travelHistoryAns(event.target.value);
   }
   render() {
-    console.log("props :", this.props);
     return (
       <div>
         <Container>
@@ -141,7 +140,9 @@ class Question3 extends Component {
                       marginBottom: "3px"
                     }}
                   />
-                  Prev
+                  {this.props.languageValue.value === "English"
+                    ? English.prev
+                    : Hindi.prev}
                 </Button>
                 <Button
                   style={{
