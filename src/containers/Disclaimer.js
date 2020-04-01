@@ -32,7 +32,7 @@ class Disclaimer extends Component {
               <h5
                 style={{
                   paddingLeft: "10px",
-                  fontFamily: "arial",
+                  fontFamily: "serif",
                   paddingRight: "10px",
                   fontSize: "18px",
                   paddingTop: "15px",

@@ -921,7 +921,7 @@ class Question3 extends Component {
                   {!this.props.isMailSent && <br />}
                   {!this.props.isMailSent && (
                     <input
-                      style={{ width: "72%", borderRadius: "7px" }}
+                      style={{ width: "68%", borderRadius: "7px" }}
                       type="email"
                       name="email"
                       placeholder="Email"
