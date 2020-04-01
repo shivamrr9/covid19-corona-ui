@@ -11,5 +11,5 @@
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_image": "https://res.cloudinary.com/arorashivam-com-resume/image/upload/v1585554685/virus_qhbwob.png"
+  "background_image": "./favicon.ico"
 }
