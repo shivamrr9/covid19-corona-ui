@@ -43,6 +43,12 @@ class Question3 extends Component {
       finalResultPercentage: 0
     };
   }
+  handleValidEmail(email) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      return false;
+    }
+    return true;
+  }
   showRatingBox(showRating) {
     this.setState({
       showRatingContainer: true
@@ -122,7 +128,7 @@ class Question3 extends Component {
 
       sharePromise
         .then(function() {
-          console.log("Shareing successfull");
+          console.log("Sharaing successfull");
         })
         .catch(function() {
           console.log("Sharing failed");
@@ -132,7 +138,6 @@ class Question3 extends Component {
     }
   }
   componentDidMount() {
-    console.log("jgv:");
     window.setTimeout(() => {
       this.riskCalculator(
         this.props.enteredAgeByUser,
@@ -1062,10 +1067,17 @@ class Question3 extends Component {
                         border: " 1px solid #A4D160",
                         marginTop: "10px"
                       }}
+                      disabled={this.handleValidEmail(
+                        this.props.enteredEmailByUser
+                      )}
                       onClick={() => {
                         ReactGA.event({
-                          category: "Subscribe",
-                          action: "Subscribe clicked on Results Page"
+                          category: "Subscribe Newsletter",
+                          action:
+                            "Subscribe clicked on Results Page:" +
+                            this.props.enteredEmailByUser
+                              .split("@")[0]
+                              .toString()
                         });
                         this.handleSubscribe(this.props.enteredEmailByUser);
                       }}
