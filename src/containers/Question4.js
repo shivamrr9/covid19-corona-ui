@@ -19,6 +19,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import ReactGA from "react-ga";
 
 class Question4 extends Component {
   handleCheckBoxChange(val, type) {
@@ -347,6 +348,10 @@ class Question4 extends Component {
                   block
                   onClick={() => {
                     this.props.fetchRawData();
+                    ReactGA.event({
+                      category: "Click",
+                      action: "Next Clicked on 4th Question Page"
+                    });
                     this.props.openQuestionPage("5");
                   }}
                   disabled={

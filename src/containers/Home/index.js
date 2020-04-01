@@ -21,14 +21,23 @@ import Question5 from "../Question5";
 import Result from "../Result";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDotCircle } from "@fortawesome/free-solid-svg-icons";
+import ReactGA from "react-ga";
 
 class Home extends Component {
   handleLangChange(val) {
+    ReactGA.event({
+      category: "Language Change",
+      action: "Changed to language " + val
+    });
     let langObj = { value: val, label: val };
     this.props.languageChange(langObj);
   }
 
   handleShowDisclaimer() {
+    ReactGA.event({
+      category: "Click",
+      action: "Click Here To Proceed On Landing Page"
+    });
     this.props.toggleShowDisclaimer(true);
   }
   render() {
@@ -108,6 +117,12 @@ class Home extends Component {
                       marginTop: "3px"
                     }}
                     className="blink_me"
+                    onClick={() => {
+                      ReactGA.event({
+                        category: "Check Live Updates Clicked",
+                        action: "from Landing Page"
+                      });
+                    }}
                   >
                     <a
                       href="https://coronariskcalculator.in/news"

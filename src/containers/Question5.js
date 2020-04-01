@@ -19,6 +19,7 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import ReactGA from "react-ga";
 
 class Question5 extends Component {
   handleContactAnsChange(event) {
@@ -233,6 +234,10 @@ class Question5 extends Component {
                   size="lg"
                   block
                   onClick={() => {
+                    ReactGA.event({
+                      category: "Click",
+                      action: "Submit Clicked on 5th Question Page"
+                    });
                     this.props.openQuestionPage("6");
                   }}
                   disabled={

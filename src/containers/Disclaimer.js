@@ -9,9 +9,14 @@ import {
   openQuestionPage,
   toggleShowDisclaimer
 } from "../containers/Home/actions";
+import ReactGA from "react-ga";
 
 class Disclaimer extends Component {
   startQuestion(pageNumber) {
+    ReactGA.event({
+      category: "Click",
+      action: "Accept and Continue on Disclaimer Page"
+    });
     this.props.openQuestionPage(pageNumber);
     this.props.toggleShowDisclaimer(false);
   }

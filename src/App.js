@@ -3,8 +3,10 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import "./App.css";
 import Home from "./containers/Home";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Question1 from "../src/containers/Question1";
+import ReactGA from "react-ga";
 
+ReactGA.initialize("UA-162477571-1");
+ReactGA.pageview("/");
 class App extends Component {
   render() {
     return (

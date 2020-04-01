@@ -19,12 +19,17 @@ import {
 import "react-input-range/lib/css/index.css";
 import Radio from "@material-ui/core/Radio";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRight,
+  faArrowLeft,
+  faSpinner
+} from "@fortawesome/free-solid-svg-icons";
 
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Select from "react-select";
 import { stateOptions } from "../configConstants";
+import ReactGA from "react-ga";
 
 const colorStyles = {
   control: styles => ({ ...styles, marginBottom: "5px" })
@@ -142,6 +147,13 @@ class Question1 extends Component {
                   {this.props.districtSelectedByUser &&
                   this.props.cityOptions.length == 0 ? (
                     <span>
+                      <FontAwesomeIcon
+                        icon={faSpinner}
+                        style={{
+                          marginRight: "5px",
+                          fontSize: "15px"
+                        }}
+                      />
                       {this.props.languageValue.value === "English"
                         ? English.loadingCities
                         : Hindi.loadingCities}
@@ -293,6 +305,10 @@ class Question1 extends Component {
                   size="lg"
                   block
                   onClick={() => {
+                    ReactGA.event({
+                      category: "Click",
+                      action: "Next Clicked on 1st Question Page"
+                    });
                     this.props.openQuestionPage("2");
                   }}
                   disabled={

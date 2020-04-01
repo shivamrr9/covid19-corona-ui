@@ -14,6 +14,7 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import ReactGA from "react-ga";
 
 class Question3 extends Component {
   handleTravelAnsChange(event) {
@@ -154,6 +155,10 @@ class Question3 extends Component {
                   size="lg"
                   block
                   onClick={() => {
+                    ReactGA.event({
+                      category: "Click",
+                      action: "Next Clicked on 3rd Question Page"
+                    });
                     this.props.openQuestionPage("4");
                   }}
                   disabled={this.props.travelAnsSelectedByUser.length == 0}

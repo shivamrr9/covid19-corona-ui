@@ -29,9 +29,11 @@ import {
   faHeart,
   faHandPointer,
   faDotCircle,
-  faSmile
+  faSmile,
+  faHospitalAlt
 } from "@fortawesome/free-solid-svg-icons";
 import firebase from "../firebase";
+import ReactGA from "react-ga";
 
 class Question3 extends Component {
   constructor(props) {
@@ -74,6 +76,10 @@ class Question3 extends Component {
   }
   shareContent() {
     if (navigator.share) {
+      ReactGA.event({
+        category: "Share",
+        action: "Share Result Clicked"
+      });
       var sharePromise = window.navigator.share({
         title: `${
           this.props.languageValue.value === "English"
@@ -358,6 +364,12 @@ class Question3 extends Component {
                     position: "fixed",
                     right: "4%"
                   }}
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "Check Live Updates Clicked",
+                      action: "from Results Page"
+                    });
+                  }}
                   className="blink_me_result"
                 >
                   <a
@@ -629,6 +641,84 @@ class Question3 extends Component {
                   )}
                 </div>
               </div>
+              {this.state.finalResultPercentage > 30 && (
+                <div
+                  className="testing-facilities"
+                  style={{
+                    marginTop: "3%",
+                    width: "98%",
+                    background: "white",
+                    borderRadius: "16px",
+                    padding: "15px"
+                  }}
+                >
+                  <h6>
+                    <FontAwesomeIcon
+                      icon={faHospitalAlt}
+                      color="#DDB24B"
+                      style={{ marginRight: "3px" }}
+                    />
+                    {this.props.languageValue.value === "English"
+                      ? English.testingfacilities
+                      : Hindi.testingfacilities}
+                  </h6>
+                  <div
+                    style={{
+                      textAlign: "left",
+                      padding: "10px",
+                      marginLeft: "10px"
+                    }}
+                  >
+                    {`${
+                      this.props.languageValue.value === "English"
+                        ? English.youAreAt
+                        : Hindi.youAreAt
+                    } : ${
+                      this.state.finalResultPercentage > 0 &&
+                      this.state.finalResultPercentage < 30
+                        ? `${
+                            this.props.languageValue.value === "English"
+                              ? English.lowRisk
+                              : Hindi.lowRisk
+                          }`
+                        : this.state.finalResultPercentage > 30 &&
+                          this.state.finalResultPercentage < 60
+                        ? `${
+                            this.props.languageValue.value === "English"
+                              ? English.moderateRisk
+                              : Hindi.moderateRisk
+                          }`
+                        : `${
+                            this.props.languageValue.value === "English"
+                              ? English.highRisk
+                              : Hindi.highRisk
+                          }`
+                    }${
+                      this.props.languageValue.value === "English"
+                        ? English.consultPhysician
+                        : Hindi.consultPhysician
+                    }`}
+                    <a
+                      href="https://covid.icmr.org.in/index.php/testing-facilities"
+                      target="_blank"
+                    >
+                      <span
+                        onClick={() => {
+                          ReactGA.event({
+                            category: "Testing Facilities Link",
+                            action: "Testing Facilities Link CLicked"
+                          });
+                        }}
+                        style={{ color: "blue" }}
+                      >
+                        {this.props.languageValue.value === "English"
+                          ? English.clickHere
+                          : Hindi.clickHere}
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              )}
               <div
                 className="precautions-container"
                 style={{
@@ -758,6 +848,34 @@ class Question3 extends Component {
                     }}
                   ></div>
                 </div>
+
+                <p
+                  style={{
+                    padding: "10px",
+                    marginBottom: "0px"
+                  }}
+                >
+                  {this.props.languageValue.value === "English"
+                    ? English.precautionaryMeasuresVideo
+                    : Hindi.precautionaryMeasuresVideo}
+                </p>
+                {this.props.languageValue.value === "English" ? (
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src="https://www.youtube.com/embed/v-852f1PXBo"
+                    allow="picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                ) : (
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src="https://www.youtube.com/embed/OFFg21KhOV0"
+                    allow="picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                )}
               </div>
               <div
                 className="alert-container"
@@ -811,6 +929,12 @@ class Question3 extends Component {
                       ? English.findAllHelpline
                       : Hindi.findAllHelpline}{" "}
                     <a
+                      onClick={() => {
+                        ReactGA.event({
+                          category: "Help Line Link (PDF)",
+                          action: "Help Line Link Clicked/PDF downloaded"
+                        });
+                      }}
                       href="https://www.mohfw.gov.in/pdf/coronvavirushelplinenumber.pdf"
                       target="_blank"
                       style={{ color: "blue" }}
@@ -939,6 +1063,10 @@ class Question3 extends Component {
                         marginTop: "10px"
                       }}
                       onClick={() => {
+                        ReactGA.event({
+                          category: "Subscribe",
+                          action: "Subscribe clicked on Results Page"
+                        });
                         this.handleSubscribe(this.props.enteredEmailByUser);
                       }}
                     >
@@ -984,6 +1112,10 @@ class Question3 extends Component {
                   <Rating
                     style={{ marginBottom: "10px", padding: "5px" }}
                     onChange={val => {
+                      ReactGA.event({
+                        category: "Rating",
+                        action: `Rating : ${val} Given on Results Page`
+                      });
                       setTimeout(() => {
                         this.handleRating(val);
                       }, 450);
@@ -1030,6 +1162,10 @@ class Question3 extends Component {
                         marginTop: "10px"
                       }}
                       onClick={() => {
+                        ReactGA.event({
+                          category: "Rating",
+                          action: "Re Rating Given on Results Page"
+                        });
                         this.showRatingBox(true);
                       }}
                     >

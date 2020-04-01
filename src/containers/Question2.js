@@ -13,6 +13,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import ReactGA from "react-ga";
 
 class Question2 extends Component {
   handleQuestion2(val, type) {
@@ -225,6 +226,10 @@ class Question2 extends Component {
                   size="lg"
                   block
                   onClick={() => {
+                    ReactGA.event({
+                      category: "Click",
+                      action: "Next Clicked on 2nd Question Page"
+                    });
                     this.props.openQuestionPage("3");
                   }}
                   disabled={

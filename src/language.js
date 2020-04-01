@@ -25,7 +25,7 @@ export const English = {
   noneOfTheAbove: "None of the above",
   acceptAndContinue: "Accept and Continue",
   disclaimerHeading: "Disclaimer",
-  question3Heading: "Have you travelled internationally in the last 14 days?",
+  question3Heading: "Have you travelled internationally in feb/ march 2020?",
   yes: "Yes",
   no: "No",
   dryCough: "Dry Cough",
@@ -56,7 +56,7 @@ export const English = {
   basedOnAssessment1: "Based on the assessment you are at ",
   ofCovid: " of COVID-19.",
   basedOnAssessment2: "Check again after 24 hours to reassess yourself.",
-  reAssess: "Re-Assess",
+  reAssess: "Re-assess",
   shareResult: "Share Result",
   shareOn: "Share On",
   block2Heading: "Precautionary Measure For You",
@@ -97,7 +97,13 @@ export const English = {
   thankYou: "Thanks For Rating Us",
   reRate: "Rerate",
   checkLiveUpdates: "Check Live Updates",
-  submit: "SUBMIT"
+  submit: "SUBMIT",
+  testingfacilities: "Testing Facilities",
+  youAreAt: "You are at:  ",
+  consultPhysician:
+    " ! Consult a Physician and find your nearest testing facility here : ",
+  clickHere: "Click Here",
+  precautionaryMeasuresVideo: "Precaution Measures Video"
 };
 
 export const Hindi = {
@@ -127,7 +133,7 @@ export const Hindi = {
   acceptAndContinue: "स्वीकार करें और जारी रखें",
   disclaimerHeading: "अस्वीकरण (Disclaimer)",
   question3Heading:
-    "क्या आपने पिछले 14 दिनों में अंतरराष्ट्रीय स्तर पर यात्रा की है?",
+    "क्या आपने फरवरी / मार्च 2020 में अंतरराष्ट्रीय स्तर पर यात्रा की है?",
   yes: "हाँ",
   no: "नहीं",
   dryCough: "सूखी खांसी",
@@ -197,5 +203,11 @@ export const Hindi = {
   thankYou: "रेटिंग के लिए धन्यवाद",
   reRate: "रेटिंग बदलें",
   checkLiveUpdates: "देखिये लाइव अपडेट",
-  submit: "सब्मिट"
+  submit: "सब्मिट",
+  testingfacilities: "परीक्षण सुविधा",
+  youAreAt: "परिणाम है ",
+  consultPhysician:
+    "| एक चिकित्सक से परामर्श करें और अपनी निकटतम परीक्षण सुविधा यहां पाएं: ",
+  clickHere: "यहाँ क्लिक करें",
+  precautionaryMeasuresVideo: "वीडियो के माध्यम से सावधानियां"
 };
