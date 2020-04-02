@@ -342,6 +342,10 @@ class Question3 extends Component {
     this.setState({
       finalResultPercentage: Math.round(total_percentage)
     });
+    ReactGA.event({
+      category: "Risk Percentage",
+      action: `Risk Percentage : ${Math.round(total_percentage)}`
+    });
   }
 
   render() {

@@ -309,6 +309,10 @@ class Question1 extends Component {
                       category: "Click",
                       action: "Next Clicked on 1st Question Page"
                     });
+                    ReactGA.event({
+                      category: "Place/Age",
+                      action: `${this.props.stateSelectedByUser.value} / ${this.props.enteredAgeByUser}`
+                    });
                     this.props.openQuestionPage("2");
                   }}
                   disabled={
