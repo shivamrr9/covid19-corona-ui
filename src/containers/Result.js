@@ -1218,6 +1218,21 @@ class Question3 extends Component {
                   </div>
                 )}
               </div>
+              <p style={{ marginBottom: "0px", paddingTop: "6px" }}>
+                Made with{" "}
+                <FontAwesomeIcon
+                  icon={faHeart}
+                  color="#D42F51"
+                  style={{ marginRight: "3px" }}
+                />{" "}
+                in INDIA |{" "}
+                <a
+                  href=" https://assets-corona-risk-calculator.s3.ap-south-1.amazonaws.com/FAQ+_+CORONA+RISK+CALCULATOR.pdf"
+                  target="_blank"
+                >
+                  FAQs
+                </a>
+              </p>
               <div style={{ height: "30px" }}></div>
             </Col>
             <Col md={3}></Col>
