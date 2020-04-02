@@ -182,7 +182,7 @@ class Question3 extends Component {
         this.props.question4Obj.severeWeakness,
         this.props.contactAnsSelectedByUser
       );
-    }, 330);
+    }, 350);
   }
 
   preConditions(diabetes, blood_pressure, heart_problem, kidney_lung_disease) {
