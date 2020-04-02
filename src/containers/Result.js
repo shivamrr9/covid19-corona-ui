@@ -691,7 +691,8 @@ class Question3 extends Component {
                     style={{
                       textAlign: "left",
                       padding: "10px",
-                      marginLeft: "10px"
+                      marginLeft: "10px",
+                      fontSize: "12px"
                     }}
                   >
                     {`${
