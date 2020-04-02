@@ -223,7 +223,7 @@ class Question3 extends Component {
       percentage += 2;
     }
     if (weaknes) {
-      percentage += 3;
+      percentage += 2;
     }
     if (appetite) {
       percentage += 2;
