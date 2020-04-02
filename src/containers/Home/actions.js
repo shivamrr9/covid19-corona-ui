@@ -1,6 +1,7 @@
 import { Constants } from "./constants";
 import { doHttpGet, doHttpPost } from "../../components/utilities.js";
 import { stat } from "fs";
+import { districtOptions } from "../../configConstants";
 
 export function Test(flag) {
   return dispatch => {
@@ -133,34 +134,25 @@ export function inputEmailByUser(enteredEmail) {
 }
 
 export function stateSelected(state) {
-  var url1 = `https://api.jsonbin.io/b/5e7f99ff862c46101abfbd6f`;
   return dispatch => {
     dispatch({
       type: Constants.SELECTED_STATE,
       data: state
     });
-    var promise = doHttpGet(url1, {});
-    promise.then(
-      response => {
-        let districts = [];
-        if (response && response.status === 200) {
-          response.data.states.map(obj => {
-            if (obj.state === state.value || obj.state.includes(state.value)) {
-              obj.districts.map(obj => {
-                districts.push({ value: obj, label: obj });
-              });
-            }
-          });
-          dispatch({
-            type: Constants.DISTRICTS_DATA,
-            data: districts
-          });
-        }
-      },
-      err => {
-        console.log("error:", err);
+
+    let response = districtOptions;
+    let districts = [];
+    response.states.map(obj => {
+      if (obj.state === state.value || obj.state.includes(state.value)) {
+        obj.districts.map(obj => {
+          districts.push({ value: obj, label: obj });
+        });
       }
-    );
+    });
+    dispatch({
+      type: Constants.DISTRICTS_DATA,
+      data: districts
+    });
   };
 }
 export function districtSelected(district) {

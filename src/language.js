@@ -99,7 +99,7 @@ export const English = {
   checkLiveUpdates: "Check Live Updates",
   submit: "SUBMIT",
   testingfacilities: "Testing Facilities",
-  youAreAt: "You are at:  ",
+  youAreAt: "You are at ",
   consultPhysician:
     " ! Consult a Physician and find your nearest testing facility here : ",
   clickHere: "Click Here",
