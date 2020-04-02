@@ -13,8 +13,6 @@ const initialState = {
   stateSelectedByUser: "",
   districtOptions: [],
   districtSelectedByUser: "",
-  citySelectedByUser: "",
-  cityOptions: [],
   genderSelectedByUser: "",
   question2Obj: {
     diabetes: false,
@@ -65,23 +63,15 @@ export default function(state = initialState, action) {
       return {
         ...state,
         stateSelectedByUser: action.data,
-        districtSelectedByUser: "",
-        citySelectedByUser: "",
-        cityOptions: []
+        districtSelectedByUser: ""
       };
     case Constants.DISTRICTS_DATA:
       return { ...state, districtOptions: action.data };
     case Constants.SELECTED_DISTRICT:
       return {
         ...state,
-        districtSelectedByUser: action.data,
-        citySelectedByUser: "",
-        cityOptions: []
+        districtSelectedByUser: action.data
       };
-    case Constants.CITIES_DATA:
-      return { ...state, cityOptions: action.data };
-    case Constants.SELECTED_CITY:
-      return { ...state, citySelectedByUser: action.data };
     case Constants.SELECTED_GENDER:
       return { ...state, genderSelectedByUser: action.data };
     case Constants.CHANGE_PROGRESS_BAR:

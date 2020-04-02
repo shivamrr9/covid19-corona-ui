@@ -12,7 +12,6 @@ import {
   enteredAge,
   stateSelected,
   districtSelected,
-  citySelected,
   genderSelected,
   openQuestionPage
 } from "../containers/Home/actions";
@@ -32,13 +31,10 @@ import { stateOptions } from "../configConstants";
 import ReactGA from "react-ga";
 
 const colorStyles = {
-  control: styles => ({ ...styles, marginBottom: "5px" })
+  control: styles => ({ ...styles, marginBottom: "8px" })
 };
 
 class Question1 extends Component {
-  handleCityChange(val) {
-    this.props.citySelected(val);
-  }
   handleDistrictChange(val) {
     this.props.districtSelected(val);
   }
@@ -142,37 +138,6 @@ class Question1 extends Component {
                     }}
                     options={this.props.districtOptions}
                   />
-                  {this.props.districtSelectedByUser &&
-                  this.props.cityOptions.length == 0 ? (
-                    <span>
-                      <FontAwesomeIcon
-                        icon={faSpinner}
-                        style={{
-                          marginRight: "5px",
-                          fontSize: "15px"
-                        }}
-                      />
-                      {this.props.languageValue.value === "English"
-                        ? English.loadingCities
-                        : Hindi.loadingCities}
-                    </span>
-                  ) : (
-                    <Select
-                      styles={colorStyles}
-                      placeholder={
-                        this.props.languageValue.value === "English"
-                          ? English.city
-                          : Hindi.city
-                      }
-                      isDisabled={!this.props.districtSelectedByUser}
-                      isSearchable={true}
-                      value={this.props.citySelectedByUser}
-                      onChange={val => {
-                        this.handleCityChange(val);
-                      }}
-                      options={this.props.cityOptions}
-                    />
-                  )}
                 </div>
                 <hr></hr>
                 <div className="age-container">
@@ -352,8 +317,6 @@ const mapStateToProps = state => ({
   stateSelectedByUser: state.postReducer.stateSelectedByUser,
   districtOptions: state.postReducer.districtOptions,
   districtSelectedByUser: state.postReducer.districtSelectedByUser,
-  cityOptions: state.postReducer.cityOptions,
-  citySelectedByUser: state.postReducer.citySelectedByUser,
   genderSelectedByUser: state.postReducer.genderSelectedByUser
 });
 
@@ -361,7 +324,6 @@ export default connect(mapStateToProps, {
   enteredAge,
   stateSelected,
   districtSelected,
-  citySelected,
   genderSelected,
   openQuestionPage
 })(Question1);

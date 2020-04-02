@@ -98,14 +98,7 @@ export function enteredAge(age) {
     });
   };
 }
-export function citySelected(selectedCity) {
-  return dispatch => {
-    dispatch({
-      type: Constants.SELECTED_CITY,
-      data: selectedCity
-    });
-  };
-}
+
 export function genderSelected(gender) {
   return dispatch => {
     dispatch({
@@ -156,37 +149,11 @@ export function stateSelected(state) {
   };
 }
 export function districtSelected(district) {
-  var url1 = `https://indian-cities-api-nocbegfhqg.now.sh/cities?District=${district.value}`;
   return dispatch => {
     dispatch({
       type: Constants.SELECTED_DISTRICT,
       data: district
     });
-    var promise = doHttpGet(url1, {});
-    promise.then(
-      response => {
-        if (response && response.status === 200) {
-          let cities = [];
-          if (response.data.length == 0) {
-            cities.push({
-              value: district.value,
-              label: district.value
-            });
-          } else {
-            response.data.map(obj => {
-              cities.push({ value: obj.City, label: obj.City });
-            });
-          }
-          dispatch({
-            type: Constants.CITIES_DATA,
-            data: cities
-          });
-        }
-      },
-      err => {
-        console.log("error:", err);
-      }
-    );
   };
 }
 

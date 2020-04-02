@@ -161,7 +161,6 @@ class Question3 extends Component {
     window.setTimeout(() => {
       this.riskCalculator(
         this.props.enteredAgeByUser,
-        this.props.citySelectedByUser,
         this.props.districtSelectedByUser,
         this.props.stateSelectedByUser,
         this.props.travelAnsSelectedByUser,
@@ -188,13 +187,13 @@ class Question3 extends Component {
   preConditions(diabetes, blood_pressure, heart_problem, kidney_lung_disease) {
     let percentage = 0;
     if (diabetes) {
-      percentage += 2;
+      percentage += 3;
     }
     if (blood_pressure) {
       percentage += 2;
     }
     if (heart_problem) {
-      percentage += 3;
+      percentage += 4;
     }
     if (kidney_lung_disease) {
       percentage += 5;
@@ -224,7 +223,7 @@ class Question3 extends Component {
       percentage += 2;
     }
     if (weaknes) {
-      percentage += 2;
+      percentage += 3;
     }
     if (appetite) {
       percentage += 2;
@@ -250,7 +249,6 @@ class Question3 extends Component {
   riskCalculator(
     age,
     district,
-    city,
     state,
     travel_history,
     diabetes,
@@ -307,7 +305,6 @@ class Question3 extends Component {
       age_40_60 = 0,
       age_60_above = 0,
       age_count,
-      city_count = 0,
       district_count = 0,
       state_count = 0;
     let total_data = this.props.rawData.length;
@@ -317,7 +314,6 @@ class Question3 extends Component {
       else if (info.agebracket <= 60) ++age_40_60;
       else ++age_60_above;
 
-      if (info.detectedcity === city.value) ++city_count;
       if (info.detecteddistrict === district.value) ++district_count;
       if (info.detectedstate === state.value) ++state_count;
     });
@@ -326,10 +322,9 @@ class Question3 extends Component {
     else if (age <= 60) age_count = age_40_60;
     else age_count = age_60_above;
 
-    total_percentage += (age_count / total_data) * 10;
-    total_percentage += (city_count / total_data) * 10;
-    total_percentage += (district_count / total_data) * 6;
-    total_percentage += (state_count / total_data) * 4;
+    total_percentage += (age_count / total_data) * 12;
+    total_percentage += (district_count / total_data) * 8;
+    total_percentage += (state_count / total_data) * 6;
 
     total_percentage /= 1;
     {
@@ -1075,7 +1070,11 @@ class Question3 extends Component {
                   {!this.props.isMailSent && <br />}
                   {!this.props.isMailSent && (
                     <input
-                      style={{ width: "68%", borderRadius: "7px" }}
+                      style={{
+                        width: "68%",
+                        borderRadius: "3px",
+                        padding: "2px"
+                      }}
                       type="email"
                       name="email"
                       placeholder="Email"
@@ -1249,7 +1248,6 @@ const mapStateToProps = state => ({
   enteredAgeByUser: state.postReducer.enteredAgeByUser,
   districtSelectedByUser: state.postReducer.districtSelectedByUser,
   stateSelectedByUser: state.postReducer.stateSelectedByUser,
-  citySelectedByUser: state.postReducer.citySelectedByUser,
   genderSelectedByUser: state.postReducer.genderSelectedByUser,
   travelAnsSelectedByUser: state.postReducer.travelAnsSelectedByUser,
   question4Obj: state.postReducer.question4Obj,
