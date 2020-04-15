@@ -31,7 +31,7 @@ import { stateOptions } from "../configConstants";
 import ReactGA from "react-ga";
 
 const colorStyles = {
-  control: styles => ({ ...styles, marginBottom: "8px" })
+  control: styles => ({ ...styles, marginBottom: "9px" })
 };
 
 class Question1 extends Component {
@@ -101,7 +101,10 @@ class Question1 extends Component {
               >
                 <div
                   className="citySelection"
-                  style={{ marginBottom: "15px", padding: "15px" }}
+                  style={{
+                    marginBottom: "15px",
+                    padding: "18px 18px 4px 18px"
+                  }}
                 >
                   <h6>
                     {this.props.languageValue.value === "English"

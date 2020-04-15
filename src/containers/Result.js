@@ -1226,6 +1226,12 @@ class Question3 extends Component {
                 />{" "}
                 in INDIA |{" "}
                 <a
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "FAQS",
+                      action: "FAQS CLICKED"
+                    });
+                  }}
                   href=" https://assets-corona-risk-calculator.s3.ap-south-1.amazonaws.com/FAQ+_+CORONA+RISK+CALCULATOR.pdf"
                   target="_blank"
                 >
